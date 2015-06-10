@@ -1,0 +1,20 @@
+# This is Git's per-user configuration file.
+[core]
+# Please adapt and uncomment the following lines:
+#	user = Andrew Breckenridge
+#	email = asbreckenridge@me.com
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[user]
+	name = Andrew Breckenridge
+	email = asbreckenridge@me.com
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
