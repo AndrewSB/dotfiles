@@ -23,7 +23,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -50,10 +50,10 @@ plugins=(git)
 # User configuration
 
 export CDPATH=Developer/
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/asb/Library/Android/sdk/platform-tools:/Users/asb/Library/Android/ndk-r10e"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
+export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,14 +85,16 @@ source $ZSH/oh-my-zsh.sh
 alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
 alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 
-alias fuck='$(thefuck $(fc -ln -1))'
-
 alias aroll='pidcat com.tryroll.roll'
 
 trash() {
   for i in `ls $1`; do
 	 mv "$i" ~/.Trash
   done
+}
+
+hc() {
+  hub clone -p AndrewSB/$@
 }
 
 acp () {
@@ -114,7 +116,4 @@ auto-ls () {
 zle -N accept-line auto-ls
 zle -N other-widget auto-ls
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
