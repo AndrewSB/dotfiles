@@ -106,6 +106,14 @@ acp () {
 	git push;	
 }
 
+cst() {
+	for i in `ls $1`; do
+		cd $i;
+		git status --porcelain;
+		cd ..;
+	done
+}
+
 auto-ls () {
    if [[ $#BUFFER -eq 0 ]]; then
        echo ""
