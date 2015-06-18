@@ -3,6 +3,8 @@
 echo "Have you installed XCode and Sublime Text? (y/n)"
 read userInstallResponse
 
+source installOtherApps.sh
+
 if [ $userInstallResponse == "y" ] 
 	then
 	echo "sudo if you please"

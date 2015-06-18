@@ -55,6 +55,8 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
 
+export GOPATH="/Users/asb/Developer/gocode"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
