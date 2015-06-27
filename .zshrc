@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
 alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 
-alias aroll='pidcat com.tryroll.roll'
+alias aroll='cd /Users/asb/Developer/gocode/src/github.com/mathcamp/prototypes/server/apps/roll/app'
 
 trash() {
   for i in `ls $1`; do

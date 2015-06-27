@@ -7,7 +7,6 @@ func main() {
     println("escalting userPrivellages")
     NSAppleScript(source: "do shell script \"sudo whatever\" with administrator privileges")!.executeAndReturnError(nil)
     println("escalted")
-    println(shell("say", "hi"))
 }
 
 func welcome() {
