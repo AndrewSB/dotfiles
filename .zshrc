@@ -99,6 +99,10 @@ hc() {
   hub clone -p AndrewSB/$@
 }
 
+pick-xcode() {
+	sudo xcode-select -s /Applications/Xcode$@.app/Contents/Developer/
+}
+
 acp () {
 	echo $@
 	git add -A;
