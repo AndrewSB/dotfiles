@@ -4,6 +4,7 @@ func main() {
     welcome()
     checkXCodeInstallation()
     installCommandLineTools()
+    installDotfiles()
 }
 
 
@@ -69,27 +70,41 @@ func checkXCodeInstallation() {
 }
 
 func installCommandLineTools() {
+    
     println("Installing Homebrew")
     let homeBrewInstallScript = shell("curl", "-fsSL", "https://raw.githubusercontent.com/Homebrew/install/master/install")
+    shell("ruby", "-e", homeBrewInstallScript)
+    
+    println("\nInstalling oh my zsh")
+    let ohMyZshInstallScript = shell("curl", "-fsSL", "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh")
+    shell("sh", "-c", ohMyZshInstallScript)
 
+    println("\nInstalling the homebrew tools")
     for tool in HomebrewTool.allValues {
         shell("brew", "install", tool.rawValue)
     }
-    println("installed all homebrew tools")
     
+    // Technically cask applications are homebrew tools
     for app in CaskApp.allValues {
         shell("brew", "cask", "install", app.rawValue)
     }
-    println("installed all cask apps")
+    println("\nDone installing all the homebrew tools")
     
+    println("\nInstalling gem tools")
     for gem in Gem.allValues {
         shell("sudo", "gem", "install", gem.rawValue)
     }
+    println("\nDone installing the gem tools")
+    
 }
 
 func installDotfiles() {
-    shell("cp", ".zshrc", "~/.zshrc")
-    shell("cp", ".gitconfig", "~/.gitconfig")
+    println("\n Going to be overwriting your zshrc and gitconfig.")
+    let userStartResponse = promptUserInput("Sound good? (👍 /👎 )")
+    if userStartResponse.rangeOfString("👍 ") == nil {
+        shell("cp", ".zshrc", "~/.zshrc")
+        shell("cp", ".gitconfig", "~/.gitconfig")
+    }
 }
 
 
