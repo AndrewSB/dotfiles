@@ -1,4 +1,12 @@
 #!/usr/bin/env xcrun swift
+
+func main() {
+    welcome()
+    checkXCodeInstallation()
+    installCommandLineTools()
+}
+
+
 /*
 // Here's what you're going to be installing
 */
@@ -34,16 +42,6 @@ enum Gem: String {
     case Synx =         "synx"
     
     static let allValues = [CocoaPods, Synx]
-}
-
-
-import Cocoa
-
-func main() {
-    welcome()
-    checkXCodeInstallation()
-    installCommandLineTools()
-    shell("sudo", "gem", "install", "lol")
 }
 
 
@@ -94,8 +92,9 @@ func installDotfiles() {
     shell("cp", ".gitconfig", "~/.gitconfig")
 }
 
-// LOW LEVEL
 
+// LOW LEVEL
+import Cocoa
 
 func shell(args: String...) -> String {
     let task = NSTask()
