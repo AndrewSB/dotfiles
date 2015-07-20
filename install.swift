@@ -11,36 +11,34 @@ func main() {
 /*
 // Here's what you're going to be installing
 */
-enum CommandLineTool {
-    case Homebrew(tool: HomebrewTool)
-    case Cask(app: CaskApp)
-}
+let homebrewRemoteCodeLocation =    "https://raw.githubusercontent.com/Homebrew/install/master/install"
+let ohMyZshRemoteCodeLocation =     "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 enum HomebrewTool: String {
-    case Carthage =     "carthage"
-    case GitHub =       "hub"
-    case Node =         "node"
-    case Watchman =     "watchman"
-    case Cask =         "caskroom/cask/brew-cask"
+    case Carthage =                 "carthage"
+    case GitHub =                   "hub"
+    case Node =                     "node"
+    case Watchman =                 "watchman"
+    case Cask =                     "caskroom/cask/brew-cask"
     
     static let allValues = [Carthage, GitHub, Node, Watchman, Cask]
 }
 enum CaskApp: String {
-    case GoogleChrome = "google-chrome"
-    case Atom =         "atom"
-    case SkalaColor =   "colorpicker-skalacolor"
-    case Fabric =       "fabric"
-    case GitHub =       "github"
-    case Hermes =       "hermes"
-    case Sketch =       "sketch"
-    case Spotify =      "spotify"
-    case SublimeText =  "sublime-text"
-    case Transmission = "transmission"
+    case GoogleChrome =             "google-chrome"
+    case Atom =                     "atom"
+    case SkalaColor =               "colorpicker-skalacolor"
+    case Fabric =                   "fabric"
+    case GitHub =                   "github"
+    case Hermes =                   "hermes"
+    case Sketch =                   "sketch"
+    case Spotify =                  "spotify"
+    case SublimeText =              "sublime-text"
+    case Transmission =             "transmission"
     
     static let allValues = [GoogleChrome, Atom, SkalaColor, Fabric, GitHub, Hermes, Sketch, Spotify,SublimeText, Transmission]
 }
 enum Gem: String {
-    case CocoaPods =    "cocoapods"
-    case Synx =         "synx"
+    case CocoaPods =                "cocoapods"
+    case Synx =                     "synx"
     
     static let allValues = [CocoaPods, Synx]
 }
@@ -49,16 +47,16 @@ enum Gem: String {
 func welcome() {
     println("Yo yo")
     println("Welcome to the superflous swift dotfile installtion script that Andrew wrote \nsome day of age")
-    println("We're going to start out by making sure Xcode is installed, then install a \nbunch of command line tools, applications, and finally setup your dotfiles.\n")
-    let userStartResponse = promptUserInput("Sound good? (👍 /👎 )")
-    if userStartResponse.rangeOfString("👍 ") == nil {
+    println("We're going to start out by making sure Xcode is installed, then install a \nsome command line tools, and applications, and then finally setup\nyour dotfiles.\n")
+    
+    soundGoodPrompt(no: {
         println("Aight. We won't install")
         exit(0)
-    }
+    })
 }
 
 func checkXCodeInstallation() {
-    let xcodeVersionOrNil = shell("xcode-select", "-v")
+    let xcodeVersionOrNil = LowLevel.sharedInstance.shell("xcode-select", "-v")
     if xcodeVersionOrNil.rangeOfString("No such file or directory") != nil {
         println("I understand you think you're boss. But you kinda sorta maybe need Xcode.")
         println("On the other hand, you cloned this without getting git on your machine. Quite boss")
@@ -72,27 +70,26 @@ func checkXCodeInstallation() {
 func installCommandLineTools() {
     
     println("Installing Homebrew")
-    let homeBrewInstallScript = shell("curl", "-fsSL", "https://raw.githubusercontent.com/Homebrew/install/master/install")
-    shell("ruby", "-e", homeBrewInstallScript)
+    let homeBrewInstallScript = LowLevel.sharedInstance.shell("curl", "-fsSL", homebrewRemoteCodeLocation)
+    LowLevel.sharedInstance.shell("ruby", "-e", homeBrewInstallScript)
     
     println("\nInstalling oh my zsh")
-    let ohMyZshInstallScript = shell("curl", "-fsSL", "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh")
-    shell("sh", "-c", ohMyZshInstallScript)
-
-    println("\nInstalling the homebrew tools")
-    for tool in HomebrewTool.allValues {
-        shell("brew", "install", tool.rawValue)
-    }
+    let ohMyZshInstallScript = LowLevel.sharedInstance.shell("curl", "-fsSL", ohMyZshRemoteCodeLocation)
+    LowLevel.sharedInstance.shell("sh", "-c", ohMyZshInstallScript)
     
-    // Technically cask applications are homebrew tools
-    for app in CaskApp.allValues {
-        shell("brew", "cask", "install", app.rawValue)
+    
+    println("\nInstalling the homebrew tools")
+    HomebrewTool.allValues.map {
+        LowLevel.sharedInstance.shell("brew", "install", $0.rawValue)
+    }
+    CaskApp.allValues.map {
+        LowLevel.sharedInstance.shell("brew", "cask", "install", $0.rawValue)
     }
     println("\nDone installing all the homebrew tools")
     
     println("\nInstalling gem tools")
-    for gem in Gem.allValues {
-        shell("sudo", "gem", "install", gem.rawValue)
+    Gem.allValues.map {
+        LowLevel.sharedInstance.shell("sudo", "gem", "install", $0.rawValue)
     }
     println("\nDone installing the gem tools")
     
@@ -100,36 +97,53 @@ func installCommandLineTools() {
 
 func installDotfiles() {
     println("\n Going to be overwriting your zshrc and gitconfig.")
-    let userStartResponse = promptUserInput("Sound good? (👍 /👎 )")
-    if userStartResponse.rangeOfString("👍 ") == nil {
-        shell("cp", ".zshrc", "~/.zshrc")
-        shell("cp", ".gitconfig", "~/.gitconfig")
-    }
+    soundGoodPrompt(yes: {
+        LowLevel.sharedInstance.shell("cp", ".zshrc", "~/.zshrc")
+        LowLevel.sharedInstance.shell("cp", ".gitconfig", "~/.gitconfig")
+    })
 }
 
 
 // LOW LEVEL
+// I need a class so I can accept selectors to pipe my standardOutput to
 import Cocoa
 
-func shell(args: String...) -> String {
-    let task = NSTask()
-    let pipe = NSPipe()
+class LowLevel: NSObject {
+    static var sharedInstance: LowLevel {
+        struct Static {
+            static let instance = LowLevel()
+        }
+        return Static.instance
+    }
     
-    task.launchPath = "/usr/bin/env"
-    task.standardOutput = pipe
-    task.arguments = args
+    func shell(args: String...) -> String {
+        let task = NSTask()
+        let pipe = NSPipe()
+        
+        task.launchPath = "/usr/bin/env"
+        task.standardOutput = pipe
+        task.standardError = pipe
+        task.arguments = args
+        
+        task.launch()
+        
+        return NSString(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as! String
+    }
     
-    task.launch()
+    func promptUserInput(message: String) -> String {
+        println("\(message)")
+        let fh = NSFileHandle.fileHandleWithStandardInput()
+        
+        var str = NSString(data: fh.availableData, encoding: NSUTF8StringEncoding)
+        return str as! String
+    }
     
-    return NSString(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as! String
-}
-
-func promptUserInput(message: String) -> String {
-    println("\(message)")
-    let fh = NSFileHandle.fileHandleWithStandardInput()
-    
-    var str = NSString(data: fh.availableData, encoding: NSUTF8StringEncoding)
-    return str as! String
+    func soundGoodPrompt(yes: (Void)? = nil, no: (Void)?) {
+        let userStartResponse = promptUserInput("Sound good? (👍 /👎 )")
+        
+        if userStartResponse.rangeOfString("👍 ") == nil    { if let no = no { no() }}
+        else                                                { if let yes = yes { yes() } }
+    }
 }
 
 main()
