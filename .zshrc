@@ -50,8 +50,9 @@ plugins=(git)
 # User configuration
 
 export CDPATH=Developer/
+export CDPATH=$CDPATH:Developer/gocode/src/github.com/AndrewSB/
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
 
@@ -99,23 +100,15 @@ hc() {
   hub clone -p AndrewSB/$@
 }
 
+rebase() {
+  git fetch
+  git rebase origin/master
+}
+
+
+
 pick-xcode() {
 	sudo xcode-select -s /Applications/Xcode$@.app/Contents/Developer/
-}
-
-acp () {
-	echo $@
-	git add -A;
-	git commit -m "$@";
-	git push;	
-}
-
-cst() {
-	for i in `ls $1`; do
-		cd $i;
-		git status --porcelain;
-		cd ..;
-	done
 }
 
 auto-ls () {
@@ -129,11 +122,5 @@ auto-ls () {
 }
 zle -N accept-line auto-ls
 zle -N other-widget auto-ls
-
-wifipass() {
-	ssid = `/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'`
-	
-	security find-generic-password -ga ssid
-}
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
