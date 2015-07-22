@@ -105,7 +105,23 @@ rebase() {
   git rebase origin/master
 }
 
+update-dotfiles() {
+  DOTFILEDIR="${HOME}/Developer/dotfiles"
+  CURDIR= `pwd`
 
+  if [ ! -d $DOTFILEDIR ]; then
+    echo "dotfiles directory doesn't seem to exist - cloning from github now"
+    cd "$DOTFILEDIR"
+    hub clone -p AndrewSB/dotfiles
+  fi
+
+  cd $DOTFILEDIR
+  git pull
+  bash copy
+
+  cd "${HOME}"
+  source .zshrc
+}
 
 pick-xcode() {
 	sudo xcode-select -s /Applications/Xcode$@.app/Contents/Developer/
