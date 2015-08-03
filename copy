@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp .zshrc ~/.zshrc
+cp .gitconfig ~/.gitconfig
