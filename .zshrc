@@ -90,6 +90,15 @@ alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 
 alias aroll='cd /Users/asb/Developer/gocode/src/github.com/mathcamp/prototypes/server/apps/roll/app'
 
+gst-recursive() {
+    for i in `ls`; do
+        cd $i
+        echo $i
+        echo `git status --porcelain`
+        cd ..
+    done
+}
+
 trash() {
   for i in `ls $1`; do
 	 mv "$i" ~/.Trash
