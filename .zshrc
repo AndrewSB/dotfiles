@@ -149,3 +149,5 @@ zle -N accept-line auto-ls
 zle -N other-widget auto-ls
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+fortune | cowsay -f dragon | lolcat
