@@ -136,6 +136,13 @@ pick-xcode() {
 	sudo xcode-select -s /Applications/Xcode$@.app/Contents/Developer/
 }
 
+open-sketch() {
+	`sudo date 010100002000`
+	`open /opt/homebrew-cask/Caskroom/sketch/latest/Sketch.app`
+	`sleep 4`
+	`sudo ntpdate -u time.apple.com`
+}
+
 auto-ls () {
    if [[ $#BUFFER -eq 0 ]]; then
        echo ""
