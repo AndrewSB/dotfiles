@@ -143,6 +143,13 @@ open-sketch() {
 	`sudo ntpdate -u time.apple.com`
 }
 
+update() {
+	`brew update`
+	`brew upgrade`
+	`sudo gem update`
+	`upgrade_oh_my_zsh`
+}
+
 auto-ls () {
    if [[ $#BUFFER -eq 0 ]]; then
        echo ""
