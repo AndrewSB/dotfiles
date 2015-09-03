@@ -1,8 +1,8 @@
 # This is Git's per-user configuration file.
 [core]
 # Please adapt and uncomment the following lines:
-#	user = Andrew Breckenridge
-#	email = asbreckenridge@me.com
+	user = Andrew Breckenridge
+	email = asbreckenridge@me.com
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f

@@ -145,9 +145,11 @@ open-sketch() {
 
 update() {
 	`brew update`
-	`brew upgrade`
-	`sudo gem update`
-	`upgrade_oh_my_zsh`
+    `brew upgrade`
+    `brew cleanup`
+    `brew cask cleanup`
+    `sudo gem update`
+    `upgrade_oh_my_zsh`
 }
 
 auto-ls () {
