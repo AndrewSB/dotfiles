@@ -1,0 +1,6 @@
+# Arguments: takes the repository name as an argument
+# Clones an AndrewSB directory from GitHub
+
+hc() {
+  hub clone -p AndrewSB/$@
+}

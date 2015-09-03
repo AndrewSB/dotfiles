@@ -1,0 +1,9 @@
+# Takes no arguments
+# Opens the sketch.app
+
+open-sketch() {
+    `sudo date 010100002000`
+    `open /opt/homebrew-cask/Caskroom/sketch/latest/Sketch.app`
+    `sleep 3` # enough time for Sketch to open and finish rendering
+    `sudo ntpdate -u time.apple.com`
+}

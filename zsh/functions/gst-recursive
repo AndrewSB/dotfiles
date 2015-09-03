@@ -1,0 +1,12 @@
+# No arguments
+# Goes through all the directories and recursively
+# does a git status 
+
+gst-recursive() {
+    for i in `ls`; do
+        cd $i
+        echo $i
+        echo `git status --porcelain`
+        cd ..
+    done
+}

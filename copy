@@ -6,4 +6,3 @@ cp .gitconfig ~/.gitconfig
 
 cp .vimrc ~/.vimrc
 cp .macvimrc ~/.macvimrc
-cp .spacemacs ~/.spacemacs
