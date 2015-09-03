@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cp .zshrc ~/.zshrc
+cp zshrc ~/.zshrc
 cp -R zsh ~/.zsh
 
-cp .gitconfig ~/.gitconfig
+cp gitconfig ~/.gitconfig
 
-cp .vimrc ~/.vimrc
+cp vimrc ~/.vimrc
