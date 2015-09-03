@@ -7,9 +7,6 @@ export ZSH=/Users/asb/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -17,9 +14,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 # User configuration
-
 export CDPATH=Developer/
-export CDPATH=$CDPATH:Developer/gocode/src/github.com/AndrewSB/
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -34,12 +29,33 @@ for function in ~/.zsh/functions/*; do
     source $function
 done
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# makes color constants available
+autoload -U colors
+colors
+
+# enable colored output from ls, etc
+export CLICOLOR=1
+
+# history settings
+setopt hist_ignore_all_dups inc_append_history
+HISTFILE=~/.zhistory
+HISTSIZE=4096
+SAVEHIST=4096
+
+# awesome cd movements from zshkit
+setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
+DIRSTACKSIZE=5
+
+# Enable extended globbing
+setopt extendedglob
+
+# vi mode
+bindkey -v
+bindkey "^F" vi-cmd-mode
+bindkey jj vi-cmd-mode
 
 alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
 alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 
-
+# Startup dragon 😏
 fortune | cowsay -f dragon | lolcat
