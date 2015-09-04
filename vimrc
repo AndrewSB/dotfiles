@@ -5,11 +5,13 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'wincent/command-t'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-syntax enable
+syntax on
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
