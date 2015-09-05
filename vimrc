@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
