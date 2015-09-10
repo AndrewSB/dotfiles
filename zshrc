@@ -50,10 +50,11 @@ DIRSTACKSIZE=5
 setopt extendedglob
 
 # vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
+# bindkey -v
+# bindkey "^F" vi-cmd-mode
+# bindkey jj vi-cmd-mode
 
+# aliases
 alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
 alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 
