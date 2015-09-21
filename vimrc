@@ -19,6 +19,11 @@ filetype plugin indent on    " required by vundle
 syntax on
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+" solarized theme
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
+
 " auto reload vimrc on changes
 augroup reload_vimrc " {
     autocmd!
