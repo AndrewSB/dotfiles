@@ -11,6 +11,7 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
+Plugin 'altercation/vim-colors-solarized'
 call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
 
