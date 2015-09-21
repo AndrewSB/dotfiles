@@ -16,6 +16,12 @@ filetype plugin indent on    " required
 syntax on
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+" better tab navigation
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+
 " NERDTree auto open on startup with no files
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
