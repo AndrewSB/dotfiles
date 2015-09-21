@@ -14,6 +14,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
+" End Vundle
 
 " vim fundamentals
 syntax on
@@ -24,13 +25,20 @@ let g:solarized_termcolors=256
 set background=light
 colorscheme solarized
  
-
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
 " control. It also supports works with .svn, .hg, .bzr.
 let g:ctrlp_working_path_mode = 'r'
 
-
+" syntatic customization
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 " auto reload vimrc on changes
 augroup reload_vimrc " {
     autocmd!
