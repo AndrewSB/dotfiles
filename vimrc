@@ -16,6 +16,12 @@ filetype plugin indent on    " required
 syntax on
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+" auto reload vimrc on changes
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
 " better tab navigation
 nnoremap th  :tabfirst<CR>
 nnoremap tj  :tabnext<CR>
