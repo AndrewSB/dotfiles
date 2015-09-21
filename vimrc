@@ -23,6 +23,13 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 let g:solarized_termcolors=256
 set background=light
 colorscheme solarized
+ 
+
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
+
 
 " auto reload vimrc on changes
 augroup reload_vimrc " {
