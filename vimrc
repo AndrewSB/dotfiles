@@ -9,8 +9,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'Valloric/YouCompleteMe'
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+call vundle#end()            " required by vundle
+filetype plugin indent on    " required by vundle
 
 " vim fundamentals
 syntax on
