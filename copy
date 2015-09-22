@@ -6,3 +6,5 @@ cp -R zsh ~/.zsh
 cp gitconfig ~/.gitconfig
 
 cp vimrc ~/.vimrc
+
+cp screenrc ~/.screenrc

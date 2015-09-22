@@ -13,6 +13,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'pangloss/vim-javascript'
 call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
 " End Vundle
