@@ -8,10 +8,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
 call vundle#end()            " required by vundle
@@ -23,9 +22,7 @@ syntax on
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " solarized theme
-let g:solarized_termcolors=256
 set background=light
-colorscheme solarized
  
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
