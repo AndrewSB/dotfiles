@@ -13,13 +13,15 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
 call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
 " End Vundle
 
 " vim fundamentals
 syntax on
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 shiftwidth=4
 
 " solarized theme
 set background=light
@@ -38,6 +40,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
+" javascript syntax
+let g:javascript_enable_domhtmlcss = 1
+
 " auto reload vimrc on changes
 augroup reload_vimrc " {
     autocmd!
@@ -53,3 +59,6 @@ nnoremap tl  :tablast<CR>
 " NERDTree auto open on startup with no files
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
