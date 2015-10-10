@@ -19,9 +19,34 @@ call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
 " End Vundle
 
-" vim fundamentals
-syntax on
-set tabstop=4 shiftwidth=4
+syntax on					" enable syntax
+set tabstop=4				" number of visual spaces per TAB
+set softtabstop=4 			" number of spaces in tab when editing
+set expandtab				" tabs are spaces
+set number 					" show line numbers
+set showcmd					" show command in bottom bar
+set cursorline				" highlight current line
+set wildmenu				" visual autocomplete for command menu
+set lazyredraw				" redraw only when we need to
+set showmatch				" highlight matching [{()}]
+
+" searching
+set incsearch 				" search as characters are entered
+set hlsearch				" highlight matches
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR> 
+
+" folding
+set foldenable 				" enable folding
+set foldlevelstart=10 		" open most folds by default
+" space open/close folds
+nnoremap <space> za
+set foldmethod=indent 		" fold based on indent level
+
+" movement
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk 
 
 " solarized theme
 set background=light
@@ -40,6 +65,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers=['']
+
 
 " javascript syntax
 let g:javascript_enable_domhtmlcss = 1
