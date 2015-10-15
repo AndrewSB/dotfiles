@@ -54,6 +54,9 @@ setopt extendedglob
 # bindkey "^F" vi-cmd-mode
 # bindkey jj vi-cmd-mode
 
+# <C-s> fix: http://stackoverflow.com/questions/8616843/ctrl-s-is-not-working-as-a-horizontal-split-in-vim-when-using-commandt
+stty -ixon -ixoff
+
 # aliases
 alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
 alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
