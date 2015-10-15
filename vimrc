@@ -28,7 +28,9 @@ set cursorline				" highlight current line
 set wildmenu				" visual autocomplete for command menu
 set lazyredraw				" redraw only when we need to
 set showmatch				" highlight matching [{()}]
-set nobackup set noswapfile	" turn off backups and swapfiles
+set nobackup				" turn off backups
+set noswapfile				" also turn off swapfiles
+
 
 " searching
 set incsearch 				" search as characters are entered
