@@ -66,6 +66,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers=['']
 
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 " javascript syntax
 let g:javascript_enable_domhtmlcss = 1
