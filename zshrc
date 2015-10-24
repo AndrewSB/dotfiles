@@ -16,9 +16,9 @@ plugins=(git)
 # User configuration
 export CDPATH=Developer/
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 export GOPATH="/Users/asb/Developer/gocode"
 

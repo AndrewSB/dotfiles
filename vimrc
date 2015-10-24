@@ -15,6 +15,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
+Plugin 'facebook/vim-flow'
 call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
 " End Vundle
@@ -68,6 +69,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers=['']
+let g:flow#enable = 0
 
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
