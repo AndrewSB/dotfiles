@@ -7,14 +7,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'tpope/vim-surround'
+"Plugin 'bling/vim-airline'
 Plugin 'facebook/vim-flow'
 call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
@@ -90,7 +90,7 @@ nnoremap tl  :tablast<CR>
 
 " NERDTree auto open on startup with no files
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
