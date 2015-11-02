@@ -61,6 +61,3 @@ stty -ixon -ixoff
 alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
 alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 alias rm="trash"
-
-# Startup dragon 😏
-fortune | cowsay -f dragon | lolcat
