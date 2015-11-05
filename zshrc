@@ -57,6 +57,10 @@ setopt extendedglob
 # <C-s> fix: http://stackoverflow.com/questions/8616843/ctrl-s-is-not-working-as-a-horizontal-split-in-vim-when-using-commandt
 stty -ixon -ixoff
 
+# support for Carthage completion https://github.com/Carthage/Carthage/blob/master/Documentation/BashZshCompletion.md
+autoload -U compinit
+compinit -u
+
 # aliases
 alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
 alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
