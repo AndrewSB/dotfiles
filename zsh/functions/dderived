@@ -1,0 +1,9 @@
+# Deletes Xcode's derived data
+# Takes an optional argument of xcode version
+#
+# Example usage: `dderived -beta` to delete
+# Xcode-beta's derived data
+
+dderived() {
+	rm /Users/asb/Library/Developer/Xcode/DerivedData/*
+}
