@@ -1,0 +1,6 @@
+# Arguments: takes an optional param of platform name.
+# If no argument is given then carthage builds for all platforms.
+
+deps() {
+	carthage update --no-use-binaries --platform $@
+}
