@@ -1,11 +1,10 @@
 #!/bin/bash
 
-cp zshrc ~/.zshrc
-cp -R zsh ~/.zsh
-cp -R zsh/functions ~/.zsh/functions # redundant
+cp -v zshrc ~/.zshrc
+cp -vR zsh/ ~/.zsh
 
-cp gitconfig ~/.gitconfig
+cp -v gitconfig ~/.gitconfig
 
-cp vimrc ~/.vimrc
+cp -v vimrc ~/.vimrc
 
-cp screenrc ~/.screenrc
+cp -v screenrc ~/.screenrc
