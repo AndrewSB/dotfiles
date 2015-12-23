@@ -2,5 +2,9 @@
 # If no argument is given then carthage builds for all platforms.
 
 function deps() {
-	carthage update --no-use-binaries --platform $@
+	if [ $# -eq 0 ]; then
+		carthage update --no-use-binaries 
+	else
+		carthage update --no-use-binaries --platform $@
+	fi
 }
