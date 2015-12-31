@@ -20,7 +20,7 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
-export GOPATH="/Users/asb/Developer/gocode"
+export GOPATH="/Users/asb/godev"
 
 source $ZSH/oh-my-zsh.sh
 
