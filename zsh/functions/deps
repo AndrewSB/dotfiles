@@ -3,8 +3,10 @@
 
 function deps() {
 	if [ $# -eq 0 ]; then
+		echo "fetching and building dependencies for all platforms"
 		carthage update --no-use-binaries 
 	else
+		echo "fetching and building dependencies for" $@
 		carthage update --no-use-binaries --platform $@
 	fi
 }
