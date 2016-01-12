@@ -1,6 +1,13 @@
-# Arguments: takes the repository name as an argument
-# Clones an AndrewSB directory from GitHub
+# Arguments: Takes a repository name from GitHub with  
+# an optional prefix of username and clones the
+# repository from GitHub using the ssh key in the
+# keychain.
+
 
 hc() {
-  hub clone -p AndrewSB/$@
+	if [[ $@ == *"/"* ]]; then
+		hub clone -p $@
+	else
+		hub clone -p AndrewSB/$@
+	fi
 }
