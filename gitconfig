@@ -3,6 +3,7 @@
 # Please adapt and uncomment the following lines:
 	user = Andrew Breckenridge
 	email = asbreckenridge@me.com
+	editor = /usr/bin/vim
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
