@@ -1,4 +1,6 @@
 # Profiles the compile time for each function in 
 # xcodeproj in the directory.
 
-xcodebuild clean build | grep "[1-9].[0-9]ms" | sort -nr
+function xcode-profile() {
+	xcodebuild clean build | grep "[1-9].[0-9]ms" | sort -nr
+}
