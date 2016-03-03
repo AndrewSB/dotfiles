@@ -25,6 +25,14 @@ export REACT_EDITOR=atom
 
 source $ZSH/oh-my-zsh.sh
 
+# Custom cursor
+PROMPT="🔥  %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
     source $function
@@ -43,7 +51,7 @@ HISTFILE=~/.zhistory
 HISTSIZE=4096
 SAVEHIST=4096
 
-# awesome cd movements from zshkit
+# badass cd movement a la zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
 
