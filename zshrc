@@ -26,7 +26,7 @@ export REACT_EDITOR=atom
 source $ZSH/oh-my-zsh.sh
 
 # Custom cursor
-PROMPT="🔥  %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"
+# PROMPT="🔥  %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
