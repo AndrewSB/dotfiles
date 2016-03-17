@@ -3,10 +3,10 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" Plugin 'VundleVim/Vundle.vim'
+" Plugin 'kien/ctrlp.vim'
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'tpope/vim-fugitive'
@@ -15,8 +15,8 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'tpope/vim-surround'
 "Plugin 'bling/vim-airline'
-Plugin 'facebook/vim-flow'
-call vundle#end()            " required by vundle
+" Plugin 'facebook/vim-flow'
+" call vundle#end()            " required by vundle
 filetype plugin indent on    " required by vundle
 " End Vundle
 
