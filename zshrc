@@ -11,7 +11,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git github xcode)
 
 # User configuration
 export CDPATH=Developer/
@@ -76,5 +76,4 @@ alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 alias rm="trash"
 alias synx="synx --no-sort-by-name"
 alias gpall="git remote | xargs -L1 git push --all"
-alias dev="cd ~/Developer"
-alias bci="brew cask install "
+alias b="brew"
