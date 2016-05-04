@@ -20,8 +20,11 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
-export GOPATH=~/go
 export REACT_EDITOR=atom
+
+export GOPATH=~/go
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 source $ZSH/oh-my-zsh.sh
 
