@@ -20,7 +20,7 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
-export GOPATH="/Users/asb/godev"
+export GOPATH=~/go
 export REACT_EDITOR=atom
 
 source $ZSH/oh-my-zsh.sh
