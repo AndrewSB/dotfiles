@@ -16,15 +16,16 @@ plugins=(git github xcode)
 # User configuration
 export CDPATH=Developer/
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-
-export REACT_EDITOR=atom
-
 export GOPATH=~/go
 source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/Users/asb/Library/Developer/go_appengine:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+
+export REACT_EDITOR=atom
 
 source $ZSH/oh-my-zsh.sh
 
