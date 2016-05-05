@@ -2,23 +2,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-" Plugin 'VundleVim/Vundle.vim'
-" Plugin 'kien/ctrlp.vim'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'tpope/vim-surround'
-"Plugin 'bling/vim-airline'
-" Plugin 'facebook/vim-flow'
-" call vundle#end()            " required by vundle
-filetype plugin indent on    " required by vundle
-" End Vundle
+execute pathogen#infect()
 
 syntax on					" enable syntax
 set tabstop=4				" number of visual spaces per TAB
@@ -31,7 +15,6 @@ set lazyredraw				" redraw only when we need to
 set showmatch				" highlight matching [{()}]
 set nobackup				" turn off backups
 set noswapfile				" also turn off swapfiles
-
 
 " searching
 set incsearch 				" search as characters are entered
@@ -60,21 +43,21 @@ set background=light
 let g:ctrlp_working_path_mode = 'r'
 
 " syntatic customization
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_checkers=['']
-let g:flow#enable = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_html_checkers=['']
+" let g:flow#enable = 0
 
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 " javascript syntax
-let g:javascript_enable_domhtmlcss = 1
+" let g:javascript_enable_domhtmlcss = 1
 
 " auto reload vimrc on changes
 augroup reload_vimrc " {
