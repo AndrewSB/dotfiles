@@ -20,6 +20,11 @@ set hlsearch				" highlight matches
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR> 
 
+" language specific customization
+"" go
+" format with goimports instead of gofmt
+let g:go_fmt_command = "goimports"
+
 " solarized theme
 set background=light
  
