@@ -28,16 +28,8 @@ set background=light
 " control. It also supports works with .svn, .hg, .bzr.
 let g:ctrlp_working_path_mode = 'r'
 
-nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
-
 " auto reload vimrc on changes
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
-
-" better tab navigation
-nnoremap th  :tabfirst<CR>
-nnoremap tj  :tabnext<CR>
-nnoremap tk  :tabprev<CR>
-nnoremap tl  :tablast<CR>
