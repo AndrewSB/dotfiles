@@ -27,6 +27,12 @@ let g:go_fmt_command = "goimports"
 
 " solarized theme
 set background=light
+
+" no more arrow keys 😰 ☹️
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
  
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
