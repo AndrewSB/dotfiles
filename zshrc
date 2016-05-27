@@ -4,12 +4,15 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git github xcode)
 
+# Useful include function that makes sure a path exists before sourcing it
+include () { [[ -f "$1" ]] && source "$1" }
+
 # User configuration
 export CDPATH=Developer/
 
 export GOPATH=~/go
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+include '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+include '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
@@ -23,7 +26,7 @@ source $ZSH/oh-my-zsh.sh
 
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
-    source $function
+    include $function
 done
 
 # makes color constants available
