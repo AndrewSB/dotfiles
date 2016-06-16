@@ -2,7 +2,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-execute pathogen#infect()
+" execute pathogen#infect()
 
 syntax on					" enable syntax
 set number 					" show line numbers
