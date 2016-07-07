@@ -4,9 +4,9 @@
 function deps() {
 	if [ $# -eq 0 ]; then
 		echo "fetching and building dependencies for all platforms"
-		carthage update --no-use-binaries 
+		carthage update --no-use-binaries --use-ssh
 	else
 		echo "fetching and building dependencies for" $@
-		carthage update --no-use-binaries --platform $@
+		carthage update --no-use-binaries --use-ssh --platform $@
 	fi
 }
