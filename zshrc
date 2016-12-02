@@ -19,10 +19,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export REACT_EDITOR=atom
 
-source $ZSH/oh-my-zsh.sh
-
-# Custom cursor
-# PROMPT="🔥  %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"
+# Custom cursor #addthe🔥
+PROMPT="🔥  $PROMPT"
 
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
