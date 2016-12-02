@@ -58,11 +58,8 @@ autoload -U compinit
 compinit -u
 
 # aliases
-alias showall="defaults write com.apple.finder AppleShowAllFiles TRUE"
-alias hideall="defaults write com.apple.finder AppleShowAllFiles FALSE"
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias synx="synx --no-sort-by-name"
-alias gpall="git remote | xargs -L1 git push --all"
 alias b="brew"
 alias bc="brew cask"
 alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
