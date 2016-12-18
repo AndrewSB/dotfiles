@@ -37,7 +37,7 @@ function can_i_brew_deps() {
 	fire_echo "You have brew, we're going to install `join_by , "${brew_dependencies[@]}"` for you, if you don't have them"
 	for dependency in "${brew_dependencies[@]}"; do
 		if ! which "${dependency}" >/dev/null; then
-			echo "Downloading ${dependency}"
+			fire_echo "Downloading ${dependency}"
 			set -e; /usr/local/bin/brew install "${dependency}"; set +e
 		fi
 	done
