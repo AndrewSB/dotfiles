@@ -47,8 +47,7 @@ function can_i_brew_deps() {
 function can_i_ruby() {
 	set -e
 	if ! [[ `ruby -v | awk '{print $2}'` > "${min_ruby_version}" ]]; then
-		fire_echo "You have an outdated version of ruby (`ruby -v`)"
-		fire_echo "If you're seeing this repeatedly, check your $PATH, it's possible that your ordering is incorrect"
+		fire_echo "You have an outdated version of ruby (`ruby -v`) (if you're seeing this repeatedly, check your $PATH, it's possible that your ordering is incorrect)"
 		if ! which rvm >/dev/null; then
 			fire_echo "Installing rvm to update ruby for you"
 
