@@ -54,7 +54,7 @@ function can_i_ruby() {
 			curl -L https://get.rvm.io | bash -s stable
 		fi
 
-		source "$HOME/.profile" # rvm writes to ~/.profile, sourcing the file lets us use rvm without reloading the shell session
+		source "$HOME/.rvm/scripts/rvm" # rvm writes to ~/.profile, sourcing the file lets us use rvm without reloading the shell session
 		fire_echo "Installing latest ruby through rvm"
 
 
