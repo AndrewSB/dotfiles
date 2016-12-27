@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # This script ensures that a machine is setup for usual development work.
 # It 
