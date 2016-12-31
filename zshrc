@@ -6,7 +6,7 @@ plugins=(git github xcode)
 
 source $ZSH/oh-my-zsh.sh # execute on the theme and plugins #ALLTHEZSH
 
-# Useful include function that makes sure a path exists before sourcing it
+# Useful `include` function that makes sure a path exists before sourcing it
 include () { [[ -f "$1" ]] && source "$1" }
 
 # Expose all the directories inside `Developer/` for cding when your in ~
@@ -43,10 +43,6 @@ HISTFILE=~/.zhistory
 HISTSIZE=4096
 SAVEHIST=4096
 
-# badass cd movement a la zshkit
-setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
-DIRSTACKSIZE=5
-
 # Enable extended globbing
 setopt extendedglob
 
@@ -57,5 +53,4 @@ stty -ixon -ixoff
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias synx="synx --no-sort-by-name"
 alias b="brew"
-alias bc="brew cask"
 alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
