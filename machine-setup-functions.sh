@@ -24,6 +24,14 @@ function can_i_xcode() {
 	fi
 }
 
+function can_i_oh_my_zsh() {
+	set -e 
+		if ! which #figure out a command based on https://github.com/robbyrussell/oh-my-zsh/issues/6002
+			sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+		fi
+	set +e
+}
+
 function can_i_brew() {
 	set -e
 	if ! which brew >/dev/null; then
@@ -55,13 +63,9 @@ function can_i_ruby() {
 		fi
 
 		source "$HOME/.rvm/scripts/rvm" # rvm writes to ~/.profile, sourcing the file lets us use rvm without reloading the shell session
+
 		fire_echo "Installing latest ruby through rvm"
-
-
-
-		# HEY ANDREW
-		echo "we're currently stuck here. rvm isn't a function, need to debug rvm with docs"
-		`rvm use ruby --install --default`
+		`rvm use ruby --install --default` # currently stuck on this line. Output looks like http://imgur.com/w9Iq1Yq
 	fi
 	set +e
 }
