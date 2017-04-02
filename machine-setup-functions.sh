@@ -26,7 +26,7 @@ function can_i_xcode() {
 
 function can_i_oh_my_zsh() {
 	set -e 
-		if ! which #figure out a command based on https://github.com/robbyrussell/oh-my-zsh/issues/6002
+		if ! [ -d ~/.oh-my-zsh ]; then
 			sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 		fi
 	set +e
