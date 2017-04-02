@@ -27,8 +27,10 @@ function can_i_xcode() {
 function can_i_oh_my_zsh() {
 	set -e 
 		if ! [ -d ~/.oh-my-zsh ]; then
+			fire_echo "You don't have oh-my-zsh, let's install it"
 			sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 		fi
+		fire_echo "oh my zsh is installed 🎉"
 	set +e
 }
 
