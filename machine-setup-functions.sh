@@ -64,9 +64,8 @@ function can_i_ruby() {
 			curl -L https://get.rvm.io | bash -s stable
 		fi
 
-		source "$HOME/.rvm/scripts/rvm" # rvm writes to ~/.profile, sourcing the file lets us use rvm without reloading the shell session
-
 		fire_echo "Installing latest ruby through rvm"
+		source "$HOME/.profile" # rvm writes to ~/.profile, sourcing the file lets us use rvm without reloading the shell session
 		`rvm use ruby --install --default` # currently stuck on this line. Output looks like http://imgur.com/w9Iq1Yq
 	fi
 	set +e
