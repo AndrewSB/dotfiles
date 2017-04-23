@@ -22,9 +22,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export REACT_EDITOR=atom
 
-# Custom cursor #addthe🔥
-PROMPT="🔥  $PROMPT"
-
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
     include $function
@@ -54,3 +51,14 @@ alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `
 alias synx="synx --no-sort-by-name"
 alias b="brew"
 alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
+
+## setUpThatPrompt {
+# archey it up 🔥  prompt
+archey
+
+PROMPT="%(?:%{$fg_bold[green]%}👋  :%{$fg_bold[red]%}🔥  )"
+
+local cur_dir='%{$fg[yellow]%}%c'
+local git_info='$(git_prompt_info)'
+RPROMPT="${cur_dir} ${git_info}%{$reset_color%}"
+## }
