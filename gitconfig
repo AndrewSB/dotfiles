@@ -1,21 +1,19 @@
-# This is Git's per-user configuration file.
-[core]
+[user]
 	user = Andrew Breckenridge
 	email = asbreckenridge@me.com
+
+[core]
 	editor = /usr/bin/vim
 	whitespace = warn
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[user]
-	name = Andrew Breckenridge
-	email = asbreckenridge@me.com
+
 [credential]
 	helper = osxkeychain
-[push]
-	default = simple
+
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+
+[alias]
+	up = pull --rebase --autostash
+
