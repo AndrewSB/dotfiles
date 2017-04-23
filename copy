@@ -8,3 +8,5 @@ cp -v gitconfig ~/.gitconfig
 cp -v vimrc ~/.vimrc
 
 cp -v screenrc ~/.screenrc
+
+cp -v hushlogin ~/.hushlogin
