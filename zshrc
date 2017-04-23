@@ -56,7 +56,7 @@ alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistan
 # archey it up 🔥  prompt
 archey
 
-PROMPT="%(?:%{$fg_bold[green]%}👋  :%{$fg_bold[red]%}🔥  )"
+PROMPT="%(?:%{$fg_bold[green]%}👋  :%{$fg_bold[red]%}💥  )"
 
 local cur_dir='%{$fg[yellow]%}%c'
 local git_info='$(git_prompt_info)'
