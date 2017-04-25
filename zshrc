@@ -1,31 +1,38 @@
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME="robbyrussell"
-
 plugins=(git github xcode)
 
 source $ZSH/oh-my-zsh.sh # execute on the theme and plugins #ALLTHEZSH
 
-# Useful `include` function that makes sure a path exists before sourcing it
-include () { [[ -f "$1" ]] && source "$1" }
-
 # Expose all the directories inside `Developer/` for cding when your in ~
 export CDPATH=Developer/
+
+
+## load custom executable functions {{
+
+# first bootstrap by including include 😋
+source ~/.zsh/functions/include
+
+# the include all the .zsh/functions
+for function in ~/.zsh/functions/*; do
+    include $function
+done
+# }}
+
+## language specific {{
 
 # For when I'm golanging
 export GOPATH=~/go
 include '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 include '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
 export PATH="$GOPATH/bin:$PATH"
+
+# for when I'm rvming
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+# for when I'm reacting
 export REACT_EDITOR=atom
-
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-    include $function
-done
+## }}
 
 # makes color constants available so we can...
 autoload -U colors

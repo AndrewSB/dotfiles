@@ -1,0 +1,7 @@
+# Useful `include` function that makes sure a path exists before sourcing it
+
+function include() { 
+	if [[ -f "$1" && ! "$1" == *.swift && ! "$1" == *.DS_Store ]]; then 
+		source "$1" 
+	fi
+}
