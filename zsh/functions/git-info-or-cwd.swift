@@ -19,9 +19,8 @@ case 0:
 
 default:
     // not a git repo. Print directory instead
-    let cwd = shell("pwd").0!
-    print(ProcessInfo.processInfo.environment)
-    let homePath = ProcessInfo.processInfo.environment["$HOME"]!
+    let cwd = ProcessInfo.processInfo.environment["PWD"]!
+    let homePath = ProcessInfo.processInfo.environment["HOME"]!
     let relitaveToHomeCwd = cwd.replacingOccurrences(of: homePath, with: "~")
     print(relitaveToHomeCwd)
 }
