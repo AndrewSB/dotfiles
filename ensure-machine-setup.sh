@@ -4,7 +4,7 @@
 # It 
 # 	1. makes sure you have XCode's command line tools
 # 	2. Gets homebrew and installs
-brew_dependencies=("swiftgen" "swiftlint" "carthage" "trash" "hub" "node")
+brew_dependencies=("swiftgen" "swiftlint" "carthage" "trash" "hub" "node" "archey")
 # 	3. installs oh-my-zsh
 #	4. makes sure you have ruby greater than
 min_ruby_version=2.3
