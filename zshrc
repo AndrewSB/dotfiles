@@ -65,7 +65,6 @@ archey
 
 PROMPT="%(?:%{$fg_bold[green]%}👋  :%{$fg_bold[red]%}💥  )"
 
-local cur_dir='%{$fg[yellow]%}%c'
-local git_info='$(git_prompt_info)'
-RPROMPT="${cur_dir} ${git_info}%{$reset_color%}"
+local git_or_cwd_info='$(git_info_or_cwd)'
+RPROMPT="${git_or_cwd_info}%{$reset_color%}"
 ## }
