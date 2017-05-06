@@ -10,3 +10,5 @@ cp -v vimrc ~/.vimrc
 cp -v screenrc ~/.screenrc
 
 cp -v hushlogin ~/.hushlogin
+
+cp -v sshconfig ~/.ssh/config
