@@ -65,6 +65,6 @@ archey
 
 PROMPT="%(?:%{$fg_bold[green]%}👋  :%{$fg_bold[red]%}💥  )"
 
-local git_or_cwd_info='$(git_info_or_cwd)'
+local git_or_cwd_info='$(~/.zsh/functions/git-info-or-cwd/exec)'
 RPROMPT="${git_or_cwd_info}%{$reset_color%}"
 ## }

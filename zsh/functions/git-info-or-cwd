@@ -1,6 +1,0 @@
-#!/bin/bash
-# a bash wrapper for the swift script with the same name
-
-function git_info_or_cwd() {
-	cat ~/.zsh/functions/swift-helper.swift ~/.zsh/functions/git-info-or-cwd.swift | /usr/bin/swift -
-}
