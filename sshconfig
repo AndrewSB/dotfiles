@@ -2,3 +2,7 @@ Host *
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/id_rsa
+
+Host fb
+  HostName devvm26239.prn1.facebook.com
+  User asb
