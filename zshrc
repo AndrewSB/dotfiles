@@ -59,6 +59,7 @@ alias synx="synx --no-sort-by-name"
 alias b="brew"
 alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
 alias devser="mosh -6 fb"
+alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It sometimes causes [issues](https://github.com/thoughtbot/capybara-webkit/issues/56)
 
 ## setUpThatPrompt {
 # archey it up 🔥  prompt
