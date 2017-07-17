@@ -1,11 +1,5 @@
 Host *
 	IdentityFile ~/.ssh/id_rsa
 
-Host fb
-	HostName our.asb.sb.facebook.com
-	User asb
-
-Host curFb
-	HostName devvm439.prn3.facebook.com
-	User asb
-
+Host github.com
+	ProxyCommand nc --proxy-type http --proxy fwdproxy:8080 %h %p

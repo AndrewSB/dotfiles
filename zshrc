@@ -10,6 +10,10 @@ if [[ -s ${ZIM_HOME}/init.zsh ]]; then
   source ${ZIM_HOME}/init.zsh
 fi
 
+# Source facebook things
+[[ -z "$LOCAL_ADMIN_SCRIPTS" ]] && export LOCAL_ADMIN_SCRIPTS='/usr/facebook/ops/rc'
+source "${LOCAL_ADMIN_SCRIPTS}/master.zshrc"
+
 #
 # Job control
 #
@@ -38,8 +42,6 @@ cdpath=(
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  $HOME/.cargo/bin
-  $HOME/.fastlane/bin
   ~/.zsh/functions
   /usr/local/{bin,sbin}
   $path
@@ -84,6 +86,13 @@ if [[ ! -d "${TMPDIR}" ]]; then
   mkdir -m 700 "${TMPDIR}"
 fi
  
+# makes color constants available so we can...
+autoload -U colors
+colors
+
+# ... enable colored output from ls, etc
+export CLICOLOR=1
+
 # history settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory
