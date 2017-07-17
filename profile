@@ -27,11 +27,6 @@ fi
 #
 
 # aliases
-alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
-alias xc="open *.{xcworkspace,xcodeproj}(N)"
-alias synx="synx --no-sort-by-name"
-alias b="brew"
-alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
 alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It sometimes causes [issues](https://github.com/thoughtbot/capybara-webkit/issues/56)
 alias arc-upstream="~/Developer/arcanist/bin/arc"
 alias e="scmpuff expand"

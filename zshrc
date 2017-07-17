@@ -85,7 +85,7 @@ fi
 if [[ ! -d "${TMPDIR}" ]]; then
   mkdir -m 700 "${TMPDIR}"
 fi
- 
+
 # makes color constants available so we can...
 autoload -U colors
 colors
