@@ -12,3 +12,5 @@ cp -v screenrc ~/.screenrc
 cp -v hushlogin ~/.hushlogin
 
 cp -v sshconfig ~/.ssh/config
+
+cp -v tmux.conf ~/.tmux.conf
