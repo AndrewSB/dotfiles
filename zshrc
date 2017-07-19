@@ -65,7 +65,8 @@ alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It
 # archey it up 🔥  prompt
 archey
 
-PROMPT="%(?:%{$fg_bold[green]%}👋  :%{$fg_bold[red]%}💥  )"
+local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
+PROMPT="${wave_or_explode}%{$reset_color%}  "
 
 local git_or_cwd_info='$(~/.zsh/functions/git-info-or-cwd/exec)'
 RPROMPT="${git_or_cwd_info}%{$reset_color%}"
