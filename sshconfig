@@ -4,5 +4,5 @@ Host *
   IdentityFile ~/.ssh/id_rsa
 
 Host fb
-  HostName devvm26239.prn1.facebook.com
+  HostName our.asb.sb.facebook.com
   User asb
