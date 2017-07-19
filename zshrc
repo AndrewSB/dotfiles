@@ -138,3 +138,25 @@ export CLICOLOR=1
 
 # Theme it up 
 source ~/.zim/modules/prompt/themes/wave.zsh-theme
+
+# ls 
+zle -N accept-line auto_ls
+zle -N other-widget auto_ls
+
+## setUpThatPrompt {
+local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
+
+local fb_prompt_file="${LOCAL_ADMIN_SCRIPTS}/scm-prompt"
+if [ -f "$fb_prompt_file" ]; then
+  source "$fb_prompt_file"
+else
+  echo "couldn't find FB SCM prompt file ${fb_prompt_file}"
+fi
+local fb_prompt='$(_scm_prompt)'
+local cur_dir='$(print -rD $PWD)'
+
+setopt PROMPT_SUBST
+PROMPT="${wave_or_explode}%{$reset_color%}  "
+RPROMPT="${cur_dir}${fb_prompt}%{$reset_color%}"
+## }
+>>>>>>> add fb scm to RPROMPT
