@@ -1,14 +1,7 @@
-export ZSH=~/.oh-my-zsh
-
-plugins=(git github xcode)
-
-source $ZSH/oh-my-zsh.sh # execute on the theme and plugins #ALLTHEZSH
-
-# Expose all the directories inside `Developer/` for cding when your in ~
-export CDPATH=Developer/
-
-# Always be vimming #ABV
-export EDITOR=vim
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 #
 # Paths
@@ -29,6 +22,15 @@ path=(
   /usr/local/{bin,sbin}
   $path
 )
+
+## load custom executable functions {{
+source ~/.zsh/functions/include # first bootstrap by including include 😋
+
+# the include all the .zsh/functions
+for function in ~/.zsh/functions/*; do
+    include $function
+done
+# }}
 
 #
 # Less
@@ -67,6 +69,9 @@ SAVEHIST=4096
 # Enable extended globbing
 setopt extendedglob
 
+# Disable correction of incorrect commands
+unsetopt CORRECT
+
 # <C-s> fix: http://stackoverflow.com/questions/8616843/ctrl-s-is-not-working-as-a-horizontal-split-in-vim-when-using-commandt
 stty -ixon -ixoff
 
@@ -78,6 +83,9 @@ alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistan
 alias devser="mosh -6 fb"
 alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It sometimes causes [issues](https://github.com/thoughtbot/capybara-webkit/issues/56)
 
+zle -N accept-line auto_ls
+zle -N other-widget auto_ls
+
 ## setUpThatPrompt {
 # archey it up 🔥  prompt
 archey
@@ -85,6 +93,6 @@ archey
 local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
 PROMPT="${wave_or_explode}%{$reset_color%}  "
 
-local git_or_cwd_info='$(~/.zsh/functions/git-info-or-cwd/exec)'
+local git_or_cwd_info="$(~/.zsh/functions/git-info-or-cwd/exec)"
 RPROMPT="${git_or_cwd_info}%{$reset_color%}"
 ## }

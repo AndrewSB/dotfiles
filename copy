@@ -1,9 +1,11 @@
 #!/bin/bash
 
 cp -v profile ~/.profile
+echo "source .profile" >> ~/.zprofile
 cp -v zlogin ~/.zlogin
 cp -v zlogout ~/.zlogout
 cp -v zshrc ~/.zshrc
+cp -v zpreztorc ~/.zpreztorc
 cp -vR zsh/ ~/.zsh
 
 cp -v gitconfig ~/.gitconfig

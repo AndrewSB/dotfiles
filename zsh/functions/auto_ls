@@ -1,0 +1,12 @@
+# Takes no arguments
+# Performs an ls on empty commands
+
+auto_ls() {
+	if [[ $#BUFFER -eq 0 ]]; then
+		echo ""
+		ls
+		zle redisplay
+	else
+		zle .$WIDGET
+	fi
+}
