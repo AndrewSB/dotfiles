@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cp -v zlogin ~/.zlogin
+cp -v zlogout ~/.zlogout
 cp -v zshrc ~/.zshrc
 cp -vR zsh/ ~/.zsh
 
