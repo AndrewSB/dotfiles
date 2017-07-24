@@ -7,6 +7,9 @@ source $ZSH/oh-my-zsh.sh # execute on the theme and plugins #ALLTHEZSH
 # Expose all the directories inside `Developer/` for cding when your in ~
 export CDPATH=Developer/
 
+# Always be vimming #ABV
+export EDITOR=vim
+
 
 ## load custom executable functions {{
 
