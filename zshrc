@@ -53,7 +53,6 @@ fi
 if [[ -z "${TMPDIR}" ]]; then
   export TMPDIR="/tmp/zsh-${UID}"
 fi
->>>>>>> f30a790... move non zsh things from zshrc to profile
 
 if [[ ! -d "${TMPDIR}" ]]; then
   mkdir -m 700 "${TMPDIR}"
