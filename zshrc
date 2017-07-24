@@ -10,40 +10,55 @@ export CDPATH=Developer/
 # Always be vimming #ABV
 export EDITOR=vim
 
+#
+# Paths
+#
 
-## load custom executable functions {{
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
 
-# first bootstrap by including include 😋
-source ~/.zsh/functions/include
+# Set the the list of directories that cd searches.
+cdpath=(
+  ~/Developer/
+  $cdpath
+)
 
-# the include all the .zsh/functions
-for function in ~/.zsh/functions/*; do
-    include $function
-done
-# }}
+# Set the list of directories that Zsh searches for programs.
+path=(
+  ~/.zsh/functions
+  /usr/local/{bin,sbin}
+  $path
+)
 
-## language specific {{
+#
+# Less
+#
 
-# For when I'm golanging
-export GOPATH=~/go
-include '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-include '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-export PATH="$GOPATH/bin:$PATH"
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-F -g -i -M -R -S -w -X -z-4'
 
-# for when I'm rvming
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
 
-# for when I'm reacting
-export REACT_EDITOR=atom
-## }}
+#
+# Temporary Files
+#
+#
+# Set TMPDIR if the variable is not set/empty or the directory doesn't exist
+if [[ -z "${TMPDIR}" ]]; then
+  export TMPDIR="/tmp/zsh-${UID}"
+fi
+>>>>>>> f30a790... move non zsh things from zshrc to profile
 
-# makes color constants available so we can...
-autoload -U colors
-colors
-
-# ... enable colored output from ls, etc
-export CLICOLOR=1
-
+if [[ ! -d "${TMPDIR}" ]]; then
+  mkdir -m 700 "${TMPDIR}"
+fi
+ 
 # history settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory

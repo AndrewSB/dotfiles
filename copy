@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cp -v profile ~/.profile
 cp -v zlogin ~/.zlogin
 cp -v zlogout ~/.zlogout
 cp -v zshrc ~/.zshrc
