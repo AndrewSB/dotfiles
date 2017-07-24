@@ -30,6 +30,8 @@ source ~/.zsh/functions/include # first bootstrap by including include 😋
 for function in ~/.zsh/functions/*; do
     include $function
 done
+
+source ~/.git.alias
 # }}
 
 #
