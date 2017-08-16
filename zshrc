@@ -77,6 +77,9 @@ unsetopt CORRECT
 # <C-s> fix: http://stackoverflow.com/questions/8616843/ctrl-s-is-not-working-as-a-horizontal-split-in-vim-when-using-commandt
 stty -ixon -ixoff
 
+# If you use zsh in vi mode, add this to ensure ^R still does what we expect: https://fburl.com/cmdline-efficiency
+bindkey "^R" history-incremental-search-backward
+
 # aliases
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias synx="synx --no-sort-by-name"
