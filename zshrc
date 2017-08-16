@@ -65,8 +65,8 @@ fi
 # history settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory
-HISTSIZE=4096
-SAVEHIST=4096
+HISTSIZE=150000
+SAVEHIST=150000
 
 # Enable extended globbing
 setopt extendedglob
