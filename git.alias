@@ -18,4 +18,6 @@ alias glog='git log --oneline --decorate --graph'
 
 alias gp='git push'
 
+alias grc='git rebase --continue'
+
 alias gst='git status'
