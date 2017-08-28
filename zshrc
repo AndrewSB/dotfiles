@@ -82,6 +82,7 @@ bindkey "^R" history-incremental-search-backward
 
 # aliases
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
+alias xc="open *.{xcworkspace,xcodeproj}(N)"
 alias synx="synx --no-sort-by-name"
 alias b="brew"
 alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
