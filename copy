@@ -6,7 +6,7 @@ cp -v zlogin ~/.zlogin
 cp -v zlogout ~/.zlogout
 cp -v zshrc ~/.zshrc
 cp -v zpreztorc ~/.zpreztorc
-cp -vR zsh/ ~/.zsh
+cp -vR zsh/functions ~/.zsh
 
 cp -v git.alias ~/.git.alias
 
