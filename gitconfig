@@ -1,13 +1,16 @@
 [user]
 	name = Andrew Breckenridge
-	email = asbreckenridge@me.com
+	email = asb@fb.com
 
 [core]
 	whitespace = warn
 	excludesfile = ~/.global_gitignore
 
-[credential]
-	helper = osxkeychain
+[http]
+  proxy = fwdproxy:8080
+
+[https]
+  proxy = fwdproxy:8080
 
 [filter "lfs"]
 	clean = git lfs clean %f
