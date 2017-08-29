@@ -96,9 +96,10 @@ zle -N other-widget auto_ls
 # archey it up 🔥  prompt
 archey
 
-local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
+setopt PROMPT_SUBST
+local wave_or_explode='%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)'
 PROMPT="${wave_or_explode}%{$reset_color%}  "
 
-local git_or_cwd_info="$(~/.zsh/functions/git-info-or-cwd/exec)"
+local git_or_cwd_info='$(~/.zsh/functions/git-info-or-cwd/exec)'
 RPROMPT="${git_or_cwd_info}%{$reset_color%}"
 ## }
