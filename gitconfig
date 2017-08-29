@@ -3,8 +3,8 @@
 	email = asbreckenridge@me.com
 
 [core]
-	editor = /usr/bin/vim
 	whitespace = warn
+	excludesfile = ~/.global_gitignore
 
 [credential]
 	helper = osxkeychain

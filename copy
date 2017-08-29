@@ -8,6 +8,8 @@ cp -v zshrc ~/.zshrc
 cp -v zpreztorc ~/.zpreztorc
 cp -vR zsh/functions ~/.zsh
 
+cp -v global_gitignore ~/.global_gitignore
+
 cp -v git.alias ~/.git.alias
 
 cp -v gitconfig ~/.gitconfig
