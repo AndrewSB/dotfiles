@@ -15,5 +15,6 @@
 	required = true
 
 [alias]
-	up = pull --rebase --autostash
+	rbc = rebase --continue
+	l = log --oneline --decorate --graph
 

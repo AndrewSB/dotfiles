@@ -14,8 +14,6 @@ alias gd='git diff'
 
 alias gl='git pull'
 
-alias glog='git log --oneline --decorate --graph'
-
 alias gp='git push'
 
 alias grc='git rebase --continue'
