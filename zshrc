@@ -83,14 +83,22 @@ set -o vi
 # If you use zsh in vi mode, add this to ensure ^R still does what we expect: https://fburl.com/cmdline-efficiency
 bindkey "^R" history-incremental-search-backward
 
-# Use the current line as a search term on up/down keystrokes. To access previous command \^[[A on an empty line
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+# Use the current line as a search term on up/down keystrokes. To access previous command \^[[A on an empty line. This is so complicated to work around vi mode. Copied from https://github.com/robbyrussell/oh-my-zsh/issues/1720
+# start typing + [Up-Arrow] - fuzzy find history forward
+if [[ "${terminfo[kcuu1]}" != "" ]]; then
+  autoload -U up-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+fi
+# start typing + [Down-Arrow] - fuzzy find history backward
+if [[ "${terminfo[kcud1]}" != "" ]]; then
+  autoload -U down-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+  bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+fi
 
+
+# ls 
 zle -N accept-line auto_ls
 zle -N other-widget auto_ls
 
