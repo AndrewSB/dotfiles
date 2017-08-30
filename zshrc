@@ -83,6 +83,14 @@ set -o vi
 # If you use zsh in vi mode, add this to ensure ^R still does what we expect: https://fburl.com/cmdline-efficiency
 bindkey "^R" history-incremental-search-backward
 
+# Use the current line as a search term on up/down keystrokes. To access previous command \^[[A on an empty line
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 zle -N accept-line auto_ls
 zle -N other-widget auto_ls
 
