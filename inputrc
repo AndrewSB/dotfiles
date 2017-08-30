@@ -1,3 +1,4 @@
+# enables vi mode
 set editing-mode vi
 
 # Type in a few chars of a command in history and use arrow (up/down) keys to cycle through all commands that start with the typed in chars.

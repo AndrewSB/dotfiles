@@ -23,7 +23,7 @@ path=(
   $path
 )
 
-## load custom executable functions {{
+## load custom executable functions and aliases {{
 source ~/.zsh/functions/include # first bootstrap by including include 😋
 
 # the include all the .zsh/functions
@@ -76,6 +76,9 @@ unsetopt CORRECT
 
 # <C-s> fix: http://stackoverflow.com/questions/8616843/ctrl-s-is-not-working-as-a-horizontal-split-in-vim-when-using-commandt
 stty -ixon -ixoff
+
+# enables vi mode
+set -o vi
 
 # If you use zsh in vi mode, add this to ensure ^R still does what we expect: https://fburl.com/cmdline-efficiency
 bindkey "^R" history-incremental-search-backward
