@@ -17,7 +17,7 @@ source ./machine-setup-functions.sh
 can_i_xcode
 can_i_brew
 can_i_brew_deps
-can_i_prezto
+can_i_zim
 can_i_ruby
 can_i_gem
 echo "All done 🎉"

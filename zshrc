@@ -1,6 +1,13 @@
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+#
+# Zim
+#
+
+# Change default zim location 
+export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+
+# Source zim
+if [[ -s ${ZIM_HOME}/init.zsh ]]; then
+  source ${ZIM_HOME}/init.zsh
 fi
 
 #
@@ -96,5 +103,3 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   zle -N down-line-or-beginning-search
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
-
-prompt 🔥

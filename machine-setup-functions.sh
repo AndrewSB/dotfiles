@@ -34,12 +34,12 @@ function can_i_oh_my_zsh() {
 	set +e
 }
 
-function can_i_prezto() {
+function can_i_zim() {
 	set -e
-		if ! [ -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
-			git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+		if ! [ -d "${ZDOTDIR:-$HOME}/.zim" ]; then
+			git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
 		fi
-		fire_echo "prezto is installed 🎉"
+		fire_echo "zim is installed 🎉"
 		fire_echo "WARNING: make sure you change your shell to zsh (you can chsh -s /bin/zsh)"
 	set +e
 }
