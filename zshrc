@@ -97,19 +97,4 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
-
-# ls 
-zle -N accept-line auto_ls
-zle -N other-widget auto_ls
-
-## setUpThatPrompt {
-# archey it up 🔥  prompt
-archey
-
-setopt PROMPT_SUBST
-local wave_or_explode='%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)'
-PROMPT="${wave_or_explode}%{$reset_color%}  "
-
-local git_or_cwd_info='$(~/.zsh/functions/git-info-or-cwd/exec)'
-RPROMPT="${git_or_cwd_info}%{$reset_color%}"
-## }
+prompt 🔥

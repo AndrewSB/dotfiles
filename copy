@@ -6,6 +6,7 @@ cp -v zlogin ~/.zlogin
 cp -v zlogout ~/.zlogout
 cp -v zshrc ~/.zshrc
 cp -v zpreztorc ~/.zpreztorc
+cp -v prompt_🔥_setup ~/.zprezto/modules/prompt/functions/prompt_🔥_setup
 cp -vR zsh/functions ~/.zsh
 
 cp -v global_gitignore ~/.global_gitignore
