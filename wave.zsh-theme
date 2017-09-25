@@ -28,14 +28,17 @@ function _machine_and_cwd() {
 	print -n "%~$machine"
 }
 
-function wave_git_info() {
-	local git_output=`command git rev-parse --abbrev-ref HEAD || echo ""` 
-	if ! [[ -z $git_output ]]; then
-		printf '(%s) ' $git_output
+function _source_fb_scm_prompt() {
+	local fb_prompt_file="${LOCAL_ADMIN_SCRIPTS}/scm-prompt"
+	if [ -f "$fb_prompt_file" ]; then
+		source "$fb_prompt_file"
+	else
+		echo "couldn't find FB SCM prompt file ${fb_prompt_file}"
 	fi
 }
 
 function prompt_wave_precmd {
+	FB_PROMPT="$(_scm_prompt)"
 }
 
 function prompt_wave_setup {
@@ -43,6 +46,8 @@ function prompt_wave_setup {
 
 	add-zsh-hook precmd prompt_wave_precmd # Adds hook for calling prompt_waveprecmd before each command
 
+	_source_fb_scm_prompt
+	
 	# auto ls on empty line
 	zle -N accept-line auto_ls
 	zle -N other-widget auto_ls
@@ -53,7 +58,7 @@ function prompt_wave_setup {
 	# Define prompts
 	setopt PROMPT_SUBST
 	PROMPT="${wave_or_explode}%{$reset_color%}${SPACES_AFTER_EMOJI}"
-	RPROMPT='$(wave_git_info)$(_machine_and_cwd)${SPACES_AFTER_EMOJI}'
+	RPROMPT='${FB_PROMPT} $(_machine_and_cwd)${SPACES_AFTER_EMOJI}'
 }
 
 prompt_wave_setup "$@"
