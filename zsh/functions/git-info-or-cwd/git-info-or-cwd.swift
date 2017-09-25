@@ -5,7 +5,7 @@ func gitInfo(gitRemoteOutput: String) -> String {
         fatalError("FATAL: incorrect pattern in git remote url")
     }
 
-    let gitUrl = gitRemoteOutput.substring(with: range).utf8
+    let gitUrl = String(gitRemoteOutput[range])
         .dropFirst() // remove leading `:`
         .dropLast(4) // remove trailing `.git`
 
