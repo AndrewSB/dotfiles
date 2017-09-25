@@ -24,7 +24,7 @@ function prompt_wavesetup {
 	zle -N other-widget auto_ls
 
 	local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
-	local git_or_cwd_info="$(~/.zsh/functions/git-info-or-cwd/exec)"
+	local git_or_cwd_info="$(~/.zsh/functions/git-info-or-cwd/exec.sh)"
 	# Define prompts
 	PROMPT="${wave_or_explode}%{$reset_color%}  "
 	RPROMPT="${git_or_cwd_info}%{$reset_color%}"

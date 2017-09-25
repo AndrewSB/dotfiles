@@ -7,7 +7,7 @@ cp -v zlogout ~/.zlogout
 cp -v zshrc ~/.zshrc
 cp -v zimrc ~/.zimrc
 cp wave.zsh-theme ~/.zim/modules/prompt/themes/wave.zsh-theme
-ln -s ~/.zim/modules/prompt/themes/wave.zsh-theme ~/.zim/modules/prompt/functions/prompt_wave_setup
+ln -sf ~/.zim/modules/prompt/themes/wave.zsh-theme ~/.zim/modules/prompt/functions/prompt_wave_setup
 cp -vR zsh/functions ~/.zsh
 
 cp -v global_gitignore ~/.global_gitignore
