@@ -25,7 +25,7 @@ zmodules=(directory environment git git-info history input utility meta custom \
 #
 
 # Set your desired prompt here
-zprompt_theme='wave'
+# zprompt_theme='wave'
 
 #
 # Completion
