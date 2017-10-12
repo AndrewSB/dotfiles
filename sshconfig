@@ -1,8 +1,12 @@
 Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
+	AddKeysToAgent yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/id_rsa
 
 Host fb
-  HostName our.asb.sb.facebook.com
-  User asb
+	HostName our.asb.sb.facebook.com
+	User asb
+
+Host curFb
+	HostName devvm31711.prn1.facebook.com
+	User asb
