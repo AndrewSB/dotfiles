@@ -1,0 +1,22 @@
+# Documentation TBD. Basically is a nice way for me to connect to my
+# facebook servers
+
+_get_hostname_from_ssh_config() {
+	ssh -G $@ | grep hostname | head -1 | cut -d' ' -f2-
+}
+
+server() {
+	# default to ssh.config.curFb
+	if [[ $# -eq 0 ]]; then 	
+		hostname=`_get_hostname_from_ssh_config curFb`
+	else
+		# see if the argument is an ssh.config hostname
+		if cat ~/.ssh/config | grep 'Host $@' >/dev/null; then
+			hostname=`_get_hostname_from_ssh_config $@`
+		else # assume the arg itself is a hostname
+			hostname=$@	
+		fi
+	fi
+	et -c="tmux -CC a || tmux -CC new" $hostname:8080
+	unset hostname
+}
