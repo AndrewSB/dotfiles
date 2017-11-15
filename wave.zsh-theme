@@ -49,9 +49,19 @@ function prompt_wave_setup {
 
 	local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
 
+	# Figure out how much padding we want for the emoji because glibc had an emoji rendering bug
+	if ! [ -z ${ITERM_PROFILE+x} ]; then
+		SPACES_AFTER_EMOJI="   "
+	elif ! [ -z ${Apple_PubSub_Socket_Render+x} ]; then
+		SPACES_AFTER_EMOJI=" "
+	else
+		SPACES_AFTER_EMOJI="  "
+	fi
+	
+
 	# Define prompts
 	setopt PROMPT_SUBST
-	PROMPT="${wave_or_explode}%{$reset_color%}  "
+	PROMPT="${wave_or_explode}%{$reset_color%}${SPACES_AFTER_EMOJI}"
 	RPROMPT='$(wave_git_info)$(_machine_and_cwd)'
 }
 
