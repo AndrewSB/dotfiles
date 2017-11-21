@@ -30,7 +30,7 @@ fi
 alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It sometimes causes [issues](https://github.com/thoughtbot/capybara-webkit/issues/56)
 alias arc-upstream="~/Developer/arcanist/bin/arc"
 alias e="scmpuff expand"
-alias fuckwifi="networksetup -serairportpower airport off; networksetup -setairportpower airport on"
+alias aws="ssh -o ProxyCommand=\"nc --proxy-type http --proxy fwdproxy:8080 %h %p\" -i ~/who-knows-money.pem ubuntu@18.217.75.207"
 
 # utilities
 eval "$(scmpuff init -s)"
