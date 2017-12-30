@@ -1,29 +1,42 @@
 #!/bin/bash
 
-cp -v profile ~/.profile
-ln -sf ~/.profile ~/.zprofile
-cp -v zlogin ~/.zlogin
-cp -v zlogout ~/.zlogout
-cp -v zshrc ~/.zshrc
-cp -v zimrc ~/.zimrc
-cp wave.zsh-theme ~/.zim/modules/prompt/themes/wave.zsh-theme
-ln -sf ~/.zim/modules/prompt/themes/wave.zsh-theme ~/.zim/modules/prompt/functions/prompt_wave_setup
-cp -vR zsh/functions ~/.zsh
+set -e
 
-cp -v global_gitignore ~/.global_gitignore
+echo $@
+echo "lol"
 
-cp -v git.alias ~/.git.alias
+# Can only handle 1 (or 0) args
+if [ ${@[@]} -eq 1 ] || [ ${@[@]} -eq 0 ]; then
+	DIR=${@[1]:-~} # default to ~
+else
+	echo "ERROR: copy can only handle 0 or 1 arguments."
+	exit 1
+fi
 
-cp -v gitconfig ~/.gitconfig
+cp -v profile $DIR/.profile
+ln -sf ~/.profile $DIR/.zprofile
+cp -v zlogin $DIR/.zlogin
+cp -v zlogout $DIR/.zlogout
+cp -v zshrc $DIR/.zshrc
+cp -v zimrc $DIR/.zimrc
+cp wave.zsh-theme $DIR/.zim/modules/prompt/themes/wave.zsh-theme
+ln -sf $DIR/.zim/modules/prompt/themes/wave.zsh-theme $DIR/.zim/modules/prompt/functions/prompt_wave_setup
+cp -vR zsh/functions $DIR/.zsh
 
-cp -v vimrc ~/.vimrc
+cp -v global_gitignore $DIR/.global_gitignore
 
-cp -v screenrc ~/.screenrc
+cp -v git.alias $DIR/.git.alias
 
-cp -v inputrc ~/.inputrc
+cp -v gitconfig $DIR/.gitconfig
 
-cp -v hushlogin ~/.hushlogin
+cp -v vimrc $DIR/.vimrc
 
-cp -v sshconfig ~/.ssh/config
+cp -v screenrc $DIR/.screenrc
 
-cp -v tmux.conf ~/.tmux.conf
+cp -v inputrc $DIR/.inputrc
+
+cp -v hushlogin $DIR/.hushlogin
+
+cp -v sshconfig $DIR/.ssh/config
+
+cp -v tmux.conf $DIR/.tmux.conf
