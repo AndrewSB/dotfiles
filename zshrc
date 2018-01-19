@@ -11,6 +11,19 @@ if [[ -s ${ZIM_HOME}/init.zsh ]]; then
 fi
 
 #
+# Job control
+#
+
+# Enables bash like `fg %n`ing https://stackoverflow.com/a/32614814
+fg() {
+    if [[ $# -eq 1 && $1 = - ]]; then
+        builtin fg %-
+    else
+        builtin fg %"$@"
+    fi
+}
+
+#
 # Paths
 #
 
