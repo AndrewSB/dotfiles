@@ -26,13 +26,6 @@ fi
 # Andrew's customization
 #
 
-# makes color constants available so we can...
-autoload -U colors
-colors
-
-# ... enable colored output from ls, etc
-export CLICOLOR=1
-
 # aliases
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias xc="open *.{xcworkspace,xcodeproj}(N)"

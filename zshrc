@@ -72,7 +72,7 @@ fi
 #
 # Temporary Files
 #
-#
+
 # Set TMPDIR if the variable is not set/empty or the directory doesn't exist
 if [[ -z "${TMPDIR}" ]]; then
   export TMPDIR="/tmp/zsh-${UID}"
@@ -117,4 +117,12 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
+# makes color constants available so we can...
+autoload -U colors
+colors
+
+# ... enable colored output from ls, etc
+export CLICOLOR=1
+
+# Theme it up 
 source ~/.zim/modules/prompt/themes/wave.zsh-theme
