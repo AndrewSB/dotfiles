@@ -54,3 +54,6 @@ alias vi=vim
 
 # utilities
 eval "$(scmpuff init -s)"
+
+# source a .secrets file, if it exists, that stores things I can't store on github
+[[ -f ~/.secrets ]] && source ~/.secrets
