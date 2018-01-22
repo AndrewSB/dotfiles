@@ -37,8 +37,3 @@ eval "$(scmpuff init -s)"
 
 # source a .secrets file, if it exists, that stores things I can't store on github
 [[ -f ~/.secrets ]] && source ~/.secrets
-
-# source a devserver secrets file that isn't checked in
-if [[ -e ~/.devserver_secrets ]]; then
-  source ~/.devserver_secrets
-fi
