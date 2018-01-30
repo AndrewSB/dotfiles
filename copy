@@ -27,15 +27,11 @@ cp -v hgrc $DIR/.hgrc
 mkdir -p $DIR/.config/nvim
 cp -v init.vim $DIR/.config/nvim/init.vim
 
-cp -v screenrc $DIR/.screenrc
-
 cp -v inputrc ~/.inputrc
 
 cp -v sshconfig ~/.ssh/config
 
 cp -v inputrc $DIR/.inputrc
-
-cp -v hushlogin $DIR/.hushlogin
 
 cp -v sshconfig $DIR/.ssh/config
 
