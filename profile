@@ -26,6 +26,25 @@ fi
 # Andrew's customization
 #
 
+export LLVM_ROOT=~/Developer/llvm_root
+export CLANG_FORMAT_PY=$LLVM_ROOT/llvm/tools/clang/tools/clang-format/clang-format.py
+function clang-format() {
+	set -e
+
+	CLANG_FORMAT_BIN=$LLVM_ROOT/build/bin/clang-format
+	if [ ! -e $CLANG_FORMAT_BIN ]; then
+		echo '🛠 🛠 🛠 🛠 '
+		echo 'Building clang-format'
+
+		pushd $LLVM_ROOT
+		mkdir -p $LLVM_ROOT/build
+		ninja -C $LLVM_ROOT/build clang-format
+		popd
+	fi
+
+	./$CLANG_FORMAT_BIN "$@"
+}
+
 # aliases
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias xc="open *.{xcworkspace,xcodeproj}(N)"
@@ -35,6 +54,7 @@ alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistan
 alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It sometimes causes [issues](https://github.com/thoughtbot/capybara-webkit/issues/56)
 alias arc-upstream="~/Developer/arcanist/bin/arc"
 alias e="scmpuff expand"
+alias fuckwifi="networksetup -serairportpower airport off; networksetup -setairportpower airport on"
 
 # temporary alias, while I get used to using nvim
 function vim() {
