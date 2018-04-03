@@ -56,6 +56,9 @@ for function in ~/.zsh/functions/*; do
 done
 
 source ~/.git.alias
+
+# find the ssh-agent, if it exists
+connect_to_ssh_agent # I want this to be in .profile, but since the .zshrc is run after, the profile doesnt have access to that function
 # }}
 
 #
