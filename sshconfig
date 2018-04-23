@@ -7,10 +7,6 @@ Host fb
 	HostName our.asb.sb.facebook.com
 	User asb
 
-Host smallFb
-	HostName devvm31711.prn1.facebook.com
-	User asb
-
 Host curFb
 	HostName devvm439.prn3.facebook.com
 	User asb
