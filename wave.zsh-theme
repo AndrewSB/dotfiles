@@ -1,11 +1,11 @@
 #
-# A 🔥 y theme cho boy @AndrewSB enjoys
+# A 🔥 y theme @AndrewSB enjoys
 #
 # Authors:
 #	Andrew Breckenridge (🔥 ) <asb@fb.com>
 #
 # Features:
-#	- Radically simple left prompt - either 👋  or 💥  based on the return code
+#	- R A D I C A L L Y  simple left prompt - either 👋  or 💥  based on the return code
 #	- the version in the fb branch has super optimized mercurial & git support
 #
 # Requires the `git-info` zmodule to be included in the .zimrc file.
@@ -48,21 +48,12 @@ function prompt_wave_setup {
 	zle -N other-widget auto_ls
 
 	local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
-
-	# Figure out how much padding we want for the emoji because glibc had an emoji rendering bug
-	if ! [ -z ${ITERM_PROFILE+x} ]; then
-		SPACES_AFTER_EMOJI="   "
-	elif ! [ -z ${Apple_PubSub_Socket_Render+x} ]; then
-		SPACES_AFTER_EMOJI=" "
-	else
-		SPACES_AFTER_EMOJI="  "
-	fi
-	
+	SPACES_AFTER_EMOJI=" "
 
 	# Define prompts
 	setopt PROMPT_SUBST
 	PROMPT="${wave_or_explode}%{$reset_color%}${SPACES_AFTER_EMOJI}"
-	RPROMPT='$(wave_git_info)$(_machine_and_cwd)'
+	RPROMPT='$(wave_git_info)$(_machine_and_cwd)${SPACES_AFTER_EMOJI}'
 }
 
 prompt_wave_setup "$@"
