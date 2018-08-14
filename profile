@@ -56,15 +56,6 @@ alias arc-upstream="~/Developer/arcanist/bin/arc"
 alias e="scmpuff expand"
 alias fuckwifi="networksetup -serairportpower airport off; networksetup -setairportpower airport on"
 
-# temporary alias, while I get used to using nvim
-function vim() {
-	echo "🙅‍♂️ 🙅‍♂️ 🙅‍♂️  use nvim you dimwit 🤦‍♂️"
-  echo "😬 😥 🤤  hit any key to be redirected"
-	read -q 2>/dev/null
-	nvim $@
-}
-alias vi=vim
-
 # utilities
 eval "$(scmpuff init -s)"
 
