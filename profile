@@ -26,25 +26,6 @@ fi
 # Andrew's customization
 #
 
-export LLVM_ROOT=~/Developer/llvm_root
-export CLANG_FORMAT_PY=$LLVM_ROOT/llvm/tools/clang/tools/clang-format/clang-format.py
-function clang-format() {
-	set -e
-
-	CLANG_FORMAT_BIN=$LLVM_ROOT/build/bin/clang-format
-	if [ ! -e $CLANG_FORMAT_BIN ]; then
-		echo '🛠 🛠 🛠 🛠 '
-		echo 'Building clang-format'
-
-		pushd $LLVM_ROOT
-		mkdir -p $LLVM_ROOT/build
-		ninja -C $LLVM_ROOT/build clang-format
-		popd
-	fi
-
-	./$CLANG_FORMAT_BIN "$@"
-}
-
 # aliases
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias xc="open *.{xcworkspace,xcodeproj}(N)"
