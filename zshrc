@@ -38,6 +38,7 @@ cdpath=(
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $HOME/.cargo/bin
   $HOME/.fastlane/bin
   ~/.zsh/functions
   /usr/local/{bin,sbin}
