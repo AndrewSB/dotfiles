@@ -1,0 +1,12 @@
+[ui]
+username = Andrew Breckenridge <asb@fb.com>
+
+[extensions]
+commitcloud =
+
+[hint]
+ack = sl-short-headers
+
+[alias]
+rebasedrafts =  rebase -s 'draft()' -d
+morning = !$HG pull ; $HG rebasedrafts $1 ; $HG ssl

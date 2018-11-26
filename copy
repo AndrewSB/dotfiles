@@ -19,6 +19,8 @@ cp -v git.alias $DIR/.git.alias
 
 cp -v gitconfig $DIR/.gitconfig
 
+cp -v hgrc $DIR/.hgrc
+
 mkdir -p $DIR/.config/nvim
 cp -v init.vim $DIR/.config/nvim/init.vim
 
