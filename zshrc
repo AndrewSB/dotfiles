@@ -87,8 +87,9 @@ fi
 # history settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory
-HISTSIZE= # setting to nil makes it infinite
-SAVEHIST= # setting to nil makes it infinite
+HISTSIZE=9999999
+SAVEHIST=9999999
+setopt appendhistory
 
 # Enable extended globbing
 setopt extendedglob
