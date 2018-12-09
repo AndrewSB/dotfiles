@@ -6,6 +6,7 @@ commitcloud =
 
 [hint]
 ack = sl-short-headers
+ack = hint-ack
 
 [alias]
 rebasedrafts =  rebase -s 'draft()' -d
