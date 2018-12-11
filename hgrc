@@ -12,6 +12,3 @@ ack = hint-ack
 [alias]
 rebasedrafts =  rebase -s 'draft()' -d
 morning = !$HG pull ; $HG rebasedrafts $1 ; $HG ssl
-
-[project]
-ide_force_kill = always
