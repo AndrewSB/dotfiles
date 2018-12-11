@@ -1,5 +1,6 @@
 [ui]
 username = Andrew Breckenridge <asb@fb.com>
+merge = :merge
 
 [extensions]
 commitcloud =
