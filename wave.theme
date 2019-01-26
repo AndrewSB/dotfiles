@@ -8,7 +8,6 @@
 #	- R A D I C A L L Y  simple left prompt - either 👋  or 💥  based on the return code
 #	- the version in the fb branch has super optimized mercurial & git support
 #
-# Requires the `git-info` zmodule to be included in the .zimrc file.
 
 function _machine_and_cwd() {
 	case `uname -n` in
@@ -28,32 +27,25 @@ function _machine_and_cwd() {
 	print -n "%~$machine"
 }
 
-function wave_git_info() {
+function _wave_git_info() {
 	local git_output=`command git rev-parse --abbrev-ref HEAD 2>/dev/null || echo ""` 
 	if ! [[ -z $git_output ]]; then
 		printf '(%s) ' $git_output
 	fi
 }
 
-function prompt_wave_precmd {
-}
-
-function prompt_wave_setup {
-	autoload -Uz add-zsh-hook # Loads required functions
-
-	add-zsh-hook precmd prompt_wave_precmd # Adds hook for calling prompt_waveprecmd before each command
-
+function _prompt_wave_setup {
+# TB implemented in bash. PRs welcome
 	# auto ls on empty line
-	zle -N accept-line auto_ls
-	zle -N other-widget auto_ls
+#	zle -N accept-line auto_ls
+#	zle -N other-widget auto_ls
 
-	local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
+	local wave_or_explode="%(?:%👋:%{$fg_bold[red]%}💥)"
 	SPACES_AFTER_EMOJI=" "
 
 	# Define prompts
-	setopt PROMPT_SUBST
-	PROMPT="${wave_or_explode}%{$reset_color%}${SPACES_AFTER_EMOJI}"
-	RPROMPT='$(wave_git_info)$(_machine_and_cwd)${SPACES_AFTER_EMOJI}'
+	PS1="${wave_or_explode}%{$reset_color%}${SPACES_AFTER_EMOJI}"
+#	RPROMPT='$(wave_git_info)$(_machine_and_cwd)${SPACES_AFTER_EMOJI}'
 }
 
-prompt_wave_setup "$@"
+PROMPT_COMMAND=_prompt_wave_setup

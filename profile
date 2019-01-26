@@ -26,6 +26,13 @@ fi
 # Andrew's customization
 #
 
+# Utility to safely source a path that doesn't error if the file doesnt exist
+source $HOME/.bash_functions/include 
+# then include all the .bash_functions
+for function in ~/.bash_functions/*; do
+    include $function
+done
+
 # aliases
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias xc="open *.{xcworkspace,xcodeproj}(N)"
@@ -36,6 +43,9 @@ alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It
 alias arc-upstream="~/Developer/arcanist/bin/arc"
 alias e="scmpuff expand"
 alias fuckwifi="networksetup -serairportpower airport off; networksetup -setairportpower airport on"
+
+# git aliases
+source $HOME/.git.alias
 
 # utilities
 eval "$(scmpuff init -s)"

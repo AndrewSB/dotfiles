@@ -1,38 +1,37 @@
 #!/bin/bash
 
+#
+# copy 
+#   usage: copy [ target-directory ]
+#
+
 set -e # exit if we encounter an error
 DIR=${1:-~} # default to ~ if a directory isn't specified
 
 cp -v profile $DIR/.profile
-ln -sf ~/.profile $DIR/.zprofile
-cp -v zlogin $DIR/.zlogin
-cp -v zlogout $DIR/.zlogout
-cp -v zshrc $DIR/.zshrc
-cp -v zimrc $DIR/.zimrc
-cp wave.zsh-theme $DIR/.zim/modules/prompt/themes/wave.zsh-theme
-ln -sf $DIR/.zim/modules/prompt/themes/wave.zsh-theme $DIR/.zim/modules/prompt/functions/prompt_wave_setup
-cp -vR zsh/functions $DIR/.zsh/
+cp -v bashrc $DIR/.bash_profile
+cp -v bash_logout $DIR/.bash_logout
+cp -v git.alias $DIR/.git.alias
+# cp -v wave.theme $DIR/.wave.theme
+cp -rv bash/functions $HOME/.bash_functions/
 
 # this one is hardcoded, unfortunately
-cp -v buckconfig.local $DIR/fbsource/fbobjc/.buckconfig.local
+if [ -d $DIR/fbsource/fbobjc ]; then
+	cp -v buckconfig.local $DIR/fbsource/fbobjc/.buckconfig.local
+else
+	echo "💥: fbsource/fbobjc didnt exist in the specified directory. Couldn't copy the buckconfig"
+fi
 
 cp -v global_gitignore $DIR/.global_gitignore
-
-cp -v git.alias $DIR/.git.alias
 
 cp -v gitconfig $DIR/.gitconfig
 
 cp -v hgrc $DIR/.hgrc
 
-mkdir -p $DIR/.config/nvim
-cp -v init.vim $DIR/.config/nvim/init.vim
-
 cp -v screenrc $DIR/.screenrc
+
+cp -v tmux.conf $DIR/.tmux.conf
 
 cp -v inputrc $DIR/.inputrc
 
 cp -v hushlogin $DIR/.hushlogin
-
-cp -v sshconfig $DIR/.ssh/config
-
-cp -v tmux.conf $DIR/.tmux.conf

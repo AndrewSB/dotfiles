@@ -26,6 +26,7 @@ newpath=(
 PATH=$(join_by ':' ${newpath[@]})
 
 #
+
 # Completion
 #
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
