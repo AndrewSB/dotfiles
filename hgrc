@@ -5,10 +5,16 @@ merge = :merge
 [extensions]
 commitcloud =
 
+[remotefilelog]
+pullprefetch = master + fbobjc/stable
+backgroundprefetch = True
+bgprefetchrevs = bottom^::top # prefetches the stack I'm on so I can commit offline
+
 [hint]
 ack = sl-short-headers
 ack = hint-ack
 
 [alias]
-rebasedrafts =  rebase -s 'draft()' -d
-morning = !$HG pull ; $HG rebasedrafts $1 ; $HG ssl
+rebasedrafts = rebase -s 'draft()'
+morning = !$HG pull && $HG rebasedrafts $1 -d remote/fbobjc/stable && $HG ssl
+mr = mark --all --resolve && !$HG rebase --continue
