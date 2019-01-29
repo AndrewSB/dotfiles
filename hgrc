@@ -13,7 +13,11 @@ bgprefetchrevs = bottom^::top # prefetches the stack I'm on so I can commit offl
 [hint]
 ack = hint-ack sl-short-headers
 
+[committemplate]
+reviewers = jprado, bzheng, chongwang
+fbtags = accept2ship
+
 [alias]
 rebasedrafts = rebase -s 'draft()'
 morning = !$HG pull && $HG rebasedrafts $1 -d remote/fbobjc/stable && $HG ssl
-mr = mark --all --resolve && !$HG rebase --continue
+mr = !$HG resolve --mark --all && $HG rebase --continue
