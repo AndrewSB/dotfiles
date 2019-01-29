@@ -11,8 +11,7 @@ backgroundprefetch = True
 bgprefetchrevs = bottom^::top # prefetches the stack I'm on so I can commit offline
 
 [hint]
-ack = sl-short-headers
-ack = hint-ack
+ack = hint-ack sl-short-headers
 
 [alias]
 rebasedrafts = rebase -s 'draft()'
