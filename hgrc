@@ -8,7 +8,8 @@ commitcloud =
 [remotefilelog]
 pullprefetch = master + fbobjc/stable
 backgroundprefetch = True
-bgprefetchrevs = bottom^::top # prefetches the stack I'm on so I can commit offline
+# prefetches the stack I'm on so I can commit offline
+bgprefetchrevs = bottom^::top 
 
 [hint]
 ack = hint-ack sl-short-headers
@@ -21,3 +22,4 @@ fbtags = accept2ship
 rebasedrafts = rebase -s 'draft()'
 morning = !$HG pull && $HG rebasedrafts $1 -d remote/fbobjc/stable && $HG ssl
 mr = !$HG resolve --mark --all && $HG rebase --continue
+p = pull
