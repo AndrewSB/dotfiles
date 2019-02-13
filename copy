@@ -11,7 +11,7 @@ cp -v zshrc $DIR/.zshrc
 cp -v zimrc $DIR/.zimrc
 cp wave.zsh-theme $DIR/.zim/modules/prompt/themes/wave.zsh-theme
 ln -sf $DIR/.zim/modules/prompt/themes/wave.zsh-theme $DIR/.zim/modules/prompt/functions/prompt_wave_setup
-cp -vR zsh/functions $DIR/.zsh
+cp -vR zsh/functions $DIR/.zsh/
 
 # this one is hardcoded, unfortunately
 cp -v buckconfig.local $DIR/fbsource/fbobjc/.buckconfig.local
