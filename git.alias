@@ -10,8 +10,6 @@ alias gc!='git commit -v --no-edit --amend'
 
 alias gco='git checkout'
 
-alias gd='git diff' # redefines scmpuff's git diff
-
 alias gl='git pull' # overrides scmpuff's git log
 
 alias gp='git push'
