@@ -30,6 +30,8 @@ zmodules=(directory environment history input utility custom \
 #
 # Completion
 #
+autoload bashcompinit
+bashcompinit
 
 # set an optional host-specific filename for the completion cache file
 # if none is provided, the default '.zcompdump' is used.

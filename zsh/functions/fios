@@ -1,0 +1,28 @@
+# Arguments: takes a project alias
+
+_fios_aliases=(expenses_hack cvs_components)
+
+complete -W "$_fios_aliases" fios
+
+function fios() {
+	if [ $# -ne 1 ]; then
+		return 1
+	fi
+
+	pushd ~/fbsource/fbobjc
+	case "$1" in
+		cvs_components)
+			buck project //Libraries/Libra/CVSUIKit:CVSComponentLibraryApp && open ~/fbsource/fbobjc/Libraries/Libra/CVSUIKit/CVSComponentLibraryApp.xcworkspace
+			;;
+		expenses_hack)
+			buck project //Apps/Internal/ExpensesHack:ExpensesHack && open ~/fbsource/fbobjc/Apps/Internal/ExpensesHack/ExpensesHack.xcworkspace
+			;;
+		*)
+			echo "fios: you need to specify one alias to build from ${_fios_aliases}[*]"
+			popd
+			return 1
+			;;
+	esac
+
+	popd
+}
