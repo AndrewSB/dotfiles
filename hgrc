@@ -18,8 +18,8 @@ bgprefetchrevs = bottom^::top
 ack = hint-ack sl-short-headers
 
 [committemplate]
-reviewers = jprado, bzheng, chongwang
-fbtags = accept2ship
+reviewers = libra_ios
+fbtags = '#accept2ship'
 
 [alias]
 rebasedrafts = rebase -s 'draft()'
