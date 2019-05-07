@@ -6,10 +6,17 @@ complete -W "$_fios_aliases" fios
 
 function fios() {
 	if [ $# -ne 1 ]; then
+		echo "need an argument to build"
 		return 1
 	fi
 
-	pushd ~/fbsource/fbobjc
+	local SHOULD_POP=false
+	if ! [[ ${PWD} -eq "${HOME}/fbsource/fbobjc"* ]]; then # if the pwd is a child of ~/fbsource/fbobjc
+		echo "should pop true"
+		SHOULD_POP=true
+		pushd ~/fbsource/fbobjc
+	fi
+
 	case "$1" in
 		cvs_components)
 			buck project //Libraries/Libra/CVSUIKit:CVSComponentLibraryApp && open ~/fbsource/fbobjc/Libraries/Libra/CVSUIKit/CVSComponentLibraryApp.xcworkspace
@@ -24,5 +31,7 @@ function fios() {
 			;;
 	esac
 
-	popd
+	if $SHOULD_POP ; then
+		popd
+	fi
 }
