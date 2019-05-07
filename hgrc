@@ -9,7 +9,7 @@ autorestack=always
 commitcloud =
 
 [remotefilelog]
-pullprefetch = master + fbobjc/stable
+pullprefetch = fbobjc/stable
 backgroundprefetch = True
 # prefetches the stack I'm on so I can commit offline
 bgprefetchrevs = bottom^::top 
