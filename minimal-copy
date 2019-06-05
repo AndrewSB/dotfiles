@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# A version of the copy script that copies much much less for machines I want
+# to have more vanilla/am only using for a little while.
+#
+# Basically just uses zsh instead of zim
+
+set -e # exit if we encounter an error
+DIR=${1:-~} # default to ~ if a directory isn't specified
+
+cp -v profile $DIR/.profile
+ln -sf ~/.profile $DIR/.zprofile
+cp -v zlogin $DIR/.zlogin
+cp -v zlogout $DIR/.zlogout
+cp -v zshrc $DIR/.zshrc
+cp -vR zsh/functions $DIR/.zsh/functions
+cp wave.zsh-theme $DIR/.zim/modules/prompt/themes/wave.zsh-theme
+
+cp -v global_gitignore $DIR/.global_gitignore
+
+cp -v git.alias $DIR/.git.alias
+
+cp -v gitconfig $DIR/.gitconfig
+
+cp -v hgrc $DIR/.hgrc
+
+mkdir -p $DIR/.config/nvim
+cp -v init.vim $DIR/.config/nvim/init.vim
+
+cp -v screenrc $DIR/.screenrc
+
+cp -v inputrc $DIR/.inputrc
+
+cp -v hushlogin $DIR/.hushlogin
+
+cp -v sshconfig $DIR/.ssh/config
+
+cp -v tmux.conf $DIR/.tmux.conf
