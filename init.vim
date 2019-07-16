@@ -5,7 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-Plug 'ciaranm/securemodelines'
-call plug#end()
+" call plug#begin('~/.vim/plugged')
+" Plug 'scrooloose/nerdtree'
+" Plug 'ciaranm/securemodelines'
+" call plug#end()
