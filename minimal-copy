@@ -13,7 +13,9 @@ ln -sf ~/.profile $DIR/.zprofile
 cp -v zlogin $DIR/.zlogin
 cp -v zlogout $DIR/.zlogout
 cp -v zshrc $DIR/.zshrc
-cp -vR zsh/functions $DIR/.zsh/functions
+mkdir -p $DIR/.zsh/functions
+cp -vR zsh/functions/* $DIR/.zsh/functions
+mkdir -p $DIR/.zim/modules/prompt/themes
 cp wave.zsh-theme $DIR/.zim/modules/prompt/themes/wave.zsh-theme
 
 cp -v global_gitignore $DIR/.global_gitignore
