@@ -84,9 +84,11 @@ if [[ ! -d "${TMPDIR}" ]]; then
   mkdir -m 700 "${TMPDIR}"
 fi
  
-# history settings
+#
+# History Settings
+#
 setopt hist_ignore_all_dups inc_append_history
-HISTFILE=~/.zhistory
+HISTFILE=~/Documents/zhistory # Store history in iCloud Drive so we preserve across machines
 HISTSIZE=9999999
 SAVEHIST=9999999
 setopt appendhistory
