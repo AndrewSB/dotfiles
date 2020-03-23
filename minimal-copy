@@ -10,7 +10,6 @@ DIR=${1:-~} # default to ~ if a directory isn't specified
 
 cp -v profile $DIR/.profile
 ln -sf ~/.profile $DIR/.zprofile
-cp -v zlogin $DIR/.zlogin
 cp -v zlogout $DIR/.zlogout
 cp -v zshrc $DIR/.zshrc
 mkdir -p $DIR/.zsh/functions
