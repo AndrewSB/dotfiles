@@ -12,7 +12,7 @@
 
 function _machine_and_cwd() {
 	case `uname -n` in
-		"asb-mbp")
+		"asb-mbp" | "Andrews-MacBook"*)
 			local machine="💻"
 			;;
 
@@ -25,7 +25,7 @@ function _machine_and_cwd() {
 			;;
 	esac
 
-	print -n "%~$machine"
+	print "%~ $machine"
 }
 
 function wave_git_info() {
@@ -53,7 +53,7 @@ function prompt_wave_setup {
 	# Define prompts
 	setopt PROMPT_SUBST
 	PROMPT="${wave_or_explode}%{$reset_color%}${SPACES_AFTER_EMOJI}"
-	RPROMPT='$(wave_git_info)$(_machine_and_cwd)${SPACES_AFTER_EMOJI}'
+	RPROMPT='$(wave_git_info)$(_machine_and_cwd)'
 }
 
 prompt_wave_setup "$@"
