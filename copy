@@ -6,7 +6,5 @@ DIR=${1:-~} # default to ~ if a directory isn't specified
 ./minimal-copy
 
 cp -v zimrc $DIR/.zimrc
+mkdir -p $DIR/.zim/modules/prompt/functions/
 ln -sf $DIR/.zim/modules/prompt/themes/wave.zsh-theme $DIR/.zim/modules/prompt/functions/prompt_wave_setup
-
-# this one is hardcoded, unfortunately
-cp -v buckconfig.local $DIR/fbsource/fbobjc/.buckconfig.local
