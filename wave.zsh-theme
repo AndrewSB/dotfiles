@@ -12,7 +12,7 @@
 
 function _machine_and_cwd() {
 	case `uname -n` in
-		"asb-mbp" | "Andrews-MacBook"*)
+		"asb-mbp" | "Andrews-MacBook"* | "💻")
 			local machine="💻"
 			;;
 
