@@ -4,19 +4,19 @@
 # http://stackoverflow.com/a/17841619
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
-function fire_echo { echo "🔥 " $@; }
+function fire_echo { echo "🔥" $@; }
 
 function can_i_xcode() {
 	xcode-select -p >&/dev/null # this checks if xcode command line tools are installed (http://stackoverflow.com/a/15371967)
-	if [ $? -eq 0 ]; then 
+	if [ $? -eq 0 ]; then
 		# if xcode-select exited with 0, then you have command line tools
 		if [ ! -d "/Applications/Xcode.app" ]; then
 			fire_echo "It looks like you have Xcode's command line tools installed, but no XCode"
 			fire_echo "You might want to get Xcode from the Mac App Store"
 		else
-			fire_echo "You have XCode 🎉"
+			fire_echo "You have Xcode 🎉"
 		fi
-	else 
+	else
 		fire_echo "It looks as though you don't have XCode command line tools."
 		fire_echo "You can either download & open Xcode, or run xcode-select --install"
 		fire_echo "Try running this again after you've done that."
@@ -25,7 +25,7 @@ function can_i_xcode() {
 }
 
 function can_i_oh_my_zsh() {
-	set -e 
+	set -e
 		if ! [ -d ~/.oh-my-zsh ]; then
 			fire_echo "You don't have oh-my-zsh, let's install it"
 			sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -50,18 +50,29 @@ function can_i_brew() {
 		fire_echo "You don't have homebrew, we're going to install it for you"
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
-	set +e 
+	set +e
 }
 
 function can_i_brew_deps() {
-	fire_echo "You have brew, we're going to install `join_by , "${brew_dependencies[@]}"` for you, if you don't have them"
-	for dependency in "${brew_dependencies[@]}"; do
-		if ! which "${dependency}" >/dev/null; then
-			fire_echo "Downloading ${dependency}"
-			set -e; /usr/local/bin/brew install "${dependency}"; set +e
-		fi
-	done
-	fire_echo "Done installing brew dependencies! You have `join_by , "${brew_dependencies[@]}"` all installed"
+	fire_echo "You have brew, we're going to install some packages"
+	read -p "Would you like to also install iOS packages (`join_by , "${ios_brew_dependencies[@]}"`) (y/n)? " answer
+	case ${answer:0:1} in
+		y|Y )
+			BREW_INSTALLS=("${brew_dependencies[@]}" "${ios_brew_dependencies[@]}")
+		;;
+		* )
+			BREW_INSTALLS=("${brew_dependencies[@]}")
+		;;
+	esac
+	fire_echo "Installing `join_by , "${BREW_INSTALLS[@]}"`."
+	set -e; /usr/local/bin/brew install ${BREW_INSTALLS[@]}; set +e;
+}
+
+function can_i_cask_deps() {
+	fire_echo "Going to install brew casks now: `join_by , "${cask_dependencies[@]}"`"
+	set -e
+	/usr/local/bin/brew cask install ${cask_dependencies[*]}
+	set +e;
 }
 
 function can_i_ruby() {
