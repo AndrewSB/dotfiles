@@ -6,8 +6,10 @@
 # Basically just uses zsh instead of zim
 
 set -e # exit if we encounter an error
+
 DIR=${1:-~} # default to ~ if a directory isn't specified
 
+pushd .. # go up from scripts
 cp -v profile $DIR/.profile
 ln -sf ~/.profile $DIR/.zprofile
 cp -v zlogout $DIR/.zlogout
@@ -37,3 +39,6 @@ cp -v hushlogin $DIR/.hushlogin
 cp -v sshconfig $DIR/.ssh/config
 
 cp -v tmux.conf $DIR/.tmux.conf
+popd
+
+set +e
