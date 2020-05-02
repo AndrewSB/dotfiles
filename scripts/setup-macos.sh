@@ -225,10 +225,22 @@ defaults write com.apple.ActivityMonitor UpdatePeriod -int 1
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 ###############################################################################
+# Terminal                                                                    #
+###############################################################################
+
+# Set default window as Large Font.terminal
+DIRNAME=`dirname "$0"`
+open $DIRNAME/../Large\ Font.terminal
+defaults write com.apple.terminal "Default Window Settings" "Large Font"
+defaults write com.apple.terminal "Startup Window Settings" "Large Font"
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-echo "made it to killall"
+echo "Done. Note that some of these changes require a logout/restart to take effect."
+
+echo "Quitting all affected apps now"
 
 set +e # disable exiting on error in case some of these aren't open
 for app in "Activity Monitor" \
@@ -248,7 +260,6 @@ for app in "Activity Monitor" \
 	killall "${app}" &> /dev/null
 done
 set -e
-echo "Done. Note that some of these changes require a logout/restart to take effect."
 
 # Cleanup script exiting early on error
 set +e
