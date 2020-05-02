@@ -1,0 +1,11 @@
+{
+    "editor.fontSize": 18,
+    "window.zoomLevel": -1,
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "editor.suggestSelection": "first",
+    "window.autoDetectColorScheme": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.tabSize": 2,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "workbench.colorTheme": "Default Light+"
+}

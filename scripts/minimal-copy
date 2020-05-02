@@ -44,6 +44,10 @@ cp -v hushlogin $DIR/.hushlogin
 cp -v sshconfig $DIR/.ssh/config
 
 cp -v tmux.conf $DIR/.tmux.conf
+
+mkdir -p ~/Library/Application\ Support/Code/User
+cp -v vscode_settings.json ~/Library/Application\ Support/Code/User/settings.json
+
 popd
 
 set +e
