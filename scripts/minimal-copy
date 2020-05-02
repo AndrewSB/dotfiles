@@ -9,7 +9,9 @@ set -e # exit if we encounter an error
 
 DIR=${1:-~} # default to ~ if a directory isn't specified
 
-pushd .. # go up from scripts
+DIRNAME=`dirname "$0"`
+
+pushd $DIRNAME/.. # go up from scripts to the directory with the dotfiles
 cp -v profile $DIR/.profile
 ln -sf ~/.profile $DIR/.zprofile
 cp -v zlogout $DIR/.zlogout
