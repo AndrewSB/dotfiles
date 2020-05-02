@@ -32,6 +32,9 @@ cp -v hgrc $DIR/.hgrc
 mkdir -p $DIR/.config/nvim
 cp -v init.vim $DIR/.config/nvim/init.vim
 
+mkdir -p $DIR/.config/gh
+cp -v gh_config.yml $DIR/.config/gh/config.yml
+
 cp -v screenrc $DIR/.screenrc
 
 cp -v inputrc $DIR/.inputrc
