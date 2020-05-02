@@ -113,9 +113,19 @@ fi
 # makes color constants available so we can...
 autoload -U colors
 colors
-
 # ... enable colored output from ls, etc
 export CLICOLOR=1
 
 # Theme it up 
 source ~/.zim/modules/prompt/themes/wave.zsh-theme
+
+#
+# Completions
+#
+# Copied from https://docs.brew.sh/Shell-Completion ...
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi

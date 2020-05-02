@@ -66,6 +66,16 @@ function can_i_brew_deps() {
 	esac
 	fire_echo "Installing `join_by , "${BREW_INSTALLS[@]}"`."
 	set -e; /usr/local/bin/brew install ${BREW_INSTALLS[@]}; set +e;
+
+	fire_echo "Would you like to own the zsh/completion directory so compinit doesn't complain?"
+	read -p "(y/n) "
+	case ${answer:0:1} in
+		y|Y )
+			sudo chmod -R go-w /usr/local/share
+		;;
+		*)
+			fire_echo "alright, not owning. Moving on..."
+		;;
 }
 
 function can_i_cask_deps() {
