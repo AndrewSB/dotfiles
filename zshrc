@@ -87,7 +87,7 @@ fi
 #
 # History Settings
 #
-setopt hist_ignore_all_dups inc_append_history
+setopt sharehistory
 HISTFILE=~/Documents/zhistory # Store history in iCloud Drive so we preserve across machines
 HISTSIZE=9999999
 SAVEHIST=9999999
