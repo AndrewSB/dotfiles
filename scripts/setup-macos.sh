@@ -2,6 +2,9 @@
 
 # Adapted from https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh and https://mths.be/macos
 
+echo "WARNING: this is probably going to close all your open applications."
+echo "Cancel this script if you're not ready for that"
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -43,6 +46,21 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
 # System Preferences > General > Appearance
 defaults write -globalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
+
+# Automatically hide and show the menu bar
+# TODO: defaults write "Apple Global Domain" "_HIHideMenuBar" 1 doesn't seem to work on Mojave
+
+# Show battery percentage in menu bar
+defaults write com.apple.menuextra.battery ShowPercent YES
+
+# Add bluetooth to  menu bar icons
+defaults write com.apple.systemuiserver menuExtras -array \
+"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+"/System/Library/CoreServices/Menu Extras/Clock.menu" \
+"/System/Library/CoreServices/Menu Extras/Displays.menu" \
+"/System/Library/CoreServices/Menu Extras/Volume.menu"
+
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -108,6 +126,9 @@ defaults write com.apple.dock magnification -bool false
 
 # System Preferences > Dock > Minimize windows using: Genie effect
 defaults write com.apple.dock mineffect -string "genie"
+
+# System Preferences > Dock > Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
 
 # System Preferences > Dock > Automatically hide and show the Dock (duration)
 defaults write com.apple.dock autohide-time-modifier -float 0.5

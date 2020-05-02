@@ -13,3 +13,6 @@ system preferences to settings I enjoy
 
 `scripts/ensure_machine_setup.sh` sets up a new macOS machine by installing
 things like Xcode, Homebrew, rvm, and some {brew, brew cask}s
+
+# `scripts/setup-macos.sh` TODO: 
+2. Hide menubar
