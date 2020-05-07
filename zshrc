@@ -33,7 +33,11 @@ path=(
   $path
 )
 
-## load custom executable functions and aliases {{
+# load nvm, if it exists
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# load custom executable functions and aliases {{
 source ~/.zsh/functions/include # first bootstrap by including include 😋
 
 # the include all the .zsh/functions
