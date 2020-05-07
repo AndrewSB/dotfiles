@@ -80,7 +80,12 @@ fi
 # History Settings
 #
 setopt sharehistory
-HISTFILE=~/Documents/zhistory # Store history in iCloud Drive so we preserve across machines
+if [ -d "$HOME/Documents" ]; then
+	HISTFILE=~/Documents/zhistory # Store history in iCloud Drive so we preserve across machines
+else
+	echo "~/Documents doesn't exist, writing to ~/.zhistory"
+	HISTFILE=~/.zhistory
+fi
 HISTSIZE=9999999
 SAVEHIST=9999999
 setopt appendhistory
