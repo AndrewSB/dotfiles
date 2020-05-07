@@ -3,11 +3,12 @@ Host *
 	UseKeychain yes
 	IdentityFile ~/.ssh/id_rsa
 
-Host fb
-	HostName our.asb.sb.facebook.com
+Host bigBoi
+	HostName 137.117.59.62
 	User asb
+	IdentityFile ~/.ssh/id_shared
 
-Host curFb
-	HostName devvm439.prn3.facebook.com
+Host ltsLargeRam
+	HostName 104.211.46.114
 	User asb
-
+	IdentityFile ~/.ssh/id_shared
