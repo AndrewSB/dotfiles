@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e # exit if we encounter an error
+
+DIRNAME=`dirname "$0"`
+DIR=${1:-~} # default to ~ if a directory isn't specified
+
+pushd $DIRNAME
+./copy-shared
+popd
+
+# macos specific \/
+
+pushd $DIRNAME/.. # go up from scripts
+
+cp -v profile.macos $DIR/.profile.macos
+mkdir -p ~/Library/Application\ Support/Code/User
+cp -v vscode_settings.json ~/Library/Application\ Support/Code/User/settings.json
+
+popd
+
+set +e

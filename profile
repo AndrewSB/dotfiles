@@ -22,10 +22,6 @@ if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
-#
-# Andrew's customization
-#
-
 # aliases
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias xc="open *.{xcworkspace,xcodeproj}(N)"
