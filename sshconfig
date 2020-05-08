@@ -1,4 +1,4 @@
-Host *
+Host github.com
 	AddKeysToAgent yes
 	IgnoreUnknown UseKeychain
 	UseKeychain yes
@@ -7,9 +7,17 @@ Host *
 Host bigBoi
 	HostName 137.117.59.62
 	User asb
+	ForwardAgent yes
+	AddKeysToAgent yes
+	IgnoreUnknown UseKeychain
+	UseKeychain yes
 	IdentityFile ~/.ssh/id_shared
 
 Host ltsLargeRam
 	HostName 104.211.46.114
 	User asb
+	ForwardAgent yes
+	AddKeysToAgent yes
+	IgnoreUnknown UseKeychain
+	UseKeychain yes
 	IdentityFile ~/.ssh/id_shared
