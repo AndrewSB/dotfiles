@@ -1,0 +1,5 @@
+alias fuckwifi="networksetup -serairportpower airport off; networksetup -setairportpower airport on"
+alias b="brew"
+alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
+alias xc="open *.{xcworkspace,xcodeproj}(N)"
+alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
