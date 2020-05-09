@@ -20,6 +20,10 @@ function _machine_and_cwd() {
 			local machine="🖥"
 			;;
 
+		*"big"*"boi"* | "lts"* | *"azure"*)
+			local machine="🦾"
+			;;
+
 		*)
 			local machine="🤔"
 			;;
@@ -29,7 +33,7 @@ function _machine_and_cwd() {
 }
 
 function wave_git_info() {
-	local git_output=`command git rev-parse --abbrev-ref HEAD 2>/dev/null || echo ""` 
+	local git_output=`command git rev-parse --abbrev-ref HEAD 2>/dev/null || echo ""`
 	if ! [[ -z $git_output ]]; then
 		printf '(%s) ' $git_output
 	fi
