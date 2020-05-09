@@ -4,9 +4,14 @@
 
 gst-recursive() {
     for i in `ls`; do
-        cd $i
-        echo $i
-        echo `git status --porcelain`
-        cd ..
+        pushd $i > /dev/null
+	STATUS="$(git status --porcelain)"
+	if [ ! -z "$STATUS" ]; then
+        	echo $i
+        	echo "$STATUS"
+		echo '' # newline
+	fi
+        popd > /dev/null
     done
 }
+alias rgst=gst-recursive
