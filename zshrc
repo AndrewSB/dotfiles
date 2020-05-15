@@ -34,8 +34,7 @@ path=(
 )
 
 # load nvm, if it exists
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+source ~/.zsh/functions/_load_nvm
 
 # load custom executable functions and aliases {{
 source ~/.zsh/functions/include # first bootstrap by including include 😋
