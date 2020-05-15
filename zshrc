@@ -12,6 +12,16 @@ fg() {
 }
 
 #
+# Dev tools
+#
+
+[[ -f $HOME/.cargo/env ]] source $HOME/.cargo/env
+
+source ~/.zsh/functions/_load_nvm
+
+export GOPATH=$HOME/Developer/go
+
+#
 # Paths
 #
 
@@ -27,14 +37,11 @@ cdpath=(
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/.cargo/bin
-  $HOME/.fastlane/bin
+  $GOPATH/bin
   ~/.zsh/functions
   /usr/local/{bin,sbin}
   $path
 )
-
-# load nvm, if it exists
-source ~/.zsh/functions/_load_nvm
 
 # load custom executable functions and aliases {{
 source ~/.zsh/functions/include # first bootstrap by including include 😋

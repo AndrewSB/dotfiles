@@ -30,7 +30,7 @@ alias e="scmpuff expand"
 eval "$(scmpuff init -s)"
 
 # source a .secrets file, if it exists, that stores things I can't store on github
-[[ -f ~/.secrets ]] && source ~/.secrets
+[[ -f $HOME/.secrets ]] && source $HOME/.secrets
 
 # source any platform specific profiles
 for PLATFORM_PROFILE in ".profile.macos" ".profile.ubuntu"; do
