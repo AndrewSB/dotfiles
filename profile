@@ -22,6 +22,12 @@ if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
+#
+# Misc
+# 
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # aliases
 alias make="CDPATH="" /usr/bin/make $@" #override the CDPATH while `make`ing. It sometimes causes [issues](https://github.com/thoughtbot/capybara-webkit/issues/56)
 alias e="scmpuff expand"
