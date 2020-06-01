@@ -15,7 +15,7 @@ fg() {
 # Dev tools
 #
 
-[[ -f $HOME/.cargo/env ]] source $HOME/.cargo/env
+[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
 source ~/.zsh/functions/_load_nvm
 

@@ -48,7 +48,7 @@ function can_i_brew() {
 	set -e
 	if ! which brew >/dev/null; then
 		fire_echo "You don't have homebrew, we're going to install it for you"
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	fi
 	set +e
 }
@@ -68,7 +68,7 @@ function can_i_brew_deps() {
 	set -e; /usr/local/bin/brew install ${BREW_INSTALLS[@]}; set +e;
 
 	fire_echo "Would you like to own the zsh/completion directory so compinit doesn't complain?"
-	read -p "(y/n) "
+	read -p "(y/n) " answer
 	case ${answer:0:1} in
 		y|Y )
 			sudo chmod -R go-w /usr/local/share
@@ -76,6 +76,7 @@ function can_i_brew_deps() {
 		*)
 			fire_echo "alright, not owning. Moving on..."
 		;;
+	esac
 }
 
 function can_i_cask_deps() {

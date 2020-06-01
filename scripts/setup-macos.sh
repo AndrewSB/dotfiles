@@ -3,7 +3,19 @@
 # Adapted from https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh and https://mths.be/macos
 
 echo "WARNING: this is probably going to close all your open applications."
-echo "Cancel this script if you're not ready for that"
+read -p "Do you want to omit the relaunching and close your processes by yourself? (y/n)" shouldkillall
+case ${shouldkillall:0:1} in
+	y|Y )
+		CRASH=true
+	;;
+	n|N )
+		CRASH=false
+	;;
+	* )
+		echo "$shouldkillall" is not a valid answer
+		exit 1
+	;;
+esac
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -240,26 +252,30 @@ defaults write com.apple.terminal "Startup Window Settings" "Large Font"
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
 
-echo "Quitting all affected apps now"
+if [ "$CRASH" == true ]; then
+	echo "Quitting all affected apps now"
 
-set +e # disable exiting on error in case some of these aren't open
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
-	"SystemUIServer" \
-	"Terminal" \
-	"iCal"; do
-	echo "trying to kill ${app}"
-	killall "${app}" &> /dev/null
-done
-set -e
+	set +e # disable exiting on error in case some of these aren't open
+	for app in "Activity Monitor" \
+		"Address Book" \
+		"Calendar" \
+		"cfprefsd" \
+		"Contacts" \
+		"Dock" \
+		"Finder" \
+		"Messages" \
+		"Photos" \
+		"Safari" \
+		"SystemUIServer" \
+		"Terminal" \
+		"iCal"; do
+		echo "trying to kill ${app}"
+		killall "${app}" &> /dev/null
+	done
+	set -e
+else
+	echo "You should quit all Apple processes to have them take effect"
+fi
 
 # Cleanup script exiting early on error
 set +e

@@ -16,3 +16,5 @@ things like Xcode, Homebrew, rvm, and some {brew, brew cask}s
 
 # `scripts/setup-macos.sh` TODO: 
 2. Hide menubar
+2. Enable zoom
+2. Enable iMessage iCloud Sync
