@@ -9,10 +9,9 @@
 [credential]
 	helper = osxkeychain
 
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+[merge "mergepbx"]
+        name = Xcode project files merger
+        driver = mergepbx %O %A %B
 
 [alias]
 	rbc = rebase --continue
