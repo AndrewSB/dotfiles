@@ -38,6 +38,8 @@ cdpath=(
 path=(
   $HOME/.cargo/bin
   $GOPATH/bin
+  $HOME/Library/Android/sdk/tools
+  $HOME/Library/Android/sdk/platform-tools
   ~/.zsh/functions
   /usr/local/{bin,sbin}
   $path
