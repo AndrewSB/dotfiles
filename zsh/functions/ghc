@@ -3,11 +3,10 @@
 # repository from GitHub using the ssh key in the
 # keychain.
 
-
-hc() {
+ghc() {
 	if [[ $@ == *"/"* ]]; then
-		hub clone -p $@
+		gh repo clone clone $@
 	else
-		hub clone -p AndrewSB/$@
+		gh repo clone AndrewSB/$@
 	fi
 }
