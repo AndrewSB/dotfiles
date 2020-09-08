@@ -5,8 +5,8 @@
 # 	1. makes sure you have Xcode's command line tools
 # 	2. Gets homebrew and installs
 ios_brew_dependencies=("swiftgen" "carthage") # optionally, asks in a prompt
-brew_dependencies=("trash" "hub" "gh" "scmpuff" "neovim" "swiftlint" "MisterTea/et/et")
-cask_dependencies=("docker" "tripmode" "figmadaemon" "visual-studio-code" "alt-tab" "protonvpn" "vlc" "github")
+brew_dependencies=("trash" "hub" "gh" "scmpuff" "neovim" "swiftlint" "MisterTea/et/et" "git-absorb")
+cask_dependencies=("docker" "tripmode" "visual-studio-code" "alt-tab" "protonvpn" "vlc" "github")
 # and installs nvm
 
 DIRNAME=`dirname "$0"`
