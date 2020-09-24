@@ -28,7 +28,7 @@ case ${answer:0:1} in
   y|Y )
     set -e
     echo "running copy"
-    ./copy
+    ./copy-macos
     echo "running setup-macos.sh, which will cause Terminal to quit"
     ./setup-macos.sh
     set +e
