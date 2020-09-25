@@ -181,6 +181,9 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (
 # Safari & WebKit                                                             #
 ###############################################################################
 
+# Change Quit Safari keyboard shortcut to make it harder to hit by mistake
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" -string "@~^q"
+
 # Press Tab to highlight each item on a web page
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
