@@ -14,6 +14,5 @@
         driver = mergepbx %O %A %B
 
 [alias]
-	rbc = rebase --continue
 	l = log --oneline --decorate --graph
 	d = diff

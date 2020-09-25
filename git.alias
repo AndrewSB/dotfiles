@@ -3,17 +3,16 @@ alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
 
-alias gb='git branch'
-
 alias gc='git commit -v'
 alias gc!='git commit -v --no-edit --amend'
 
 alias gco='git checkout'
 
+alias gdc='git diff --cached'
+
 alias gl='git pull' # overrides scmpuff's git log
 
 alias gp='git push'
+alias ghp='gh pr create'
 
 alias grc='git rebase --continue'
-
-alias gst='scmpuff_status'
