@@ -14,8 +14,6 @@ popd
 pushd $DIRNAME/.. # go up from scripts
 
 cp -v profile.macos $DIR/.profile.macos
-mkdir -p ~/Library/Application\ Support/Code/User
-cp -v vscode_settings.json ~/Library/Application\ Support/Code/User/settings.json
 
 popd
 
