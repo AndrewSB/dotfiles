@@ -2,8 +2,7 @@
 
 # Adapted from https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh and https://mths.be/macos
 
-echo "WARNING: this is probably going to close all your open applications."
-read -p "Do you want to omit the relaunching and close your processes by yourself? (y/n)" shouldkillall
+read -p "WARNING: this is probably going to close all your open applications. Do you want to omit the relaunching and close your processes by yourself? (y/n)" shouldkillall
 case ${shouldkillall:0:1} in
 	y|Y )
 		CRASH=true
@@ -274,7 +273,7 @@ if [ "$CRASH" == true ]; then
 	done
 	set -e
 else
-	echo "You should quit all Apple processes to have them take effect"
+	echo "You may need to quit all Apple processes to have the preference changes take effect"
 fi
 
 # Cleanup script exiting early on error
