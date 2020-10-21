@@ -21,7 +21,7 @@ can_i_brew
 set +e
 
 brew_dependencies=("trash" "scmpuff" "neovim" "swiftlint" "MisterTea/et/et" "git-absorb" "go" "watchman" "mas" "gh")
-cask_dependencies=("tripmode" "visual-studio-code" "protonvpn" "vlc" "github" "tandem" "slack" "google-chrome")
+cask_dependencies=("tripmode" "visual-studio-code" "protonvpn" "vlc" "github" "tandem" "slack" "google-chrome" "sketch")
 yes n | can_i_brew_deps
 can_i_cask_deps
 
