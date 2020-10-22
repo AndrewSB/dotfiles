@@ -7,11 +7,12 @@ mkdir Developer
 # TODO: nice to have, don't do this if not necessary
 xcode-select --install
 
-set -e
 
 pushd ~/Developer
 git clone git@github.com:AndrewSB/dotfiles.git
 pushd dotfiles
+
+set -e
 
 yes n | ./scripts/setup-macos.sh
 ./scripts/copy-macos
