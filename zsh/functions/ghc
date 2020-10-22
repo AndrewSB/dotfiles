@@ -5,7 +5,7 @@
 
 ghc() {
 	if [[ $@ == *"/"* ]]; then
-		gh repo clone clone $@
+		gh repo clone $@
 	else
 		gh repo clone AndrewSB/$@
 	fi
