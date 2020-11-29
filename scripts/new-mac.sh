@@ -50,6 +50,7 @@ nvm alias default stable
 
 echo "about to download Xcode, everything else is done. this is going to take a while"
 mas_dependencies=(
+        "1351639930" # Gifsky
 	"1284863847" # Unsplash Wallpapers
 	"1514817810" # Poolside FM
 	"497799835" # Xcode
