@@ -16,18 +16,34 @@ set -e
 
 yes n | ./scripts/setup-macos.sh
 ./scripts/copy-macos
+# shellcheck source=./machine-setup-functions.sh
 source scripts/machine-setup-functions.sh
 can_i_brew
 
 set +e
 
-brew_dependencies=("trash" "scmpuff" "neovim" "swiftlint" "MisterTea/et/et" "git-absorb" "go" "watchman" "mas" "gh")
-cask_dependencies=("tripmode" "visual-studio-code" "protonvpn" "vlc" "github" "tandem" "slack" "google-chrome" "sketch")
-yes n | can_i_brew_deps
-can_i_cask_deps
+brew_dependencies=(
+	"trash"
+	"scmpuff" "git-absorb" "gh"
+	"neovim"
+	"swiftlint"
+	"MisterTea/et/et"
+	"go"
+	"watchman"
+	"mas")
+cask_dependencies=(
+	"visual-studio-code" "sketch"
+	"protonvpn"
+	"vlc" "spotify"
+	"slack" "discord"
+	"google-chrome"
+	"lulu" "oversight")
+yes | can_i_brew_deps "${brew_dependencies[@]}"
+can_i_cask_deps "${cask_dependencies[@]}"
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 # TODO: this didn't work for some reason, debug next time
+# shellcheck source=/dev/null
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install stable
 nvm alias default stable

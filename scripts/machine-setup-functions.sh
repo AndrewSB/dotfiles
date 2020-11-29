@@ -53,19 +53,13 @@ function can_i_brew() {
 	set +e
 }
 
-function can_i_brew_deps() {
+function can_i_brew_deps {
+	set -e
+	readonly brew_deps=${1:?"The dependencies must be specified."}
 	fire_echo "You have brew, we're going to install some packages"
-	read -p "Would you like to also install iOS packages (`join_by , "${ios_brew_dependencies[@]}"`) (y/n)? " answer
-	case ${answer:0:1} in
-		y|Y )
-			BREW_INSTALLS=("${brew_dependencies[@]}" "${ios_brew_dependencies[@]}")
-		;;
-		* )
-			BREW_INSTALLS=("${brew_dependencies[@]}")
-		;;
-	esac
-	fire_echo "Installing `join_by , "${BREW_INSTALLS[@]}"`."
-	set -e; /usr/local/bin/brew install ${BREW_INSTALLS[@]}; set +e;
+	fire_echo "Installing $(join_by , "${brew_deps[@]}")."
+	/usr/local/bin/brew install "${brew_deps[@]}"
+	set +e;
 
 	fire_echo "Would you like to own the zsh/completion directory so compinit doesn't complain?"
 	read -p "(y/n) " answer
@@ -79,10 +73,11 @@ function can_i_brew_deps() {
 	esac
 }
 
-function can_i_cask_deps() {
-	fire_echo "Going to install brew casks now: `join_by , "${cask_dependencies[@]}"`"
+function can_i_cask_deps {
 	set -e
-	/usr/local/bin/brew cask install ${cask_dependencies[*]}
+	readonly cask_deps=${1:?"The dependencies must be specified."}
+	fire_echo "Going to install brew casks now: $(join_by , "${cask_deps[@]}")"
+	/usr/local/bin/brew cask install "${cask_deps[*]}"
 	set +e;
 }
 
