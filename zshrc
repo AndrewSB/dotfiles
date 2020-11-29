@@ -42,6 +42,7 @@ path=(
   $HOME/Library/Android/sdk/platform-tools
   ~/.zsh/functions
   /usr/local/{bin,sbin}
+  /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/ # for `airport`
   $path
 )
 
