@@ -12,6 +12,7 @@ DIR=${1:-~} # default to ~ if a directory isn't specified
 DIRNAME=`dirname "$0"`
 
 pushd $DIRNAME/.. # go up from scripts to the directory with the dotfiles
+cp -v zshenv $DIR/.zshenv
 cp -v profile $DIR/.profile
 ln -sf ~/.profile $DIR/.zprofile
 cp -v zlogout $DIR/.zlogout

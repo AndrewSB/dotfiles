@@ -17,34 +17,12 @@ fg() {
 
 [[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
-source ~/.zsh/functions/_load_nvm
-
-export GOPATH=$HOME/Developer/go
-
 #
 # Paths
 #
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
-
-# Set the the list of directories that cd searches.
-cdpath=(
-  ~/Developer/
-  $cdpath
-)
-
-# Set the list of directories that Zsh searches for programs.
-path=(
-  $HOME/.cargo/bin
-  $GOPATH/bin
-  $HOME/Library/Android/sdk/tools
-  $HOME/Library/Android/sdk/platform-tools
-  ~/.zsh/functions
-  /usr/local/{bin,sbin}
-  /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/ # for `airport`
-  $path
-)
 
 # load custom executable functions and aliases {{
 source ~/.zsh/functions/include # first bootstrap by including include 😋
@@ -54,32 +32,10 @@ for function in ~/.zsh/functions/*; do
     include $function
 done
 
+source ~/.zsh/functions/_load_nvm
+
 source ~/.git.alias
 # }}
-
-#
-# Less
-#
-
-# Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X and -F (exit if the content fits on one screen) to enable it.
-export LESS='-F -g -i -M -R -S -w -X -z-4'
-
-# Set the Less input preprocessor.
-# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-if (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
-fi
-
-#
-# Temporary Files
-#
-
-# Set TMPDIR if the variable is not set/empty or the directory doesn't exist
-if [[ -z "${TMPDIR}" ]]; then
-  export TMPDIR="/tmp/zsh-${UID}"
-fi
 
 if [[ ! -d "${TMPDIR}" ]]; then
   mkdir -m 700 "${TMPDIR}"
