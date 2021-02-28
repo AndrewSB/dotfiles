@@ -24,7 +24,7 @@ set +e
 
 brew_dependencies=(
 	"trash"
-	"scmpuff" "git-absorb" "gh"
+	"scmpuff" "git-absorb" "gh" "git-lfs"
 	"neovim"
 	"swiftlint"
 	"MisterTea/et/et"
@@ -35,7 +35,7 @@ cask_dependencies=(
 	"visual-studio-code" "sketch"
 	"protonvpn"
 	"vlc" "spotify"
-	"slack" "discord"
+	"slack" "discord" "microsoft-teams"
 	"google-chrome"
 	"lulu" "oversight")
 yes | can_i_brew_deps "${brew_dependencies[@]}"

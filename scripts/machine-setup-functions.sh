@@ -77,7 +77,7 @@ function can_i_cask_deps {
 	set -e
 	readonly cask_deps=${1:?"The dependencies must be specified."}
 	fire_echo "Going to install brew casks now: $(join_by , "${cask_deps[@]}")"
-	/usr/local/bin/brew cask install "${cask_deps[*]}"
+	/usr/local/bin/brew install --cask "${cask_deps[*]}"
 	set +e;
 }
 
