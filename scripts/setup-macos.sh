@@ -2,7 +2,7 @@
 
 # Adapted from https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh and https://mths.be/macos
 
-read -p "WARNING: this is probably going to close all your open applications. Do you want to omit the relaunching and close your processes by yourself? (y/n)" shouldkillall
+read -p "WARNING: this is probably going to close all your open applications. do you want the script to crash your apps (y/n)" shouldkillall
 case ${shouldkillall:0:1} in
 	y|Y )
 		CRASH=true
