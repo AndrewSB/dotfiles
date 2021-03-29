@@ -1,5 +1,8 @@
+# brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
+# aliases
 alias fuckwifi="networksetup -serairportpower airport off; networksetup -setairportpower airport on"
 alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`

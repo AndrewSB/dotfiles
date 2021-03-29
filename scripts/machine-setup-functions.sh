@@ -107,3 +107,23 @@ function can_i_gem() {
 		fi
 	done
 }
+
+function brew_launchd() {
+	PLIST=$(cat <<-END
+		<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+		<plist version="1.0">
+		    <dict>
+		        <key>Label</key>
+		        <string>local.restart</string>
+		        <key>Program</key>
+		        <string>brew update</string>
+			<key>StartInterval</key> 
+			<integer>86400</integer>
+		    </dict>
+		</plist>
+		END
+	)
+
+	echo $PLIST > ~/Library/LaunchAgents/tfw.andrew.brewupgrade.plist
+}
