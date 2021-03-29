@@ -45,12 +45,6 @@ cdpath=(
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/.cargo/bin
-  # M1 workarounds {
-  /opt/homebrew/bin
-  # for self-compiled `go` on Apple Silicon (brew go doesn't require this) instructions (https://gist.github.com/Dids/dbe6356377e2a0b0dc8eacb0101dc3a7)
-  /usr/local/opt/go/bin
-  $GOPATH/bin
-  # }
   $HOME/Library/Android/sdk/tools
   $HOME/Library/Android/sdk/platform-tools
   ~/.zsh/functions
