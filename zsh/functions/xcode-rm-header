@@ -1,0 +1,17 @@
+# from http://paulz.github.io/xcode/source/code/2015/12/12/remove-default-header-comment-in-xcode.html
+
+function remove_template() {
+	sudo find -E . -type f \
+		\( -regex '.*\.[chm]' -or -regex '.*\.swift' \) \
+		-exec sed -i '' '1,/^$/d' '{}' ';'
+}
+
+XCODE_CONTENTS_DIR=$(xcode-select -p)
+
+pushd "${XCODE_CONTENTS_DIR}/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates"
+remove_template
+popd
+
+pushd "${XCODE_CONTENTS_DIR}/Library/Xcode/Templates"
+remove_template
+popd
