@@ -1,8 +1,8 @@
-# Takes an optional argument of xcode version
-# Changes the active Xcode tools
+# Takes an optional argument of xcode app suffix
+# Changes the active Xcode command line tools
 # 
-# Example usage: `pick-xcode -beta` for the
-# Xcode-beta.app tools 
+# Example usage: `pick-xcode -beta` to select the 
+# /Applications/Xcode-beta.app bundle command line tools 
 
 pick-xcode() {
     sudo xcode-select -s /Applications/Xcode$@.app/Contents/Developer/
