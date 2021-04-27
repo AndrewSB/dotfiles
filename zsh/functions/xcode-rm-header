@@ -6,12 +6,15 @@ function remove_template() {
 		-exec sed -i '' '1,/^$/d' '{}' ';'
 }
 
-XCODE_CONTENTS_DIR=$(xcode-select -p)
+function xcode-rm-header() {
 
-pushd "${XCODE_CONTENTS_DIR}/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates"
-remove_template
-popd
+	XCODE_CONTENTS_DIR=$(xcode-select -p)
 
-pushd "${XCODE_CONTENTS_DIR}/Library/Xcode/Templates"
-remove_template
-popd
+	pushd "${XCODE_CONTENTS_DIR}/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates"
+	remove_template
+	popd
+
+	pushd "${XCODE_CONTENTS_DIR}/Library/Xcode/Templates"
+	remove_template
+	popd
+}
