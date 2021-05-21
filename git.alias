@@ -13,6 +13,7 @@ alias gdc='git diff --cached'
 alias gl='git pull' # overrides scmpuff's git log
 
 alias gp='git push'
+alias gpf='git push --force-with-lease'
 alias ghp='gh pr create'
 
 alias grc='git rebase --continue'
