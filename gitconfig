@@ -16,3 +16,6 @@
 [alias]
 	l = log --oneline --decorate --graph
 	d = diff
+
+[pull]
+	ff = only
