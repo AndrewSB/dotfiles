@@ -48,7 +48,8 @@ function can_i_brew() {
 	set -e
 	if ! which brew >/dev/null; then
 		fire_echo "You don't have homebrew, we're going to install it for you"
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
 	set +e
 }
