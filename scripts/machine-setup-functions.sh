@@ -56,10 +56,10 @@ function can_i_brew() {
 
 function can_i_brew_deps {
 	set -e
-	readonly brew_deps=${1:?"The dependencies must be specified."}
+	readonly brew_deps=${@:?"The dependencies must be specified."}
 	fire_echo "You have brew, we're going to install some packages"
 	fire_echo "Installing $(join_by , "${brew_deps[@]}")."
-	brew install "${brew_deps[@]}"
+	echo "${brew_deps[@]}" | xargs brew install
 	set +e;
 
 	fire_echo "Would you like to own the zsh/completion directory so compinit doesn't complain?"
@@ -76,9 +76,9 @@ function can_i_brew_deps {
 
 function can_i_cask_deps {
 	set -e
-	readonly cask_deps=${1:?"The dependencies must be specified."}
+	readonly cask_deps=${@:?"The dependencies must be specified."}
 	fire_echo "Going to install brew casks now: $(join_by , "${cask_deps[@]}")"
-	brew install --cask "${cask_deps[*]}"
+	echo "${cask_deps[@]}" | xargs brew install --cask
 	set +e;
 }
 

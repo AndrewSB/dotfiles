@@ -33,6 +33,7 @@ brew_dependencies=(
 	"mas")
 cask_dependencies=(
 	"visual-studio-code"
+	"linear-linear"
 	"protonvpn"
 	"vlc" "spotify"
 	"slack" "discord"
