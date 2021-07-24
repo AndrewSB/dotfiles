@@ -32,21 +32,14 @@ brew_dependencies=(
 	"watchman"
 	"mas")
 cask_dependencies=(
-	"visual-studio-code" "sketch"
+	"visual-studio-code"
 	"protonvpn"
 	"vlc" "spotify"
-	"slack" "discord" "microsoft-teams"
+	"slack" "discord"
 	"google-chrome"
 	"lulu" "oversight")
 yes | can_i_brew_deps "${brew_dependencies[@]}"
 can_i_cask_deps "${cask_dependencies[@]}"
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-# shellcheck source=/dev/null
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm install stable
-nvm alias default stable
 
 echo "about to download Xcode, everything else is done. this is going to take a while"
 mas_dependencies=(
