@@ -22,34 +22,7 @@ can_i_brew
 
 set +e
 
-brew_dependencies=(
-	"trash"
-	"scmpuff" "git-absorb" "gh" "git-lfs"
-	"neovim"
-	"swiftlint"
-	"MisterTea/et/et"
-	"go"
-	"watchman"
-	"mas")
-cask_dependencies=(
-	"visual-studio-code"
-	"linear-linear"
-	"protonvpn"
-	"vlc" "spotify"
-	"slack" "discord"
-	"google-chrome"
-	"lulu" "oversight")
-yes | can_i_brew_deps "${brew_dependencies[@]}"
-can_i_cask_deps "${cask_dependencies[@]}"
-
-echo "about to download Xcode, everything else is done. this is going to take a while"
-mas_dependencies=(
-        "1351639930" # Gifsky
-	"1284863847" # Unsplash Wallpapers
-	"1514817810" # Poolside FM
-	"497799835" # Xcode
-)
-mas install "${mas_dependencies[@]}"
+brew bundle
 
 # aka popd --all (https://unix.stackexchange.com/a/353361)
 pushd -0 && dirs -c
