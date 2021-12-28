@@ -2,13 +2,23 @@
 
 # runnable as `curl -L andrew.energy/newmac | bash`
 
+#
+# Current workflow
+# - create ssh key, upload to gh
+# - add ssh key to keychain
+# run script 
+# clone a bunch of repositories (might be nice to have a Working.bundle that can clone automatically
+# most painful: sign into all services
+
 pushd ~
 mkdir Developer
 
 xcode-select --install
+sudo xcodebuild -license accept
 
 # TODO: check for ~/.ssh/id_rsa, else run
 # ssh-keygen -t rsa -b 16384 -C "asbreckenridge@me.com"
+# ssh-add --apple-use-keychain ~/.ssh/id_rsa
 
 pushd ~/Developer
 git clone git@github.com:AndrewSB/dotfiles.git
