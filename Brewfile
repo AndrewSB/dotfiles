@@ -1,4 +1,5 @@
 brew "trash"
+brew "shellcheck"
 brew "scmpuff"
 brew "git-absorb"
 brew "gh"
