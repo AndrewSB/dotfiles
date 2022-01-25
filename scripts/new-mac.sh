@@ -16,12 +16,8 @@ mkdir Developer
 xcode-select --install
 sudo xcodebuild -license accept
 
-# TODO: check for ~/.ssh/id_rsa, else run
-# ssh-keygen -t rsa -b 16384 -C "asbreckenridge@me.com"
-# ssh-add --apple-use-keychain ~/.ssh/id_rsa
-
 pushd ~/Developer
-git clone git@github.com:AndrewSB/dotfiles.git
+git clone git://github.com/AndrewSB/dotfiles.git
 pushd dotfiles
 
 set -e
@@ -36,6 +32,14 @@ set +e
 
 source ~/.profile # so the newly installed brew comes into scope
 brew bundle
+
+
+if [ ! -f $HOME/.ssh/id_rsa ]; then;
+	ssh-keygen -t rsa -b 4096 -C "asbreckenridge@me.com"
+	ssh-add --apple-use-keychain ~/.ssh/id_rsa
+fi
+
+gh auth login
 
 # aka popd --all (https://unix.stackexchange.com/a/353361)
 pushd -0 && dirs -c

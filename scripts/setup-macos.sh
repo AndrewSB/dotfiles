@@ -2,7 +2,7 @@
 
 # Adapted from https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh and https://mths.be/macos
 
-read -p "WARNING: this is probably going to close all your open applications. do you want the script to crash your apps (y/n)" shouldkillall
+read -p "WARNING: this will close all open apps. do you want the script to crash your apps (y/n)" shouldkillall
 case ${shouldkillall:0:1} in
 	y|Y )
 		CRASH=true
@@ -62,7 +62,7 @@ defaults write -globalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
 # TODO: defaults write "Apple Global Domain" "_HIHideMenuBar" 1 doesn't seem to work on Mojave
 
 # Show battery percentage in menu bar
-defaults write com.apple.menuextra.battery ShowPercent YES
+# defaults write com.apple.menuextra.battery ShowPercent YES
 
 # Add bluetooth to  menu bar icons
 defaults write com.apple.systemuiserver menuExtras -array \
@@ -156,7 +156,7 @@ defaults write com.apple.dock showhidden -bool true
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
-defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock "persistent-apps" ""
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
@@ -193,6 +193,7 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
 
 # Make Safari’s search banners default to Contains instead of Starts With
 defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
