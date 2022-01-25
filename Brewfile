@@ -6,17 +6,17 @@ brew "gh"
 
 brew "neovim"
 
-brew "MisterTea/et/et"
 brew "watchman"
+brew "node"
 
 brew "mas"
 
-brew "node"
 
 tap "homebrew/cask"
 
 cask "visual-studio-code"
-# cask "linear-linear"
+cask "linear-linear"
+cask "figma"
 
 cask "protonvpn"
 
