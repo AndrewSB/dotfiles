@@ -42,6 +42,7 @@ cp -v inputrc $DIR/.inputrc
 
 cp -v hushlogin $DIR/.hushlogin
 
+mkdir -p $DIR/.ssh
 cp -v sshconfig $DIR/.ssh/config
 
 cp -v tmux.conf $DIR/.tmux.conf
