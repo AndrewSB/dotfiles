@@ -2,6 +2,9 @@
 	name = Andrew Breckenridge
 	email = asbreckenridge@me.com
 
+[init]
+	defaultBranchName = master
+
 [core]
 	whitespace = warn
 	excludesfile = ~/.global_gitignore
