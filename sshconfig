@@ -4,7 +4,7 @@ Host github.com
 	UseKeychain yes
 	IdentityFile ~/.ssh/id_ed25519
 	# Often, public wifi has Port 22 blocked. 443 is blocked less often
-	Port 443
+	# Port 443
 
 Host bigBoi
 	HostName 137.117.59.62
