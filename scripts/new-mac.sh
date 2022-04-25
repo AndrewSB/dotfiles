@@ -4,8 +4,6 @@
 
 #
 # Current workflow
-# - create ssh key, upload to gh
-# - add ssh key to keychain
 # run script 
 # clone a bunch of repositories (might be nice to have a Working.bundle that can clone automatically
 # most painful: sign into all services
@@ -16,8 +14,14 @@ mkdir Developer
 xcode-select --install
 sudo xcodebuild -license accept
 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew install gh
+gh auth login
+
 pushd ~/Developer
-git clone git://github.com/AndrewSB/dotfiles.git
+gh repo clone AndrewSB/dotfiles
 pushd dotfiles
 
 set -e
@@ -32,14 +36,6 @@ set +e
 
 source ~/.profile # so the newly installed brew comes into scope
 brew bundle
-
-
-if [ ! -f $HOME/.ssh/id_rsa ]; then;
-	ssh-keygen -t rsa -b 4096 -C "asbreckenridge@me.com"
-	ssh-add --apple-use-keychain ~/.ssh/id_rsa
-fi
-
-gh auth login
 
 # aka popd --all (https://unix.stackexchange.com/a/353361)
 pushd -0 && dirs -c

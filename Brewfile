@@ -11,6 +11,8 @@ brew "node"
 
 brew "mas"
 
+brew "aria2"
+brew "robotsandpencils/made/xcodes"
 
 tap "homebrew/cask"
 
