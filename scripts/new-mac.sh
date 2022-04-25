@@ -10,12 +10,13 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install gh
-gh auth login
+gh auth login --git-protocol ssh --web
+ssh-add --apple-use-keychain
 
 pushd ~
 mkdir Developer
-
 pushd ~/Developer
+
 gh repo clone AndrewSB/dotfiles
 pushd dotfiles
 
@@ -23,13 +24,9 @@ set -e
 
 yes n | ./scripts/setup-macos.sh
 ./scripts/copy-macos
-# shellcheck source=./machine-setup-functions.sh
-source scripts/machine-setup-functions.sh
-can_i_brew
 
 set +e
 
-source ~/.profile # so the newly installed brew comes into scope
 brew bundle
 
 # aka popd --all (https://unix.stackexchange.com/a/353361)
