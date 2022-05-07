@@ -14,6 +14,9 @@ alias gl='git pull' # overrides scmpuff's git log
 
 alias gp='git push'
 alias gpf='git push --force-with-lease'
+
 alias ghp='gh pr create'
+alias ghm='gh pr merge --merge --delete-branch'
+alias ghma='ghm --admin'
 
 alias grc='git rebase --continue'
