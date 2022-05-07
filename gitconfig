@@ -23,14 +23,14 @@
 [pull]
 	ff = only
 
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-	insteadOf = git://github.com/
-
-[url "ssh://git@gitlab.com/"]
-	insteadOf = https://gitlab.com/
-	insteadOf = git://gitlab.com/
-
-[url "ssh://git@bitbucket.org/"]
-	insteadOf = https://bitbucket.org/
-	insteadOf = git://bitbucket.org/
+# [url "ssh://git@github.com/"]
+#	insteadOf = https://github.com/
+#	insteadOf = git://github.com/
+#
+# [url "ssh://git@gitlab.com/"]
+#	insteadOf = https://gitlab.com/
+#	insteadOf = git://gitlab.com/
+#
+# [url "ssh://git@bitbucket.org/"]
+#	insteadOf = https://bitbucket.org/
+#	insteadOf = git://bitbucket.org/
