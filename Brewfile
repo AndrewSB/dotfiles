@@ -11,7 +11,6 @@ brew "watchman"
 brew "node"
 
 brew "aria2"
-brew "robotsandpencils/made/xcodes"
 
 brew "ffmpeg"
 
@@ -34,6 +33,8 @@ cask "discord"
 cask "microsoft-teams"
 
 cask "google-chrome"
+
+cask "xcodes"
 
 mas "Gifsky", id: 1351639930
 # mas "Unsplash Wallpapers", id: 1284863847
