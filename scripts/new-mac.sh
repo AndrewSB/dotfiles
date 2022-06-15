@@ -6,7 +6,7 @@
 # clone a bunch of repositories (might be nice to have a Working.bundle that can clone automatically
 # most painful: sign into all services in Safari with 2FAC
 
-/bin/bash -c INTERACTIVE=1 "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+INTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install gh
