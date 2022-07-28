@@ -1,3 +1,8 @@
+tap "homebrew/cask"
+cask "xcodes"
+brew "aria2"
+
+
 brew "trash"
 brew "shellcheck"
 brew "scmpuff"
@@ -10,11 +15,8 @@ brew "neovim"
 brew "watchman"
 brew "node"
 
-brew "aria2"
-
 brew "ffmpeg"
 
-tap "homebrew/cask"
 
 cask "visual-studio-code"
 cask "linear-linear"
@@ -33,8 +35,6 @@ cask "discord"
 cask "microsoft-teams"
 
 cask "google-chrome"
-
-cask "xcodes"
 
 mas "Gifsky", id: 1351639930
 # mas "Unsplash Wallpapers", id: 1284863847
