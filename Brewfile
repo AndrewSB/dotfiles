@@ -12,11 +12,13 @@ brew "gh"
 
 brew "neovim"
 
-brew "watchman"
+# brew "watchman"
 brew "node"
 
-brew "ffmpeg"
+# brew "ffmpeg"
 
+
+cask "raycast"
 
 cask "visual-studio-code"
 cask "linear-linear"
