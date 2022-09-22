@@ -25,6 +25,7 @@ cask "linear-linear"
 cask "figma"
 cask "sketch"
 
+cask "proxyman"
 cask "protonvpn"
 
 cask "vlc"
@@ -34,7 +35,6 @@ cask "notion"
 
 cask "slack"
 cask "discord"
-cask "microsoft-teams"
 
 cask "google-chrome"
 
