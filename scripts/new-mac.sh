@@ -11,7 +11,8 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install gh
-gh auth login --git-protocol ssh --web
+ssh-keygen -t ed25519 -C "asbreckenridge@me.com"
+gh auth login --git-protocol ssh --web -s admin:public_key
 ssh-add --apple-use-keychain
 
 pushd ~
