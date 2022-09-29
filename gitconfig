@@ -19,6 +19,7 @@
 [alias]
 	l = log --oneline --decorate --graph
 	d = diff
+        du = "!./o; git checkout develop; git pull"
 
 [pull]
 	ff = only
