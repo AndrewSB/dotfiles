@@ -9,43 +9,43 @@ set -e # exit if we encounter an error
 
 DIR=${1:-~} # default to ~ if a directory isn't specified
 
-DIRNAME=`dirname "$0"`
+DIRNAME=$(dirname "$0")
 
-pushd $DIRNAME/.. # go up from scripts to the directory with the dotfiles
-cp -v zshenv $DIR/.zshenv
-cp -v profile $DIR/.profile
-ln -sf ~/.profile $DIR/.zprofile
-cp -v zlogout $DIR/.zlogout
-cp -v zshrc $DIR/.zshrc
-mkdir -p $DIR/.zsh/functions
-cp -vR zsh/functions/* $DIR/.zsh/functions
-mkdir -p $DIR/.zim/modules/prompt/themes
-cp wave.zsh-theme $DIR/.zim/modules/prompt/themes/wave.zsh-theme
+pushd "$DIRNAME"/.. # go up from script/ to the directory with the dotfiles
+cp -v zshenv "$DIR"/.zshenv
+cp -v profile "$DIR"/.profile
+ln -sf ~/.profile "$DIR"/.zprofile
+cp -v zlogout "$DIR"/.zlogout
+cp -v zshrc "$DIR"/.zshrc
+mkdir -p "$DIR"/.zsh/functions
+cp -vR zsh/functions/* "$DIR"/.zsh/functions
+mkdir -p "$DIR"/.zim/modules/prompt/themes
+cp wave.zsh-theme "$DIR"/.zim/modules/prompt/themes/wave.zsh-theme
 
-cp -v global_gitignore $DIR/.global_gitignore
+cp -v global_gitignore "$DIR"/.global_gitignore
 
-cp -v git.alias $DIR/.git.alias
+cp -v git.alias "$DIR"/.git.alias
 
-cp -v gitconfig $DIR/.gitconfig
+cp -v gitconfig "$DIR"/.gitconfig
 
-cp -v hgrc $DIR/.hgrc
+cp -v hgrc "$DIR"/.hgrc
 
-mkdir -p $DIR/.config/nvim
-cp -v init.vim $DIR/.config/nvim/init.vim
+mkdir -p "$DIR"/.config/nvim
+cp -v init.vim "$DIR"/.config/nvim/init.vim
 
-mkdir -p $DIR/.config/gh
-cp -v gh_config.yml $DIR/.config/gh/config.yml
+mkdir -p "$DIR"/.config/gh
+cp -v gh_config.yml "$DIR"/.config/gh/config.yml
 
-cp -v screenrc $DIR/.screenrc
+cp -v screenrc "$DIR"/.screenrc
 
-cp -v inputrc $DIR/.inputrc
+cp -v inputrc "$DIR"/.inputrc
 
-cp -v hushlogin $DIR/.hushlogin
+cp -v hushlogin "$DIR"/.hushlogin
 
-mkdir -p $DIR/.ssh
-cp -v sshconfig $DIR/.ssh/config
+mkdir -p "$DIR"/.ssh
+cp -v sshconfig "$DIR"/.ssh/config
 
-cp -v tmux.conf $DIR/.tmux.conf
+cp -v tmux.conf "$DIR"/.tmux.conf
 
 popd
 

@@ -5,16 +5,19 @@ something like
 
 ![shell gif](https://media.giphy.com/media/pyAYkeVFs0A2pzSaL6/giphy.gif)
 
-`scripts/pihole-install.sh` installs pihole in a local Docker container and sets
+`script/pihole-install.sh` installs pihole in a local Docker container and sets
 the machine's DNS server to that container's process
 
-`scripts/setup-macos.sh` is inspired from https://mths.be/macos to set macOS
+`script/setup-macos.sh` is inspired from https://mths.be/macos to set macOS
 system preferences to settings I enjoy
 
-`scripts/ensure_machine_setup.sh` sets up a new macOS machine by installing
+`script/bootstrap.sh` is for Github codespaces to setup itself (https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles)
+
+`script/ensure_machine_setup.sh` sets up a new macOS machine by installing
 things like Xcode, Homebrew, rvm, and some {brew, brew cask}s
 
-# `scripts/setup-macos.sh` TODO: 
+# `script/setup-macos.sh` TODO:
+
 2. Hide menubar
-2. Enable zoom
-2. Enable iMessage iCloud Sync
+3. Enable zoom
+4. turn off iCloud mail

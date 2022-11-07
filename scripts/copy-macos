@@ -2,18 +2,18 @@
 
 set -e # exit if we encounter an error
 
-DIRNAME=`dirname "$0"`
+DIRNAME=$(dirname "$0")
 DIR=${1:-~} # default to ~ if a directory isn't specified
 
-pushd $DIRNAME
+pushd "$DIRNAME"
 ./copy-shared
 popd
 
 # macos specific \/
 
-pushd $DIRNAME/.. # go up from scripts
+pushd "$DIRNAME"/.. # go up from script/
 
-cp -v profile.macos $DIR/.profile.macos
+cp -v profile.macos "$DIR"/.profile.macos
 
 popd
 

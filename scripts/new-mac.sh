@@ -24,8 +24,8 @@ pushd dotfiles
 
 set -e
 
-yes n | ./scripts/setup-macos.sh
-./scripts/copy-macos
+yes n | ./script/setup-macos.sh
+./script/copy-macos
 
 set +e
 
