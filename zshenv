@@ -26,7 +26,7 @@ fi
 
 #
 # Misc
-# 
+#
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -35,6 +35,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #
 
 export GOPATH=$HOME/Developer/go
+export PIP_INSTALL_PATH=$HOME/Library/Python/3.9/bin
 
 # Set the the list of directories that cd searches.
 cdpath=(
@@ -50,6 +51,7 @@ path=(
   ~/.zsh/functions
   /usr/local/{bin,sbin}
   /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/ # for `airport`
+  $PIP_INSTALL_PATH
   $path
 )
 
