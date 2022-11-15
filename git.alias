@@ -5,6 +5,7 @@ alias gaa='git add --all'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --no-edit --amend'
+alias gca='auto-commit --force --review'
 
 alias gco='git checkout'
 
@@ -16,7 +17,7 @@ alias gp='git push'
 alias gpf='git push --force-with-lease'
 
 alias ghp='gh pr create'
+alias ghpa='git push && gh pr create -f && gh pr merge --auto --delete-branch --merge'
 alias ghm='gh pr merge --merge --delete-branch'
-alias ghma='ghm --admin'
 
 alias grc='git rebase --continue'
