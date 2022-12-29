@@ -7,4 +7,4 @@ alias fuckwifi="networksetup -serairportpower airport off; networksetup -setairp
 alias networkpopup="open /System/Library/CoreServices/Captive\ Network\ Assistant.app"
 alias rm="trash" # lets never actually rm, that scares me. To actually rm, run `\rm`
 alias fixcompinit="compaudit | xargs chmod g-w,o-w" # https://stackoverflow.com/a/61761097
-alias jj="shortcuts run \"open reclip terminals\""
+alias jj="shortcuts run \"open job terminals\""

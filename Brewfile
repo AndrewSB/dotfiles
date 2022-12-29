@@ -17,6 +17,7 @@ brew "node"
 
 # brew "ffmpeg"
 
+brew "zfz"
 
 cask "raycast"
 
