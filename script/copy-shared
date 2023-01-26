@@ -23,10 +23,10 @@ mkdir -p "$DIR"/.zim/modules/prompt/themes
 cp wave.zsh-theme "$DIR"/.zim/modules/prompt/themes/wave.zsh-theme
 
 cp -v global_gitignore "$DIR"/.global_gitignore
-
 cp -v git.alias "$DIR"/.git.alias
-
 cp -v gitconfig "$DIR"/.gitconfig
+mkdir -p "$DIR"/.githooks
+cp -vR githooks/* "$DIR"/.githooks
 
 cp -v hgrc "$DIR"/.hgrc
 

@@ -8,6 +8,7 @@
 [core]
 	whitespace = warn
 	excludesfile = ~/.global_gitignore
+        hooksPath = ~/.githooks
 
 [credential]
 	helper = osxkeychain
