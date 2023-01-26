@@ -1,5 +1,4 @@
-tap "homebrew/cask"
-cask "xcodes"
+cask "homebrew/cask/xcodes"
 brew "aria2"
 
 
@@ -12,33 +11,29 @@ brew "gh"
 
 brew "neovim"
 
-# brew "watchman"
+brew "watchman"
 brew "node"
+brew "oven-sh/bun/bun"
 
-# brew "ffmpeg"
+# brew "ffmpeg" # just takes too long, install on-demand
 
 brew "zfz"
+
+brew "swiftformat"
 
 cask "raycast"
 
 cask "visual-studio-code"
-cask "linear-linear"
-cask "figma"
-cask "sketch"
 
 cask "proxyman"
 cask "protonvpn"
 
 cask "vlc"
-cask "spotify"
 
-cask "notion"
+cask "arc"
 
-cask "slack"
-cask "discord"
-
-cask "google-chrome"
+cask "kindavim"
 
 mas "Gifsky", id: 1351639930
-# mas "Unsplash Wallpapers", id: 1284863847
 mas "Poolside FM", id: 1514817810
+mas "RocketSim for Xcode Simulator", id: 1504940162
