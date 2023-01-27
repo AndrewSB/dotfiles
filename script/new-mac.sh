@@ -14,6 +14,20 @@ touch ~/.mackup.cfg
 echo "[storage]" >> ~/.mackup.cfg
 echo "engine = icloud" >> ~/.mackup.cfg
 
-# forces iCloud Drive to sync the Mackup folder
-
 mackup restore -f
+
+brew install gh
+
+mkdir Developer
+pushd ~/Developer || exit
+
+mkdir job
+
+gh repo clone AndrewSB/dotfiles
+pushd dotfiles || exit
+
+set -e
+
+brew bundle
+
+xcodes install --latest

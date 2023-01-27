@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# retired on 2023-01-25 in favor of using mackup more
+
 # runnable as `curl -L andrew.energy/newmac | bash`
 
 # Current workflow
