@@ -1,7 +1,6 @@
 cask "homebrew/cask/xcodes"
 brew "aria2"
 
-
 brew "trash"
 brew "shellcheck"
 brew "scmpuff"
@@ -17,8 +16,6 @@ brew "oven-sh/bun/bun"
 
 # brew "ffmpeg" # just takes too long, install on-demand
 
-brew "zfz"
-
 brew "swiftformat"
 
 cask "raycast"
@@ -27,12 +24,13 @@ cask "visual-studio-code"
 
 cask "proxyman"
 cask "protonvpn"
+cask "cloudflare-warp"
 
 cask "vlc"
 
 cask "arc"
 
-cask "kindavim"
+cask "splice"
 
 mas "Gifsky", id: 1351639930
 mas "Poolside FM", id: 1514817810
