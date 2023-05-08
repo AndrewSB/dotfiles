@@ -25,12 +25,16 @@ cask "visual-studio-code"
 cask "proxyman"
 cask "protonvpn"
 cask "cloudflare-warp"
+cask "1password"
+cask "rewind"
 
 cask "vlc"
 
 cask "arc"
 
 cask "splice"
+
+cask "rustdesk"
 
 mas "Gifsky", id: 1351639930
 mas "Poolside FM", id: 1514817810
