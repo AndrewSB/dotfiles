@@ -10,6 +10,7 @@ brew install mackup
 # creates ~/.mackup.cfg and writes the following to it:
 # [storage]
 # engine = icloud
+rm ~/.mackup.cfg
 touch ~/.mackup.cfg
 echo "[storage]" >> ~/.mackup.cfg
 echo "engine = icloud" >> ~/.mackup.cfg

@@ -25,8 +25,10 @@ cask "visual-studio-code"
 cask "proxyman"
 cask "protonvpn"
 cask "cloudflare-warp"
+
 cask "1password"
 cask "rewind"
+cask "lunar"
 
 cask "vlc"
 
