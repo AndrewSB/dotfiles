@@ -1,3 +1,4 @@
+brew "xcodesorg/made/xcodes"
 cask "homebrew/cask/xcodes"
 brew "aria2"
 
@@ -12,13 +13,12 @@ brew "neovim"
 
 brew "watchman"
 brew "node"
-brew "oven-sh/bun/bun"
 
 # brew "ffmpeg" # just takes too long, install on-demand
 
 brew "swiftformat"
 
-cask "raycast"
+# cask "raycast"
 
 cask "visual-studio-code"
 
@@ -36,8 +36,9 @@ cask "arc"
 
 cask "splice"
 
-cask "rustdesk"
+cask "beeper"
+
+# cask "rustdesk"
 
 mas "Gifsky", id: 1351639930
-mas "Poolside FM", id: 1514817810
 mas "RocketSim for Xcode Simulator", id: 1504940162
