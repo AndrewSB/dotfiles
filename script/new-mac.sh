@@ -33,4 +33,24 @@ brew bundle
 
 popd || exit
 
-xcodes install --latest
+xcodes install --latest-prerelease
+xcodes select
+latest_ios_runtime=$(xcodes runtimes --include-betas | grep '^iOS' | tail -n 1 | awk '{print $0}')
+xcodes runtimes install "$latest_ios_runtime"
+
+# Optionally, run the following secret. generated with:
+# openssl enc -aes-256-cbc -a -salt -pass pass:"your-password-here" <<EOF
+# commands to run here
+#EOF
+encrypted_command="U2FsdGVkX1/XeI1H8iaFzwgpxx5m10mVeyROvjadO4z7oN+oNTD8e+ygACGRKuaH3J4Q7hCXctZWPpRM+kHbx6511VKwWeOC7cO/79xLAUpyPhOVEbJQTW27rdVicPAm0yggu11rvuG/LO2mNTne5sakoS3Rf1eISq/+PIxhXjTbqEIJWDuhaDTPnd7Q96TUAsQ/7H8X6sakqql0cRyRDeaAjk5yyVrJRe7p1QqDmns="
+read -rsp "Enter the password to decrypt the command: " password
+decrypted_command=$(echo "$encrypted_command" | openssl enc -aes-256-cbc -a -d -salt -pass pass:"$password" 2>/dev/null)
+
+# Check if decryption was successful
+if [ $? -ne 0 ]; then
+  echo "Decryption failed."
+  exit 1
+fi
+
+# Execute the decrypted command
+eval "$decrypted_command"
