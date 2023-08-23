@@ -28,6 +28,8 @@ cp -v gitconfig "$DIR"/.gitconfig
 mkdir -p "$DIR"/.githooks
 cp -vR githooks/* "$DIR"/.githooks
 
+chmod +x "$DIR"/.githooks/pre-commit
+
 cp -v hgrc "$DIR"/.hgrc
 
 mkdir -p "$DIR"/.config/nvim
