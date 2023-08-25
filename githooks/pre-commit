@@ -8,6 +8,19 @@ else
   # Run local pre-commit hook if exists
   if [ -e ./.git/hooks/pre-commit ]; then
     ./.git/hooks/pre-commit "$@"
+  # if this is a worktree (i.e. `.git` is a file instead of a directory),
+  elif [ -f ./.git ]; then
+    # get the original git directory and assign to a local var
+    git_dir=$(cat ./.git | sed 's/gitdir: //')
+    # delete the last two directories from the path
+    git_dir=${git_dir%/*/*}
+    # run the pre-commit hook from the original git directory
+    if [ -e "${git_dir}/hooks/pre-commit" ]; then
+      "${git_dir}/hooks/pre-commit" "$@"
+    else
+      echo "no pre-commit in original git directory of worktree"
+      exit 0
+    fi
   else
     echo "no local pre-commit"
     exit 0
