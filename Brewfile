@@ -42,3 +42,4 @@ cask "beeper"
 
 mas "Gifsky", id: 1351639930
 mas "RocketSim for Xcode Simulator", id: 1504940162
+mas "Tailscale", id: 1475387142
