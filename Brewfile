@@ -1,4 +1,3 @@
-brew "xcodesorg/made/xcodes"
 cask "homebrew/cask/xcodes"
 brew "aria2"
 
@@ -37,6 +36,7 @@ cask "arc"
 cask "splice"
 
 cask "beeper"
+brew "aaronraimist/tap/gomuks"
 
 # cask "rustdesk"
 
