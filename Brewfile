@@ -12,13 +12,13 @@ brew "neovim"
 
 brew "watchman"
 brew "node"
+brew "pyenv"
 
 # brew "ffmpeg" # just takes too long, install on-demand
 
 brew "swiftformat"
 
-# cask "raycast"
-
+# cask "sf-symbols"
 cask "visual-studio-code"
 
 cask "proxyman"
@@ -36,7 +36,6 @@ cask "arc"
 cask "splice"
 
 cask "beeper"
-brew "aaronraimist/tap/gomuks"
 
 # cask "rustdesk"
 
