@@ -16,7 +16,13 @@ alias gl='git pull' # overrides scmpuff's git log
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 
-alias ghp='gh pr create --reviewer reclipapp/ios'
+ghp() {
+  if pwd | grep -q 'job' || pwd | grep -q 'reclip'; then
+    gh pr create --reviewer reclipapp/ios "$@"
+  else
+    gh pr create "$@"
+  fi
+}
 alias ghpa='ghp -f && gh pr merge --auto --delete-branch --merge'
 alias ghm='gh pr merge --merge --delete-branch'
 
