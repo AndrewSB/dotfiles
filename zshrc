@@ -40,7 +40,7 @@ source ~/.git.alias
 if [[ ! -d "${TMPDIR}" ]]; then
   mkdir -m 700 "${TMPDIR}"
 fi
- 
+
 #
 # History Settings
 #
@@ -90,7 +90,7 @@ colors
 # ... enable colored output from ls, etc
 export CLICOLOR=1
 
-# Theme it up 
+# Theme it up
 source ~/.zim/modules/prompt/themes/wave.zsh-theme
 
 #
@@ -103,3 +103,14 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+# bun completions
+[ -s "/Users/asb/.bun/_bun" ] && source "/Users/asb/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+# Created by `pipx` on 2024-06-03 04:15:09
+export PATH="$PATH:/Users/asb/.local/bin"
