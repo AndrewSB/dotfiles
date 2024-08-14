@@ -17,6 +17,7 @@ brew "pyenv"
 # brew "ffmpeg" # just takes too long, install on-demand
 
 brew "swiftformat"
+brew "swiftgen"
 
 # cask "sf-symbols"
 cask "visual-studio-code"
@@ -32,6 +33,8 @@ cask "lunar"
 cask "vlc"
 
 cask "arc"
+
+cask "chatgpt"
 
 cask "splice"
 
