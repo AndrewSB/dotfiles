@@ -21,10 +21,12 @@ brew "mockolo"
 
 brew "swiftformat"
 brew "swiftgen"
-
+brew "xcodes"
+cask "homebrew/cask/xcodes"
 cask "sf-symbols"
-cask "visual-studio-code"
 cask "copilot-for-xcode"
+
+cask "visual-studio-code"
 
 cask "proxyman"
 cask "protonvpn"
@@ -39,7 +41,6 @@ cask "arc"
 
 cask "chatgpt"
 
-cask "homebrew/cask/xcodes"
 
 mas "Gifsky", id: 1351639930
 mas "RocketSim for Xcode Simulator", id: 1504940162

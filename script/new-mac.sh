@@ -33,9 +33,9 @@ brew bundle
 
 popd || exit
 
-xcodes install --latest-prerelease
+XCODES_USERNAME="asbreckenridge@me.com" xcodes install --latest-prerelease
 xcodes select
-latest_ios_runtime=$(xcodes runtimes --include-betas | grep '^iOS' | tail -n 1 | awk '{print $0}')
+latest_ios_runtime=$(xcodes runtimes | grep '^iOS' | tail -n 1 | awk '{print $0}')
 xcodes runtimes install "$latest_ios_runtime"
 
 # Optionally, run the following secret. generated with:
