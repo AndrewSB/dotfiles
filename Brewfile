@@ -1,4 +1,3 @@
-cask "homebrew/cask/xcodes"
 brew "aria2"
 
 brew "trash"
@@ -12,19 +11,23 @@ brew "neovim"
 
 brew "watchman"
 brew "node"
-brew "pyenv"
 
-# brew "ffmpeg" # just takes too long, install on-demand
+brew "pyenv"
+brew "pipx"
+
+brew "llm"
+
+brew "mockolo"
 
 brew "swiftformat"
 brew "swiftgen"
 
-# cask "sf-symbols"
+cask "sf-symbols"
 cask "visual-studio-code"
+cask "copilot-for-xcode"
 
 cask "proxyman"
 cask "protonvpn"
-cask "cloudflare-warp"
 
 cask "1password"
 cask "rewind"
@@ -36,11 +39,7 @@ cask "arc"
 
 cask "chatgpt"
 
-cask "splice"
-
-cask "beeper"
-
-# cask "rustdesk"
+cask "homebrew/cask/xcodes"
 
 mas "Gifsky", id: 1351639930
 mas "RocketSim for Xcode Simulator", id: 1504940162
