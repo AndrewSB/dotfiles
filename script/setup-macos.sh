@@ -2,7 +2,7 @@
 
 # Adapted from https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh and https://mths.be/macos
 
-read -p "WARNING: this will close all open apps. do you want the script to crash your apps (y/n)" shouldkillall
+read -rp "WARNING: this will close all open apps. do you want the script to crash your apps (y/n)" shouldkillall
 case ${shouldkillall:0:1} in
 	y|Y )
 		CRASH=true
@@ -244,8 +244,8 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ###############################################################################
 
 # Set default window as Large Font.terminal
-DIRNAME=`dirname "$0"`
-open $DIRNAME/../Large\ Font.terminal
+DIRNAME=$(dirname "$0")
+open "$DIRNAME"/../Large\ Font.terminal
 defaults write com.apple.terminal "Default Window Settings" "Large Font"
 defaults write com.apple.terminal "Startup Window Settings" "Large Font"
 

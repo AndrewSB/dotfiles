@@ -13,7 +13,8 @@ brew install mackup
 # creates ~/.mackup.cfg and writes the following to it:
 # [storage]
 # engine = icloud
-rm "$HOME/.mackup.cfg"
+rm -f "$HOME/.mackup.cfg"
+touch "$HOME/.mackup.cfg"
 echo "[storage]" > "$HOME/.mackup.cfg"
 echo "engine = icloud" >> "$HOME/.mackup.cfg"
 
@@ -33,10 +34,10 @@ brew bundle
 
 popd || exit
 
-XCODES_USERNAME="asbreckenridge@me.com" xcodes install --latest-prerelease
-xcodes select
-latest_ios_runtime=$(xcodes runtimes | grep '^iOS' | tail -n 1 | awk '{print $0}')
-xcodes runtimes install "$latest_ios_runtime"
+# XCODES_USERNAME="asbreckenridge@me.com" xcodes install --latest-prerelease
+# xcodes select
+# latest_ios_runtime=$(xcodes runtimes | grep '^iOS' | tail -n 1 | awk '{print $0}')
+# xcodes runtimes install "$latest_ios_runtime"
 
 # Optionally, run the following secret. generated with:
 # openssl enc -aes-256-cbc -pbkdf2 -a -salt -pass pass:"your-password-here" <<EOF
