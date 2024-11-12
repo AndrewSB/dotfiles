@@ -7,8 +7,9 @@ sudo echo
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv)" || eval "$(/usr/local/bin/brew shellenv)"
 
-# Install Mackup
-brew install mackup
+# brew install ____ sometimes will read the rest of the file stdin, instead of executing it
+# so we prefix with `dummy command &&` so it continues on after brew's installed the package
+echo "" && brew install mackup
 
 # creates ~/.mackup.cfg and writes the following to it:
 # [storage]
@@ -20,7 +21,7 @@ echo "engine = icloud" >> "$HOME/.mackup.cfg"
 
 mackup restore -f
 
-brew install gh
+echo "" && brew install gh
 
 mkdir Developer
 pushd ~/Developer || exit
@@ -30,9 +31,9 @@ pushd dotfiles || exit
 
 set -e
 
-brew bundle
+echo "" && brew bundle
 
-popd || exit
+popd
 
 # XCODES_USERNAME="asbreckenridge@me.com" xcodes install --latest-prerelease
 # xcodes select
