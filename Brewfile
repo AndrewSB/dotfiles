@@ -11,6 +11,7 @@ brew "neovim"
 
 brew "watchman"
 brew "node"
+brew "stripe"
 
 brew "pyenv"
 brew "pipx"
@@ -24,24 +25,26 @@ brew "swiftgen"
 brew "xcodes"
 cask "homebrew/cask/xcodes"
 cask "sf-symbols"
-cask "copilot-for-xcode"
+cask "github-copilot-for-xcode"
 
 cask "visual-studio-code"
+cask "cursor"
 
 cask "proxyman"
 cask "protonvpn"
 
 cask "1password"
 cask "rewind"
-cask "lunar"
+cask "monitorcontrol"
 
 cask "vlc"
 
 cask "arc"
 
 cask "chatgpt"
-
+cask "claude"
 
 mas "Gifsky", id: 1351639930
 mas "RocketSim for Xcode Simulator", id: 1504940162
 mas "Tailscale", id: 1475387142
+
