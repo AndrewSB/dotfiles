@@ -25,16 +25,16 @@ fg() {
 typeset -gU cdpath fpath mailpath path
 
 # load custom executable functions and aliases {{
-source ~/.zsh/functions/include # first bootstrap by including include 😋
+source $HOME/.zsh/functions/include # first bootstrap by including include 😋
 
 # the include all the .zsh/functions
-for function in ~/.zsh/functions/*; do
+for function in $HOME/.zsh/functions/*; do
     include $function
 done
 
-source ~/.zsh/functions/_load_nvm
+source $HOME/.zsh/functions/_load_nvm
 
-source ~/.git.alias
+source $HOME/.git.alias
 # }}
 
 if [[ ! -d "${TMPDIR}" ]]; then
@@ -45,12 +45,7 @@ fi
 # History Settings
 #
 setopt sharehistory
-if [ -d "$HOME/Documents" ]; then
-	HISTFILE=~/Documents/zhistory # Store history in iCloud Drive so we preserve across machines
-else
-	echo "~/Documents doesn't exist, writing to ~/.zhistory"
-	HISTFILE=~/.zhistory
-fi
+HISTFILE=$HOME/.zhistory
 HISTSIZE=9999999
 SAVEHIST=9999999
 setopt appendhistory
@@ -114,3 +109,11 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # Created by `pipx` on 2024-06-03 04:15:09
 export PATH="$PATH:/Users/asb/.local/bin"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"

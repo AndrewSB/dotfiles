@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "i"
+
+if [ -e ./.git/hooks/pre-push ]; then
+  ./.git/hooks/pre-push "$@"
+fi
