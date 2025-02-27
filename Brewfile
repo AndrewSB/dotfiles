@@ -35,7 +35,6 @@ cask "cursor"
 cask "proxyman"
 cask "protonvpn"
 
-cask "1password"
 cask "rewind"
 cask "monitorcontrol"
 
