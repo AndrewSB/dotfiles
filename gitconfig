@@ -1,47 +1,47 @@
 [user]
 	name = Andrew Breckenridge
 	email = asbreckenridge@me.com
-
-[init]
-	defaultBranchName = master
-
+[column]
+	ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
 [core]
 	whitespace = warn
 	excludesfile = ~/.global_gitignore
         hooksPath = ~/.githooks
-
 [credential]
 	helper = osxkeychain
-
-[merge "mergepbx"]
-        name = Xcode project files merger
-        driver = mergepbx %O %A %B
-
 [alias]
 	l = log --oneline --decorate --graph
 	d = diff
-        du = "!./o; git checkout develop; git pull"
-
 [pull]
 	ff = only
-
-# [url "ssh://git@github.com/"]
-#	insteadOf = https://github.com/
-#	insteadOf = git://github.com/
-#
-# [url "ssh://git@gitlab.com/"]
-#	insteadOf = https://gitlab.com/
-#	insteadOf = git://gitlab.com/
-#
-# [url "ssh://git@bitbucket.org/"]
-#	insteadOf = https://bitbucket.org/
-#	insteadOf = git://bitbucket.org/
-
+	rebase = true
+[push]
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
-[credential "https://dev.azure.com"]
-	useHttpPath = true
+[help]
+        autocorrect = prompt
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
+[merge]
+	conflictstyle = zdiff3

@@ -5,11 +5,13 @@ alias gaa='git add --all'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --no-edit --amend'
-alias gca='auto-commit --force --review'
+alias gcp!='gaa && gc! && gpf'
 
 alias gco='git checkout'
 
 alias gdc='git diff --cached'
+
+alias grc='git rebase --continue'
 
 alias gl='git pull' # overrides scmpuff's git log
 
@@ -26,4 +28,3 @@ ghp() {
 alias ghpa='ghp -f && gh pr merge --auto --delete-branch --merge'
 alias ghm='gh pr merge --merge --delete-branch'
 
-alias grc='git rebase --continue'
