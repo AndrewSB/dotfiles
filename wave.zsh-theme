@@ -47,10 +47,6 @@ function prompt_wave_setup {
 
 	add-zsh-hook precmd prompt_wave_precmd # Adds hook for calling prompt_waveprecmd before each command
 
-	# auto ls on empty line
-	zle -N accept-line auto_ls
-	zle -N other-widget auto_ls
-
 	local wave_or_explode="%(?:%{$fg_bold[green]%}👋:%{$fg_bold[red]%}💥)"
 	SPACES_AFTER_EMOJI=" "
 
