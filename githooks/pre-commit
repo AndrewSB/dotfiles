@@ -1,27 +1,31 @@
 #!/bin/sh
 
-if git diff --cached --diff-filter=ACMR | grep -c "@nocommit"; then
+if git diff --cached --diff-filter=ACMR | grep -c "@nocommit" > /dev/null; then
   # print the files that contain nocommit, including file name and the lines before and after the nocommit
   git diff -U --cached --diff-filter=ACMR | grep -B 1 -A 1 "@nocommit"
   echo "Commit aborted. Remove @nocommit from the files above to continue."
   exit 1
 else
-  # Run local pre-commit hook if exists
-  if [ -e ./.git/hooks/pre-commit ]; then
-    ./.git/hooks/pre-commit "$@"
-  # if this is a worktree (i.e. `.git` is a file instead of a directory),
-  elif [ -f ./.git ]; then
-    # get the original git directory and assign to a local var
-    git_dir=$(cat ./.git | sed 's/gitdir: //')
-    # delete the last two directories from the path
-    git_dir=${git_dir%/*/*}
-    # run the pre-commit hook from the original git directory
-    if [ -e "${git_dir}/hooks/pre-commit" ]; then
-      "${git_dir}/hooks/pre-commit" "$@"
-    else
-      exit 0
-    fi
+  # Find repository-specific hooks directory by using GIT_CEILING_DIRECTORIES
+  # This forces Git to look only within the current repository
+  repo_root=$(git rev-parse --show-toplevel)
+  
+  # Get the repository-specific hooks path directly
+  if [ -d "${repo_root}/.git" ]; then
+    # Regular repository
+    hooks_dir="${repo_root}/.git/hooks"
+  elif [ -f "${repo_root}/.git" ]; then
+    # Worktree
+    gitdir=$(sed 's/gitdir: //' < "${repo_root}/.git")
+    hooks_dir="${gitdir}/hooks"
   else
     exit 0
+  fi
+  
+  # Run the repository-specific pre-commit hook if it exists and is executable
+  if [ -x "${hooks_dir}/pre-commit" ]; then
+   "${hooks_dir}/pre-commit" "$@"
+  else
+   exit 0
   fi
 fi
