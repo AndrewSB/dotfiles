@@ -45,3 +45,6 @@
         updateRefs = true
 [merge]
 	conflictstyle = zdiff3
+
+[http "https://git.c2p.facebook.net"]
+  sslCert = /var/facebook/credentials/asb/x509/asb.pem
