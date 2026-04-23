@@ -1,28 +1,9 @@
 [ui]
 username = Andrew Breckenridge <asb@fb.com>
-merge = :merge
-
-[amend]
-autorestack=always
-
-[extensions]
-commitcloud =
-
-[remotefilelog]
-pullprefetch = fbobjc/stable
-backgroundprefetch = True
-# prefetches the stack I'm on so I can commit offline
-bgprefetchrevs = bottom^::top 
-
-[hint]
-ack = hint-ack sl-short-headers
 
 [committemplate]
-reviewers = libra_ios
 fbtags = '#accept2ship'
 
-[alias]
-rebasedrafts = rebase -s 'draft()'
-morning = !$HG pull && $HG rebasedrafts $1 -d remote/fbobjc/stable && $HG ssl
-mr = !$HG resolve --mark --all && $HG rebase --continue
-p = pull
+[isl]
+submitAsDraft = true
+render-compact = false
