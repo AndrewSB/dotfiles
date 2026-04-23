@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# A version of the copy script that copies much much less for machines I want
-# to have more vanilla/am only using for a little while.
-#
-# Basically just uses zsh instead of zim
+# Copies dotfiles to a target directory (defaults to ~).
+# Safe to run repeatedly — overwrites existing files.
 
 set -e # exit if we encounter an error
 
