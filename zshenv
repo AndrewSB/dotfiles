@@ -78,7 +78,7 @@ fi
 if [[ -z "${TMPDIR}" ]]; then
   export TMPDIR="/tmp/zsh-${UID}"
 fi
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 export PARA_MODE="local"
 export PARA_ROOT="$HOME/Library/CloudStorage/GoogleDrive-asb@meta.com/My Drive/para"
