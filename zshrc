@@ -114,18 +114,4 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. "$HOME/.atuin/bin/env"
-
-eval "$(atuin init zsh)"
-
-# auto_ls on empty Enter, registered after atuin to avoid widget conflicts
-_wave_accept_line() {
-    if [[ $#BUFFER -eq 0 ]]; then
-        echo ""
-        ls
-        zle reset-prompt
-    else
-        zle .accept-line
-    fi
-}
-zle -N accept-line _wave_accept_line
+eval "$(atuin init zsh --disable-up-arrow)"
