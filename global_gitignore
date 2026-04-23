@@ -3,3 +3,6 @@
 .DS_Store?
 .Spotlight-V100
 .Trashes
+
+.claude/settings.local.json
+.claude/internet-mode-used_DO_NOT_REMOVE_MANUALLY_SECURITY_RISK
