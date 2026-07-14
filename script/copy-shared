@@ -26,7 +26,7 @@ cp -v gitconfig "$DIR"/.gitconfig
 mkdir -p "$DIR"/.githooks
 cp -vR githooks/* "$DIR"/.githooks
 
-chmod +x "$DIR"/.githooks/pre-commit
+chmod +x "$DIR"/.githooks/*
 
 cp -v hgrc "$DIR"/.hgrc
 
