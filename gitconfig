@@ -48,3 +48,9 @@
 
 [http "https://git.c2p.facebook.net"]
   sslCert = /var/facebook/credentials/asb/x509/asb.pem
+# Local overrides (not in repo) - e.g. ~/.config/git/box-config for linux box
+# Git ignores missing include files, so safe on mac where box-config doesn't exist
+[include]
+	path = ~/.config/git/box-config
+	path = ~/.gitconfig.local
+

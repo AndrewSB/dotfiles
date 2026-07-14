@@ -1,0 +1,75 @@
+#!/bin/sh
+# Auto Co-authored-by: Harness (Model) — only when inside Hermes Agent
+# - Personal/manual commits: no-op (clean)
+# - Hermes sessions: adds Co-authored-by: Hermes Agent (model) <noreply@nousresearch.com>
+#
+# Detection:
+#   HERMES_SESSION_ID, HERMES_HOME, HERMES_SESSION_PLATFORM are set by Hermes gateway/CLI
+#   If none present, this is a personal commit → skip
+
+# Exit if not in Hermes Agent
+if [ -z "$HERMES_SESSION_ID" ] && [ -z "$HERMES_HOME" ] && [ -z "$HERMES_SESSION_PLATFORM" ]; then
+  # Not Hermes — chain to repo-local hook if exists, then exit clean
+  repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [ -n "$repo_root" ]; then
+    if [ -d "${repo_root}/.git" ]; then
+      hooks_dir="${repo_root}/.git/hooks"
+    elif [ -f "${repo_root}/.git" ]; then
+      gitdir=$(sed 's/gitdir: //' < "${repo_root}/.git" 2>/dev/null)
+      hooks_dir="${gitdir}/hooks"
+    fi
+    if [ -n "$hooks_dir" ] && [ -x "${hooks_dir}/prepare-commit-msg" ]; then
+      "${hooks_dir}/prepare-commit-msg" "$@"
+    fi
+  fi
+  exit 0
+fi
+
+COMMIT_MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+case "$COMMIT_SOURCE" in
+  merge|squash) exit 0 ;;
+esac
+
+if grep -qi "Co-authored-by:.*Hermes" "$COMMIT_MSG_FILE"; then
+  exit 0
+fi
+
+MSG_CONTENT=$(grep -v "^#" "$COMMIT_MSG_FILE" | grep -v "^$" | head -n 20)
+if [ -z "$MSG_CONTENT" ]; then
+  exit 0
+fi
+
+MODEL=""
+CONFIG="$HOME/.hermes/config.yaml"
+if [ -f "$CONFIG" ]; then
+  MODEL=$(awk '/^model:/{p=1;next} p && /default:/{print $2; exit}' "$CONFIG" | tr -d '"' | tr -d "'")
+fi
+
+if [ -n "$MODEL" ]; then
+  DISPLAY="Hermes Agent ($MODEL)"
+else
+  DISPLAY="Hermes Agent"
+fi
+
+COAUTHOR="Co-authored-by: $DISPLAY <noreply@nousresearch.com>"
+
+if [ -n "$(tail -n1 "$COMMIT_MSG_FILE")" ]; then
+  echo "" >> "$COMMIT_MSG_FILE"
+fi
+echo "$COAUTHOR" >> "$COMMIT_MSG_FILE"
+
+# Chain to repo-local hook
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ -n "$repo_root" ]; then
+  if [ -d "${repo_root}/.git" ]; then
+    hooks_dir="${repo_root}/.git/hooks"
+  elif [ -f "${repo_root}/.git" ]; then
+    gitdir=$(sed 's/gitdir: //' < "${repo_root}/.git" 2>/dev/null)
+    hooks_dir="${gitdir}/hooks"
+  fi
+  if [ -n "$hooks_dir" ] && [ -x "${hooks_dir}/prepare-commit-msg" ]; then
+    "${hooks_dir}/prepare-commit-msg" "$@"
+  fi
+fi
