@@ -18,6 +18,5 @@ things like Xcode, Homebrew, rvm, and some {brew, brew cask}s
 
 # `script/setup-macos.sh` TODO:
 
-2. Hide menubar
-3. Enable zoom
-4. turn off iCloud mail
+1. Hide menubar
+2. Turn off iCloud mail
