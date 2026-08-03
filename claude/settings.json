@@ -1,5 +1,11 @@
 {
-    "theme": "dark",
+    "env": {
+        "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1"
+    },
+    "effortLevel": "medium",
+    "skipDangerousModePermissionPrompt": true,
+    "theme": "auto",
+    "editorMode": "vim",
     "inputNeededNotifEnabled": true,
     "agentPushNotifEnabled": true
 }
