@@ -1,50 +1,77 @@
 #!/bin/sh
-# Auto Co-authored-by: Harness (Model) — only when inside Hermes Agent
-# - Personal/manual commits: no-op (clean)
-# - Hermes sessions: adds Co-authored-by: Hermes Agent (model) <noreply@nousresearch.com>
+# Auto Co-authored-by: Hermes Agent (model) <noreply@nousresearch.com>
 #
-# Detection:
-#   HERMES_SESSION_ID, HERMES_HOME, HERMES_SESSION_PLATFORM are set by Hermes gateway/CLI
-#   If none present, this is a personal commit → skip
-
-# Exit if not in Hermes Agent
-if [ -z "$HERMES_SESSION_ID" ] && [ -z "$HERMES_HOME" ] && [ -z "$HERMES_SESSION_PLATFORM" ]; then
-  # Not Hermes — chain to repo-local hook if exists, then exit clean
-  repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
-  if [ -n "$repo_root" ]; then
-    if [ -d "${repo_root}/.git" ]; then
-      hooks_dir="${repo_root}/.git/hooks"
-    elif [ -f "${repo_root}/.git" ]; then
-      gitdir=$(sed 's/gitdir: //' < "${repo_root}/.git" 2>/dev/null)
-      hooks_dir="${gitdir}/hooks"
-    fi
-    if [ -n "$hooks_dir" ] && [ -x "${hooks_dir}/prepare-commit-msg" ]; then
-      "${hooks_dir}/prepare-commit-msg" "$@"
-    fi
-  fi
-  exit 0
-fi
+# Author always stays canonical: Andrew Breckenridge <asbreckenridge@me.com>.
+# The trailer marks provenance only — it never changes commit authorship.
+#
+# Gate (first match wins):
+#   HERMES_NO_COAUTHOR=1   → never attribute (escape hatch for hand-typed
+#                            commits inside an agent session)
+#   HERMES_AGENT_COMMIT=1  → attribute (explicit; the reliable path, works on
+#                            every platform including CLI/Telegram/cron)
+#   HERMES_SESSION_ID set  → attribute (ambient; currently only exported by the
+#                            WebUI path in hermes-webui/api/streaming.py)
+#   otherwise              → no-op
+#
+# Deliberately NOT gated on HERMES_HOME: that names the active profile dir and
+# is exported by the gateway itself, so it is true in plain shells the human
+# drives. It is not an authorship signal.
 
 COMMIT_MSG_FILE="$1"
 COMMIT_SOURCE="$2"
 
-case "$COMMIT_SOURCE" in
-  merge|squash) exit 0 ;;
-esac
+# Chain to a repo-local hook, if one exists and is not this script.
+# core.hooksPath=~/.githooks means git skips .git/hooks entirely, so repos that
+# install their own hook (husky, pre-commit, lefthook) need an explicit call.
+chain_local_hook() {
+  hooks_dir=$(git rev-parse --git-path hooks 2>/dev/null) || return 0
+  [ -n "$hooks_dir" ] || return 0
+  local_hook="${hooks_dir}/prepare-commit-msg"
+  [ -x "$local_hook" ] || return 0
 
-if grep -qi "Co-authored-by:.*Hermes" "$COMMIT_MSG_FILE"; then
+  # Never re-enter ourselves.
+  self=$(cd "$(dirname "$0")" 2>/dev/null && pwd)/$(basename "$0")
+  other=$(cd "$(dirname "$local_hook")" 2>/dev/null && pwd)/$(basename "$local_hook")
+  [ "$self" = "$other" ] && return 0
+
+  "$local_hook" "$@"
+}
+
+should_attribute() {
+  [ "$HERMES_NO_COAUTHOR" = "1" ] && return 1
+  [ "$HERMES_AGENT_COMMIT" = "1" ] && return 0
+  [ -n "$HERMES_SESSION_ID" ] && return 0
+  return 1
+}
+
+if ! should_attribute; then
+  chain_local_hook "$@"
   exit 0
 fi
 
-MSG_CONTENT=$(grep -v "^#" "$COMMIT_MSG_FILE" | grep -v "^$" | head -n 20)
+case "$COMMIT_SOURCE" in
+  merge|squash) chain_local_hook "$@"; exit 0 ;;
+esac
+
+# Idempotent: amends and rebases re-run this hook on an existing message.
+if grep -qi "^Co-authored-by:.*Hermes" "$COMMIT_MSG_FILE"; then
+  chain_local_hook "$@"
+  exit 0
+fi
+
+# Skip empty messages — git aborts the commit anyway, and a lone trailer would
+# make the message look non-empty enough to go through.
+MSG_CONTENT=$(grep -v "^#" "$COMMIT_MSG_FILE" | grep -v "^[[:space:]]*$" | head -n 20)
 if [ -z "$MSG_CONTENT" ]; then
+  chain_local_hook "$@"
   exit 0
 fi
 
 MODEL=""
-CONFIG="$HOME/.hermes/config.yaml"
+CONFIG="${HERMES_HOME:-$HOME/.hermes}/config.yaml"
 if [ -f "$CONFIG" ]; then
-  MODEL=$(awk '/^model:/{p=1;next} p && /default:/{print $2; exit}' "$CONFIG" | tr -d '"' | tr -d "'")
+  MODEL=$(awk '/^model:/{p=1;next} /^[^[:space:]]/{p=0} p && /default:/{print $2; exit}' \
+    "$CONFIG" | tr -d "\"'")
 fi
 
 if [ -n "$MODEL" ]; then
@@ -53,23 +80,14 @@ else
   DISPLAY="Hermes Agent"
 fi
 
+# Nous controls nousresearch.com, so this address can't be squatted via GitHub
+# email verification. Renders as an unlinked grey name until they claim it.
 COAUTHOR="Co-authored-by: $DISPLAY <noreply@nousresearch.com>"
 
+# Trailers need a blank line before the block.
 if [ -n "$(tail -n1 "$COMMIT_MSG_FILE")" ]; then
   echo "" >> "$COMMIT_MSG_FILE"
 fi
 echo "$COAUTHOR" >> "$COMMIT_MSG_FILE"
 
-# Chain to repo-local hook
-repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
-if [ -n "$repo_root" ]; then
-  if [ -d "${repo_root}/.git" ]; then
-    hooks_dir="${repo_root}/.git/hooks"
-  elif [ -f "${repo_root}/.git" ]; then
-    gitdir=$(sed 's/gitdir: //' < "${repo_root}/.git" 2>/dev/null)
-    hooks_dir="${gitdir}/hooks"
-  fi
-  if [ -n "$hooks_dir" ] && [ -x "${hooks_dir}/prepare-commit-msg" ]; then
-    "${hooks_dir}/prepare-commit-msg" "$@"
-  fi
-fi
+chain_local_hook "$@"
