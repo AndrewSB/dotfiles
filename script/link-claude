@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Symlinks the shared Claude Code config out of this repo into ~/.claude.
+#
+# Unlike the rest of these dotfiles, the Claude config is symlinked rather than
+# copied. Claude Code edits these files in place (`/config` rewrites
+# settings.json, you edit agents by hand), so a copy would silently lose those
+# edits on the next `copy-shared`. Symlinks make edits on any machine show up in
+# `git status` here, which is what makes cross-machine syncing work.
+#
+# This means the repo has to stay put — moving it breaks the links, so re-run
+# this script after relocating the clone.
+#
+# Only the allowlist below is linked. Everything else in ~/.claude is either a
+# secret (.credentials.json), machine identity (~/.claude.json), or local state
+# (projects/, sessions/, backups/, plugins/marketplaces/) and must stay local.
+# Machine-specific settings belong in ~/.claude/settings.local.json, which is
+# deliberately never linked.
+
+set -e # exit if we encounter an error
+
+DIR=${1:-~} # default to ~ if a directory isn't specified
+
+REPO=$(cd "$(dirname "$0")/.." && pwd)
+
+mkdir -p "$DIR"/.claude
+
+# Files and directories under claude/ to link into ~/.claude, if they exist.
+SHARED=(
+  settings.json
+  keybindings.json
+  CLAUDE.md
+  agents
+  commands
+  skills
+  hooks
+  output-styles
+)
+
+for name in "${SHARED[@]}"; do
+  src="$REPO"/claude/"$name"
+  dst="$DIR"/.claude/"$name"
+
+  [ -e "$src" ] || continue
+
+  # Already pointing where we want it — nothing to do.
+  if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+    continue
+  fi
+
+  # A real file/dir is in the way. Back it up rather than clobbering it: on a
+  # new machine this is the config we're about to start managing, and it may
+  # hold edits that were never committed.
+  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+    backup="$dst".bak.$(date +%s)
+    echo "link-claude: $dst exists and is not a symlink, moving to $backup"
+    mv "$dst" "$backup"
+  fi
+
+  ln -sfn "$src" "$dst"
+  echo "link-claude: linked .claude/$name"
+done

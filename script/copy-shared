@@ -45,6 +45,9 @@ cp -v hushlogin "$DIR"/.hushlogin
 mkdir -p "$DIR"/.ssh
 cp -v sshconfig "$DIR"/.ssh/config
 
+# Claude Code config is symlinked, not copied — see script/link-claude
+./script/link-claude "$DIR"
+
 popd
 
 set +e
