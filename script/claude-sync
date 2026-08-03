@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Moves Claude Code config between machines: commits local edits under claude/,
+# rebases on the remote, pushes.
+#
+#   script/claude-sync          commit local claude/ edits, pull --rebase, push
+#   script/claude-sync pull     pull --rebase only (no commit, no push)
+#   script/claude-sync doctor   report on the ~/.claude symlinks and re-link
+#
+# Only paths under claude/ are committed — the rest of your working tree is left
+# alone, so this is safe to run mid-edit on other dotfiles.
+
+set -e # exit if we encounter an error
+
+REPO=$(cd "$(dirname "$0")/.." && pwd)
+cd "$REPO"
+
+case "${1:-sync}" in
+  doctor)
+    # The known fragile case: Claude Code rewrites settings.json when you change
+    # a setting, and a write-via-temp-file-plus-rename replaces the symlink with
+    # a regular file, silently ending the sync. Same goes for anything else that
+    # got clobbered. Re-linking restores it (link-claude backs up first).
+    for name in settings.json keybindings.json CLAUDE.md agents commands skills hooks output-styles; do
+      src="$REPO"/claude/"$name"
+      dst=~/.claude/"$name"
+      [ -e "$src" ] || continue
+
+      if [ ! -e "$dst" ]; then
+        echo "MISSING  .claude/$name — not linked"
+      elif [ ! -L "$dst" ]; then
+        echo "UNLINKED .claude/$name — real file, edits here are NOT synced"
+      elif [ "$(readlink "$dst")" != "$src" ]; then
+        echo "WRONG    .claude/$name -> $(readlink "$dst")"
+      else
+        echo "ok       .claude/$name"
+      fi
+    done
+    echo
+    echo "re-linking..."
+    "$REPO"/script/link-claude
+    exit 0
+    ;;
+  pull)
+    git pull --rebase
+    exit 0
+    ;;
+  sync) ;;
+  *)
+    echo "usage: claude-sync [pull|doctor]" >&2
+    exit 1
+    ;;
+esac
+
+# Commit first, then rebase — that way a dirty claude/ can't block the pull.
+if [ -n "$(git status --porcelain -- claude)" ]; then
+  git add -A claude
+  git commit -m "claude: sync config from $(hostname -s)"
+else
+  echo "claude-sync: no local changes under claude/"
+fi
+
+git pull --rebase
+git push

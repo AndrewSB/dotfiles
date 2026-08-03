@@ -6,7 +6,7 @@ DIRNAME=$(dirname "$0")
 DIR=${1:-~} # default to ~ if a directory isn't specified
 
 pushd "$DIRNAME"
-./copy-shared
+./copy-shared "$DIR"
 popd
 
 # macos specific \/
